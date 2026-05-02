@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stoneforze Studio | Premium Digital Creations</title>
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --bg-color: #0b0f19;
+            --surface-color: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-blue: #38bdf8;
+            --accent-green: #10b981; /* Inspired by ILMIA EDITZ */
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Base Styles & Smooth Scrolling */
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-down { animation: fadeInDown 1s ease-out forwards; }
+        .animate-up { animation: fadeInUp 1s ease-out forwards; animation-delay: 0.3s; opacity: 0; }
+        .animate-up-delayed { animation: fadeInUp 1s ease-out forwards; animation-delay: 0.6s; opacity: 0; }
+
+        /* Container & Layout */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 5rem 0; }
+
+        /* Header / Hero Section */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1e293b 0%, #0b0f19 100%);
+        }
+        h1 { font-size: 4rem; margin: 0; letter-spacing: 2px; }
+        h1 span { color: var(--accent-blue); }
+        .tagline { font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin: 20px auto; }
+
+        /* Services / What I Do */
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: var(--text-primary); }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background-color: var(--surface-color);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            border-top: 4px solid transparent;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            border-top: 4px solid var(--accent-blue);
+        }
+        .service-card h3 { color: var(--accent-blue); margin-top: 0; font-size: 1.4rem; }
+        .service-card p { color: var(--text-secondary); font-size: 0.95rem; }
+
+        /* Footer & Contact */
+        footer {
+            background-color: var(--surface-color);
+            padding: 4rem 0 2rem;
+            text-align: center;
+            border-top: 1px solid #334155;
+        }
+        .contact-box {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid #334155;
+            padding: 3rem;
+            border-radius: 16px;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+        .contact-box h2 { margin-top: 0; color: var(--text-primary); }
+        .contact-box p { color: var(--text-secondary); margin-bottom: 2rem; }
+        .contact-btn {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: #000;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: var(--transition);
+        }
+        .contact-btn:hover { background-color: var(--text-primary); transform: scale(1.05); }
+        
+        .footer-links { margin-top: 3rem; }
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        .footer-links a:hover { color: var(--accent-blue); }
+        .copyright { margin-top: 2rem; color: #64748b; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header>
+        <div class="container">
+            <h1 class="animate-down">Stoneforze <span>Studio</span></h1>
+            <p class="tagline animate-up">Crafting premium digital experiences. From high-utility mobile applications to cinematic visual edits and hard-hitting audio.</p>
+            <a href="#services" class="contact-btn animate-up-delayed" style="background-color: transparent; border: 2px solid var(--accent-blue); color: var(--accent-blue); margin-top: 20px;">Explore My Work</a>
+        </div>
+    </header>
+
+    <!-- What I Do Section -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">What I Do</h2>
+            <div class="services-grid">
+                
+                <!-- App Dev Card -->
+                <div class="service-card">
+                    <h3>Mobile App Development</h3>
+                    <p>Solo developer specializing in utility-driven Android applications. Creator of OmniDash and AI-integrated platforms, focusing on clean architecture, secure data handling, and offline-first capabilities.</p>
+                </div>
+
+                <!-- Video Editing Card -->
+                <div class="service-card" style="border-top-color: var(--accent-green);">
+                    <h3 style="color: var(--accent-green);">Cinematic Video Editing</h3>
+                    <p>Professional video editing for YouTube and Snapchat. Specializing in high-energy "sigma" and gym edits, alongside premium, minimalist storytelling under the JUSTMAKEEDIT and ILMIA EDITZ brands.</p>
+                </div>
+
+                <!-- Graphic Design Card -->
+                <div class="service-card">
+                    <h3>Graphic & Brand Design</h3>
+                    <p>Designing striking visual identities, from professional Wukong-styled gaming logos to optimized, minimalist channel banners and high-click-through-rate thumbnails.</p>
+                </div>
+
+                <!-- Audio Card -->
+                <div class="service-card" style="border-top-color: var(--accent-green);">
+                    <h3 style="color: var(--accent-green);">Audio & Phonk Production</h3>
+                    <p>Composing aggressive, high-bass Phonk music. Creating intense drift, Brazilian, and Memphis subgenre tracks designed to elevate digital content and dynamic media.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Contact Section -->
+    <footer id="contact">
+        <div class="container">
+            <div class="contact-box">
+                <h2>Partnerships & Promotions</h2>
+                <p>Looking to collaborate, sponsor a project, or require professional development and editing services? Let's build something exceptional together.</p>
+                <!-- Replace 'arman16.sidd0@gmail.com' with your actual business email -->
+                <a href="mailto:siddiquiarman350786@gmail.com" class="contact-btn">Contact Me</a>
+            </div>
+
+            <div class="footer-links">
+                <!-- AdMob Verification Link -->
+                <a href="app-ads.txt">AdMob Verification</a>
+                <a href="#">Google Play Developer</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            
+            <p class="copyright">&copy; 2026 Stoneforze Studio | Mohammad Arman Siddiqui. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
