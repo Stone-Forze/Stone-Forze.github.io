@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OmniDash | Premium Utility Suite</title>
+    <title>Join OmniDash Beta | Closed Testing</title>
     <style>
-        /* === Theme Variables === */
+        /* === Theme Variables (Matching Main Website) === */
         :root[data-theme="dark"] {
             --bg-base: #070a13;
             --bg-surface: #121826;
             --bg-surface-elevated: #1e293b;
             --text-primary: #ffffff;
             --text-secondary: #94a3b8;
-            --accent: #38bdf8;
+            --accent-blue: #38bdf8;
             --accent-glow: rgba(56, 189, 248, 0.2);
             --border-color: rgba(255, 255, 255, 0.05);
             --card-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         :root[data-theme="light"] {
@@ -24,179 +25,170 @@
             --bg-surface-elevated: #f1f5f9;
             --text-primary: #0f172a;
             --text-secondary: #475569;
-            --accent: #0284c7;
+            --accent-blue: #0284c7;
             --accent-glow: rgba(2, 132, 199, 0.2);
             --border-color: rgba(0, 0, 0, 0.05);
             --card-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; transition: background-color 0.3s, color 0.3s, border-color 0.3s; }
         html { scroll-behavior: smooth; }
-        body { background-color: var(--bg-base); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            transition: var(--transition);
+        }
 
         /* === Navigation === */
         nav {
-            position: fixed; top: 0; width: 100%; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;
-            background: var(--bg-surface); backdrop-filter: blur(12px); z-index: 100; border-bottom: 1px solid var(--border-color);
+            width: 100%; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;
+            background: var(--bg-surface); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color);
+            position: fixed; top: 0; z-index: 100; box-sizing: border-box;
         }
-        .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; }
-        .logo span { color: var(--accent); }
+        .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; text-decoration: none; color: var(--text-primary); }
+        .logo span { color: var(--accent-blue); }
         .nav-links { display: flex; align-items: center; gap: 1.5rem; }
-        .nav-link { color: var(--text-secondary); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
-        .nav-link:hover { color: var(--text-primary); }
-        
-        .btn { padding: 0.6rem 1.5rem; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer; }
-        .btn-primary { background: var(--text-primary); color: var(--bg-base); box-shadow: 0 4px 15px var(--accent-glow); }
-        .btn-primary:hover { transform: scale(1.05); }
-        .btn-outline { border: 1px solid var(--border-color); color: var(--text-primary); background: transparent; }
+        .btn-outline { border: 1px solid var(--border-color); color: var(--text-primary); background: transparent; padding: 0.6rem 1.5rem; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: var(--transition); }
         .btn-outline:hover { background: var(--bg-surface-elevated); }
-        
         .theme-toggle { background: transparent; border: none; color: var(--text-primary); font-size: 1.2rem; cursor: pointer; padding: 0.5rem; }
 
-        /* === Hero Section === */
-        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8rem 5% 4rem; }
-        .hero h1 { font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 800; line-height: 1.1; letter-spacing: -2px; margin-bottom: 1.5rem; }
-        .hero p { font-size: clamp(1.1rem, 2vw, 1.3rem); color: var(--text-secondary); max-width: 600px; margin-bottom: 2.5rem; }
-        .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+        /* Smooth fade-in animation */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-        /* === Tools Directory === */
-        .section-container { padding: 6rem 5%; max-width: 1200px; margin: 0 auto; }
-        .section-header { text-align: center; margin-bottom: 4rem; }
-        .section-header h2 { font-size: 2.5rem; margin-bottom: 1rem; }
-        .section-header p { color: var(--text-secondary); font-size: 1.1rem; }
+        .container {
+            max-width: 800px;
+            padding: 8rem 2rem 3rem; /* Extra top padding for fixed nav */
+            text-align: center;
+            animation: fadeInUp 1s ease-out forwards;
+            width: 100%;
+            box-sizing: border-box;
+        }
 
-        .category-block { margin-bottom: 4rem; }
-        .category-title { font-size: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; color: var(--accent); display: flex; align-items: center; gap: 0.5rem; }
+        h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 0.5rem; letter-spacing: -1px; }
+        h1 span { color: var(--accent-blue); }
+        .subtitle { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            text-align: left;
+        }
+
+        .step-card {
+            background-color: var(--bg-surface);
+            padding: 2rem;
+            border-radius: 16px;
+            border-left: 4px solid var(--accent-blue);
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-blue);
+            transition: var(--transition);
+        }
+
+        .step-card:hover {
+            transform: translateX(10px);
+            border-color: var(--accent-blue);
+        }
+
+        .step-header { display: flex; align-items: center; margin-bottom: 1rem; }
+        .step-number {
+            background-color: var(--accent-blue);
+            color: #ffffff;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
         
-        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
-        .tool-card { background: var(--bg-surface); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 16px; box-shadow: var(--card-shadow); display: flex; align-items: flex-start; gap: 1rem; }
-        .tool-card:hover { transform: translateY(-5px); border-color: var(--accent); }
-        .tool-icon { background: var(--bg-surface-elevated); padding: 0.8rem; border-radius: 12px; font-size: 1.5rem; }
-        .tool-info h4 { font-size: 1.1rem; margin-bottom: 0.3rem; }
-        .tool-info p { font-size: 0.9rem; color: var(--text-secondary); }
+        .step-card h3 { margin: 0; color: var(--text-primary); font-size: 1.3rem; }
+        .step-card p { color: var(--text-secondary); margin-bottom: 1.5rem; }
 
-        /* === Contact Section === */
-        .contact-box { background: var(--bg-surface); border: 1px solid var(--border-color); padding: 3rem; border-radius: 24px; text-align: center; margin-top: 2rem; box-shadow: var(--card-shadow); }
-        .contact-box h3 { font-size: 2rem; margin-bottom: 1rem; }
-        .contact-box p { color: var(--text-secondary); margin-bottom: 2rem; }
+        .action-btn {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: #ffffff;
+            padding: 12px 25px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
 
-        /* === Footer === */
-        footer { text-align: center; padding: 2rem 5%; border-top: 1px solid var(--border-color); color: var(--text-secondary); margin-top: 4rem; font-size: 0.9rem; }
+        .action-btn:hover { background-color: var(--text-primary); color: var(--bg-base); transform: scale(1.05); }
+
+        footer { margin-top: 3rem; color: var(--text-secondary); font-size: 0.9rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; }
+        footer a { color: var(--accent-blue); text-decoration: none; transition: var(--transition); }
+        footer a:hover { text-decoration: underline; color: var(--text-primary); }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">Omni<span>Dash</span></div>
+        <a href="omnidash.html" class="logo">Omni<span>Dash</span></a>
         <div class="nav-links">
-            <a href="#tools" class="nav-link">Tools Directory</a>
-            <a href="#support" class="nav-link">Support</a>
             <button class="theme-toggle" id="themeToggle" title="Toggle Light/Dark Mode">🌓</button>
-            <a href="index.html" class="btn btn-outline">Studio Home</a>
+            <a href="omnidash.html" class="btn-outline">Back to Home</a>
         </div>
     </nav>
 
-    <section class="hero">
-        <h1>All Tools.<br>Zero Hassle.</h1>
-        <p>The ultimate premium utility suite designed for developers, creators, and power users. Replace dozens of apps with just one seamlessly integrated dashboard.</p>
-        <div class="hero-actions">
-            <a href="omnidash-invite.html" class="btn btn-primary">Join the Beta Testing</a>
-            <a href="#tools" class="btn btn-outline">Explore Capabilities</a>
-        </div>
-    </section>
+    <div class="container">
+        <h1>Join <span>Stoneforze</span> Beta</h1>
+        <p class="subtitle">Help shape the future of our premium utilities by becoming an exclusive closed tester. Follow the 3 simple steps below to get early access to OmniDash.</p>
 
-    <section class="section-container" id="tools">
-        <div class="section-header">
-            <h2>The Tool Directory</h2>
-            <p>Explore the powerful utilities available right out of the box.</p>
-        </div>
-
-        <div class="category-block">
-            <h3 class="category-title">⚙️ Developer Tools</h3>
-            <div class="tools-grid">
-                <div class="tool-card">
-                    <div class="tool-icon">📝</div>
-                    <div class="tool-info">
-                        <h4>Regex Tester</h4>
-                        <p>Write, validate, and test regular expressions in real-time with syntax highlighting.</p>
-                    </div>
+        <div class="steps-container">
+            
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <h3>Join the Google Group</h3>
                 </div>
-                <div class="tool-card">
-                    <div class="tool-icon">🤖</div>
-                    <div class="tool-info">
-                        <h4>AI Prompt Stylizer</h4>
-                        <p>Generate highly structured prompts for AI models, categorized for developers and creators.</p>
-                    </div>
-                </div>
+                <p>To be authorized as a tester, you must first join our official Stoneforze Beta Testing Google Group using the email account associated with your Android device.</p>
+                <a href="https://groups.google.com/g/stoneforze" target="_blank" class="action-btn">Join Google Group</a>
             </div>
-        </div>
 
-        <div class="category-block">
-            <h3 class="category-title">🎨 Media & Design</h3>
-            <div class="tools-grid">
-                <div class="tool-card">
-                    <div class="tool-icon">🖼️</div>
-                    <div class="tool-info">
-                        <h4>Thumbnail Safe Zone</h4>
-                        <p>Overlay YouTube safe zones on your images to ensure no text is cut off on mobile devices.</p>
-                    </div>
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <h3>Opt-In to the Test</h3>
                 </div>
-                <div class="tool-card">
-                    <div class="tool-icon">📱</div>
-                    <div class="tool-info">
-                        <h4>Aspect Ratio Calculator</h4>
-                        <p>Instantly calculate pixel dimensions for any standard or custom video/image aspect ratio.</p>
-                    </div>
-                </div>
-                <div class="tool-card">
-                    <div class="tool-icon">ℹ️</div>
-                    <div class="tool-info">
-                        <h4>Image Metadata Viewer</h4>
-                        <p>Extract and view hidden EXIF data from photographs including camera models and location.</p>
-                    </div>
-                </div>
-                <div class="tool-card">
-                    <div class="tool-icon">🎨</div>
-                    <div class="tool-info">
-                        <h4>Color Palette Generator</h4>
-                        <p>Extract beautiful color palettes directly from uploaded images for UI/UX design.</p>
-                    </div>
-                </div>
+                <p>Once you are successfully in the Google Group, click the link below to officially accept your invite to the beta test. Make sure you see the confirmation screen!</p>
+                <a href="https://play.google.com/apps/testing/com.stoneforze.omnidash" target="_blank" class="action-btn">Opt-In as Tester</a>
             </div>
-        </div>
 
-        <div class="category-block">
-            <h3 class="category-title">🎵 Audio & Text</h3>
-            <div class="tools-grid">
-                <div class="tool-card">
-                    <div class="tool-icon">🎙️</div>
-                    <div class="tool-info">
-                        <h4>High-Res Audio Recorder</h4>
-                        <p>Capture and save crisp, high-quality voice notes directly to your device.</p>
-                    </div>
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <h3>Download & Keep Active</h3>
                 </div>
-                <div class="tool-card">
-                    <div class="tool-icon">📋</div>
-                    <div class="tool-info">
-                        <h4>Markdown Previewer</h4>
-                        <p>Write in Markdown and instantly see the formatted output exactly as it will render.</p>
-                    </div>
-                </div>
+                <p>Download OmniDash from the Play Store. Google requires you to keep the app installed for <strong>14 continuous days</strong>. Please open it occasionally to test the features!</p>
+                <a href="https://play.google.com/store/apps/details?id=com.stoneforze.omnidash" target="_blank" class="action-btn">Download on Google Play</a>
             </div>
-        </div>
-    </section>
 
-    <section class="section-container" id="support">
-        <div class="contact-box">
-            <h3>Need Support?</h3>
-            <p>Found a bug, have a feature request, or interested in a brand sponsorship? Our studio is ready to help.</p>
-            <a href="mailto:siddiquiarman350786@gmail.com" class="btn btn-primary">Contact Stone Forze</a>
         </div>
-    </section>
 
-    <footer>
-        <p>&copy; 2026 Stone Forze Studio. All rights reserved. Built with precision.</p>
-    </footer>
+        <footer>
+            <p>Have questions? <a href="omnidash.html">Return to Stoneforze Studio</a></p>
+        </footer>
+    </div>
 
     <script>
         const themeToggleBtn = document.getElementById('themeToggle');
