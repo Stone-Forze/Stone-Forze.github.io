@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniDash | All Tools. Zero Hassle.</title>
+    <style>
+        /* Exact OmniDash App Variables */
+        :root {
+            --bg-base: #070a13;
+            --bg-surface: #121826;
+            --bg-surface-elevated: #1e293b;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.3);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(7, 10, 19, 0.8);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo span { color: var(--accent); }
+
+        .nav-btn {
+            background: var(--text-primary);
+            color: var(--bg-base);
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 5% 4rem;
+            background: radial-gradient(circle at 50% 0%, var(--bg-surface), var(--bg-base) 70%);
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff, #a5b4fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+
+        .hero-image-container {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 40px var(--accent-glow);
+            margin-top: 2rem;
+            /* Animation for floating effect */
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 5%;
+            background-color: var(--bg-base);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            font-weight: 700;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--bg-surface);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 2.5rem;
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: var(--bg-surface-elevated);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Omni<span>Dash</span></div>
+        <a href="#" class="nav-btn">Get Early Access</a>
+    </nav>
+
+    <section class="hero">
+        <h1>All Tools.<br>Zero Hassle.</h1>
+        <p>The ultimate premium utility suite designed for developers, creators, and power users. Replace 50 apps with just one.</p>
+        
+        <div class="hero-image-container">
+            <img src="https://via.placeholder.com/800x450/1e293b/ffffff?text=Your+App+Promo+Image+Here" alt="OmniDash App Interface">
+        </div>
+    </section>
+
+    <section class="features">
+        <h2 class="section-title">A Tool for Every Workflow</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">⚡️</div>
+                <h3>Dev Utilities</h3>
+                <p>Regex testing, JSON formatting, and code snippets natively built for offline performance.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🎨</div>
+                <h3>Media Center</h3>
+                <p>Calculate aspect ratios, view EXIF metadata, and generate thumbnail safe zones instantly.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🧮</div>
+                <h3>Advanced Math</h3>
+                <p>Complex calculators and unit conversions packaged in a clean, distraction-free interface.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📝</div>
+                <h3>Text & AI</h3>
+                <p>Format social media posts, generate prompt templates, and analyze formatting errors on the fly.</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
