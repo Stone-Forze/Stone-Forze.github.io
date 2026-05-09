@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrepForze Beta - Join the Testing Phase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #1A1A1A;
+            --surface-color: #262626;
+            --primary-neon: #39FF14;
+            --primary-glow: rgba(57, 255, 20, 0.4);
+            --text-main: #FFFFFF;
+            --text-muted: #A0A0A0;
+            --border-color: #333333;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navbar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            border-bottom: 1px solid var(--border-color);
+            background-color: rgba(26, 26, 26, 0.95);
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            color: var(--primary-neon);
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-neon);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 20px 60px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .beta-badge {
+            display: inline-block;
+            background: rgba(57, 255, 20, 0.1);
+            color: var(--primary-neon);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            border: 1px solid var(--primary-glow);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 0 0 20px;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        /* Steps Section */
+        .steps-container {
+            max-width: 1000px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+            display: grid;
+            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .step-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-neon);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .step-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--bg-color);
+            -webkit-text-stroke: 1px var(--border-color);
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            opacity: 0.5;
+            transition: all 0.3s;
+            line-height: 1;
+        }
+
+        .step-card:hover .step-number {
+            -webkit-text-stroke: 1px var(--primary-neon);
+            color: rgba(57, 255, 20, 0.05);
+        }
+
+        .step-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 12px;
+            color: var(--text-main);
+            z-index: 1;
+        }
+
+        .step-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 32px;
+            flex-grow: 1;
+            z-index: 1;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-neon);
+            color: #000000;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 25px rgba(57, 255, 20, 0.4);
+            transform: scale(1.02);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--text-main);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Important Notice */
+        .notice {
+            max-width: 600px;
+            margin: 0 auto 80px;
+            background: rgba(57, 255, 20, 0.05);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px dashed var(--primary-glow);
+            text-align: center;
+        }
+
+        .notice h3 {
+            margin-top: 0;
+            color: var(--primary-neon);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .notice p {
+            color: var(--text-muted);
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            margin-top: 15px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-main);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <span class="logo-icon">⚡</span> PrepForze
+        </a>
+        <nav class="nav-links">
+            <a href="index.html">Back to Main Site</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="beta-badge">Closed Beta Access</div>
+        <h1>Become an Elite Tester</h1>
+        <p>Get early access to the Ultimate AI Study Hacker. Help us test the high-speed MCQ engine and shape the future of PrepForze before the global launch.</p>
+    </section>
+
+    <div class="steps-container">
+        <div class="step-card">
+            <div class="step-number">01</div>
+            <h3 class="step-title">Join the Testing Group</h3>
+            <p class="step-desc">To get permission from Google Play to download the beta, you must first join our official testing group using your Google Play email address.</p>
+            <a href="https://groups.google.com/g/stoneforze" class="btn btn-secondary" target="_blank">Join Google Group</a>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">02</div>
+            <h3 class="step-title">Opt-in on Play Store</h3>
+            <p class="step-desc">Once you are in the group, click the official testing link below to accept the beta invitation directly on the Google Play Console.</p>
+            <a href="YOUR_PLAY_STORE_OPT_IN_LINK_HERE" class="btn btn-secondary" target="_blank">Accept Invite</a>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">03</div>
+            <h3 class="step-title">Download & Hack Exams</h3>
+            <p class="step-desc">You're in! Download the app, scan some notes, and start generating AI quizzes. Put the 30-second timer to the ultimate test.</p>
+            <a href="YOUR_APP_DOWNLOAD_LINK_HERE" class="btn btn-primary" target="_blank">Download PrepForze</a>
+        </div>
+    </div>
+
+    <div class="notice">
+        <h3>⚠️ Tester Requirements</h3>
+        <p>Google Play requires beta testers to keep the app installed and actively test the features for <strong>14 consecutive days</strong>. If you run into any bugs or UI glitches, please report them directly through the app feedback button or contact support so we can fix them for the final release!</p>
+    </div>
+
+    <footer>
+        <p>cooked with ❤️ by Arman</p>
+        <div class="footer-links">
+            <a href="prepforze-policy.html">Privacy Policy</a>
+            <a href="index.html">Support</a>
+            <a href="index.html">Website</a>
+        </div>
+    </footer>
+
+</body>
+</html>
