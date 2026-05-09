@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - PrepForze</title>
+    <style>
+        :root {
+            /* Common */
+            --neon-green: #88BB00;
+            --neon-green-subtle: rgba(136, 187, 0, 0.15);
+            --error-red: #FF4444;
+
+            /* Dark Theme (Default) */
+            --background: #0B0D12;
+            --surface: #13151A;
+            --card-bg: #16181E;
+            --text-primary: #F0F2F5;
+            --text-secondary: #A0A5B0;
+            --border: #242730;
+        }
+
+        [data-theme="light"] {
+            /* Light Theme */
+            --background: #F5F5F5;
+            --surface: #FFFFFF;
+            --card-bg: #FFFFFF;
+            --text-primary: #1A1A1A;
+            --text-secondary: #666666;
+            --border: #E0E0E0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--background);
+            color: var(--text-primary);
+            margin: 0;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        header {
+            padding: 1.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background-color: var(--background);
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--neon-green);
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .theme-toggle {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--neon-green);
+            color: #000;
+            padding: 0.6rem 1.2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: none;
+        }
+
+        .policy-content {
+            padding: 3rem 0;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: -1.5px;
+        }
+
+        .last-updated {
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-bottom: 3rem;
+            display: block;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--neon-green);
+        }
+
+        p, li {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }
+
+        .highlight-box {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--neon-green);
+            padding: 1.5rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+        }
+
+        .back-link {
+            color: var(--neon-green);
+            text-decoration: none;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="logo">PrepForze</a>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" title="Toggle Theme">🌙</button>
+                <a href="index.html" class="btn">Home</a>
+            </div>
+        </header>
+
+        <main class="policy-content">
+            <h1>Privacy Policy</h1>
+            <span class="last-updated">Last Updated: June 2024</span>
+
+            <p>At PrepForze, we believe that your focus should be on crushing your exams, not worrying about your data. This policy outlines how we handle information in our AI-powered preparation app.</p>
+
+            <div class="highlight-box">
+                <strong>TL;DR:</strong> We don't sell your data. Most of your study data stays on your device. We use industry-standard services like AdMob to keep the app free.
+            </div>
+
+            <h2>1. Information We Collect</h2>
+            <p>PrepForze is designed to collect the minimum amount of data necessary to function:</p>
+            <ul>
+                <li><strong>Local Study Data:</strong> Your generated questions, test scores, and performance analytics are stored locally on your device using an encrypted database. We do not have access to your specific test results.</li>
+                <li><strong>Device Information:</strong> Basic info like OS version and device model to ensure app stability.</li>
+            </ul>
+
+            <h2>2. Third-Party Services</h2>
+            <p>To provide AI generation and keep the app free, we partner with:</p>
+            <ul>
+                <li><strong>Google AdMob:</strong> For serving ads. They may collect device identifiers to provide relevant ads and prevent fraud.</li>
+                <li><strong>AI Providers (Gemini, Groq, NVIDIA):</strong> When you enter a topic for a quiz, that topic string is sent to these providers to generate your questions. No personal profile is attached to these requests.</li>
+            </ul>
+
+            <h2>3. Permissions</h2>
+            <p>The app may request the following permissions:</p>
+            <ul>
+                <li><strong>Internet:</strong> Required to generate AI questions and fetch ads.</li>
+                <li><strong>Storage/Media:</strong> Only used if you choose to export your tests as PDFs to your Downloads folder.</li>
+            </ul>
+
+            <h2>4. Data Retention</h2>
+            <p>Since your study data is local, it is deleted if you uninstall the app or clear the app's data in your device settings. We do not maintain any cloud backups of your personal test history.</p>
+
+            <h2>5. Children's Privacy</h2>
+            <p>PrepForze is an educational tool. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal data, please contact us immediately.</p>
+
+            <h2>6. Contact Us</h2>
+            <p>For any questions regarding this policy or your data privacy, feel free to reach out:</p>
+            <p>Email: <a href="mailto:support@stoneforze.com" style="color: var(--neon-green);">support@stoneforze.com</a></p>
+        </main>
+
+        <footer>
+            <p>cooked with ❤️ by Arman</p>
+            <a href="prepforze.html" class="back-link">← Back to Home Page</a>
+        </footer>
+    </div>
+
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', savedTheme);
+        updateToggleIcon(savedTheme);
+
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateToggleIcon(newTheme);
+        });
+
+        function updateToggleIcon(theme) {
+            toggleBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+    </script>
+</body>
+</html>
