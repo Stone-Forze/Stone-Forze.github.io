@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StoneDocs Privacy Policy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #7A1022;
+
+      --light-bg: #F7F8FA;
+      --light-surface: #FFFFFF;
+      --light-toolbar: #F1F3F6;
+      --light-text: #151821;
+      --light-secondary: #6B7280;
+      --light-border: #E5E7EB;
+
+      --dark-bg: #0F1115;
+      --dark-surface: #171A21;
+      --dark-toolbar: #1E222B;
+      --dark-text: #F2F3F5;
+      --dark-secondary: #9AA0AA;
+      --dark-border: #2A2F3A;
+
+      --radius: 24px;
+      --transition: 0.25s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light-bg);
+      color: var(--light-text);
+      transition: background var(--transition), color var(--transition);
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    body.dark {
+      background: var(--dark-bg);
+      color: var(--dark-text);
+    }
+
+    .container {
+      max-width: 980px;
+      margin: auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      background: linear-gradient(145deg, #7A1022, #411018);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 22px;
+      font-weight: 700;
+      box-shadow: 0 10px 30px rgba(122, 16, 34, 0.25);
+    }
+
+    .brand h1 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .brand p {
+      color: var(--light-secondary);
+      margin-top: 4px;
+      font-size: 14px;
+    }
+
+    body.dark .brand p {
+      color: var(--dark-secondary);
+    }
+
+    .back-home-btn {
+      text-decoration: none;
+      background: var(--light-surface);
+      color: var(--light-text);
+      padding: 14px 18px;
+      border-radius: 16px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid var(--light-border);
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    body.dark .back-home-btn {
+      background: var(--dark-surface);
+      color: var(--dark-text);
+      border-color: var(--dark-border);
+    }
+
+    .back-home-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .theme-toggle {
+      border: none;
+      background: var(--light-surface);
+      color: var(--light-text);
+      padding: 14px 18px;
+      border-radius: 16px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1px solid var(--light-border);
+    }
+
+    body.dark .theme-toggle {
+      background: var(--dark-surface);
+      color: var(--dark-text);
+      border-color: var(--dark-border);
+    }
+
+    .hero-card {
+      background: var(--light-surface);
+      border: 1px solid var(--light-border);
+      border-radius: var(--radius);
+      padding: 42px;
+      margin-bottom: 24px;
+      transition: var(--transition);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+    }
+
+    body.dark .hero-card {
+      background: var(--dark-surface);
+      border-color: var(--dark-border);
+      box-shadow: none;
+    }
+
+    .hero-card h2 {
+      font-size: 40px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+
+    .hero-card p {
+      color: var(--light-secondary);
+      font-size: 16px;
+      line-height: 1.8;
+      max-width: 720px;
+    }
+
+    body.dark .hero-card p {
+      color: var(--dark-secondary);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(122, 16, 34, 0.12);
+      color: var(--primary);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .policy-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .policy-card {
+      background: var(--light-surface);
+      border: 1px solid var(--light-border);
+      border-radius: 22px;
+      padding: 28px;
+      transition: var(--transition);
+    }
+
+    body.dark .policy-card {
+      background: var(--dark-surface);
+      border-color: var(--dark-border);
+    }
+
+    .policy-card h3 {
+      font-size: 22px;
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+    }
+
+    .policy-card p,
+    .policy-card li {
+      color: var(--light-secondary);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    body.dark .policy-card p,
+    body.dark .policy-card li {
+      color: var(--dark-secondary);
+    }
+
+    .policy-card ul {
+      margin-top: 12px;
+      padding-left: 20px;
+    }
+
+    .footer {
+      margin-top: 28px;
+      text-align: center;
+      color: var(--light-secondary);
+      font-size: 14px;
+      padding-bottom: 20px;
+    }
+
+    body.dark .footer {
+      color: var(--dark-secondary);
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 18px;
+      }
+
+      .hero-card,
+      .policy-card {
+        padding: 24px;
+      }
+
+      .hero-card h2 {
+        font-size: 30px;
+      }
+
+      .brand h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="topbar">
+      <a href="index.html" class="back-home-btn">← Back to Home</a>
+      <div class="brand">
+        <a href="stonedocs.html" style="text-decoration:none;">
+          <div class="logo">S</div>
+        </a>
+        <div>
+          <h1>StoneDocs</h1>
+          <p>Privacy Policy</p>
+        </div>
+      </div>
+
+      <button class="theme-toggle" id="themeToggle">
+        Toggle Theme
+      </button>
+    </div>
+
+    <section class="hero-card">
+      <div class="badge">
+        Updated Policy
+      </div>
+
+      <h2>Your Privacy Matters.</h2>
+
+      <p>
+        StoneDocs is designed as an offline-first productivity application. We prioritize user privacy, minimal data collection, secure document handling, and transparent policies.
+      </p>
+    </section>
+
+    <div class="policy-grid">
+
+      <div class="policy-card">
+        <h3>1. Information We Collect</h3>
+        <p>
+          StoneDocs does not require account creation or mandatory sign-in.
+          Most document processing happens locally on your device.
+        </p>
+
+        <ul>
+          <li>Basic app analytics (if enabled)</li>
+          <li>Crash reports for app stability</li>
+          <li>Advertising identifiers for AdMob ads</li>
+          <li>Local file access only when granted by user</li>
+        </ul>
+      </div>
+
+      <div class="policy-card">
+        <h3>2. File Access & Permissions</h3>
+        <p>
+          StoneDocs requests only the permissions required for app functionality.
+        </p>
+
+        <ul>
+          <li>Storage access for opening and saving documents</li>
+          <li>Camera access for document scanning</li>
+          <li>Internet access for ads and optional online services</li>
+        </ul>
+      </div>
+
+      <div class="policy-card">
+        <h3>3. Offline-First Processing</h3>
+        <p>
+          Most PDF editing, viewing, scanning, and conversion features work completely offline. Your files remain on your device unless you explicitly choose to share or export them.
+        </p>
+      </div>
+
+      <div class="policy-card">
+        <h3>4. Advertising</h3>
+        <p>
+          StoneDocs uses Google AdMob to display advertisements.
+          Ads may use advertising identifiers to improve ad relevance.
+        </p>
+
+        <ul>
+          <li>Native ads</li>
+          <li>Interstitial ads</li>
+          <li>Rewarded video ads</li>
+        </ul>
+      </div>
+
+      <div class="policy-card">
+        <h3>5. Data Security</h3>
+        <p>
+          We implement reasonable security measures to protect local processing and app integrity. However, no digital platform can guarantee absolute security.
+        </p>
+      </div>
+
+      <div class="policy-card">
+        <h3>6. Third-Party Services</h3>
+        <p>
+          StoneDocs may use trusted third-party services including:
+        </p>
+
+        <ul>
+          <li>Google AdMob</li>
+          <li>Google Play Services</li>
+          <li>ML Kit</li>
+        </ul>
+      </div>
+
+      <div class="policy-card">
+        <h3>7. Children's Privacy</h3>
+        <p>
+          StoneDocs is not directed toward children under the age of 13. We do not knowingly collect personal information from children.
+        </p>
+      </div>
+
+      <div class="policy-card">
+        <h3>8. Changes To This Policy</h3>
+        <p>
+          This Privacy Policy may be updated periodically. Changes become effective immediately after being posted on this page.
+        </p>
+      </div>
+
+      <div class="policy-card">
+        <h3>9. Contact</h3>
+        <p>
+          For privacy-related questions or support, contact:
+        </p>
+
+        <p style="margin-top:12px;">
+          <a href="mailto:support@stonedocs.app">support@stonedocs.app</a>
+        </p>
+      </div>
+
+    </div>
+
+    <div style="display:flex; justify-content:center; margin-top:32px;">
+      <a href="index.html" class="back-home-btn">
+        ← Back to Main Website
+      </a>
+    </div>
+
+    <div class="footer">
+      © 2026 StoneDocs. All rights reserved.
+    </div>
+
+  </div>
+
+  <script>
+    const body = document.body;
+    const toggleBtn = document.getElementById('themeToggle');
+
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        body.classList.add('dark');
+      } else {
+        body.classList.remove('dark');
+      }
+    }
+
+    const savedTheme = localStorage.getItem('theme');
+
+    if (savedTheme) {
+      applyTheme(savedTheme);
+    } else {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(prefersDark ? 'dark' : 'light');
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      const isDark = body.classList.contains('dark');
+      const newTheme = isDark ? 'light' : 'dark';
+
+      applyTheme(newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+  </script>
+
+</body>
+</html>
