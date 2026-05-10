@@ -2,1267 +2,1017 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mohammad Arman Siddiqui — Stone Forze</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+
+  <title>Mohammad Arman Siddiqui | Stone Forze</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Manrope:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
-    /* ───────────────────────────── RESET & BASE ───────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* =========================================================
+       RESET
+    ========================================================= */
 
-    :root {
-      --bg-deep:      #060d1a;
-      --bg-base:      #0b1221;
-      --bg-card:      #0f1a2e;
-      --bg-card-alt:  #111d33;
-      --border:       rgba(56, 139, 253, 0.15);
-      --border-glow:  rgba(56, 139, 253, 0.5);
-      --accent:       #3b82f6;
-      --accent-bright:#60a5fa;
-      --accent-neon:  #38bdf8;
-      --accent-pulse: #0ea5e9;
-      --text-primary: #e2eaf7;
-      --text-secondary:#94a3b8;
-      --text-muted:   #475569;
-      --white:        #ffffff;
-      --gold:         #f59e0b;
-      --radius-sm:    8px;
-      --radius-md:    16px;
-      --radius-lg:    24px;
-      --shadow-glow:  0 0 40px rgba(59,130,246,0.18), 0 0 80px rgba(59,130,246,0.08);
-      --shadow-card:  0 8px 32px rgba(0,0,0,0.5);
-      --transition:   cubic-bezier(0.4, 0, 0.2, 1);
+    *,
+    *::before,
+    *::after{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    html { scroll-behavior: smooth; }
+    :root{
+      --bg:#050b16;
+      --bg2:#0d1728;
+      --card:#0f1d31;
+      --card2:#13233a;
 
-    body {
-      background-color: var(--bg-deep);
-      color: var(--text-primary);
-      font-family: 'Manrope', sans-serif;
-      font-weight: 400;
-      line-height: 1.7;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
+      --text:#e9eef9;
+      --muted:#9db0cb;
+      --soft:#63748d;
+
+      --accent:#3b82f6;
+      --accent2:#38bdf8;
+      --border:rgba(255,255,255,.08);
+
+      --shadow:
+      0 10px 30px rgba(0,0,0,.35);
+
+      --radius:24px;
+      --radius-sm:14px;
+
+      --transition:.35s cubic-bezier(.4,0,.2,1);
     }
 
-    /* ──────────────────────────── SCROLLBAR ──────────────────────────────── */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--bg-deep); }
-    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 999px; }
-
-    /* ──────────────────────────── CANVAS BG ─────────────────────────────── */
-    #bg-canvas {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
+    html{
+      scroll-behavior:smooth;
     }
 
-    /* ──────────────────────────── GRID OVERLAY ──────────────────────────── */
-    .grid-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
+    body{
+      font-family:'Manrope',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
+      line-height:1.7;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    /* =========================================================
+       BACKGROUND
+    ========================================================= */
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+      radial-gradient(circle at top left, rgba(59,130,246,.18), transparent 30%),
+      radial-gradient(circle at bottom right, rgba(56,189,248,.15), transparent 35%);
+      z-index:-2;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
       background-image:
-        linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
+      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size:50px 50px;
+      z-index:-1;
+      opacity:.3;
     }
 
-    /* ─────────────────────────── NOISE GRAIN ────────────────────────────── */
-    .noise-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      opacity: 0.025;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      background-repeat: repeat;
+    /* =========================================================
+       CONTAINER
+    ========================================================= */
+
+    .container{
+      width:min(1150px, calc(100% - 40px));
+      margin:auto;
     }
 
-    /* ──────────────────────────── WRAPPER ───────────────────────────────── */
-    .wrapper {
-      position: relative;
-      z-index: 2;
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 24px;
+    section{
+      padding:100px 0;
+      position:relative;
     }
 
-    /* ─────────────────────────── NAV ────────────────────────────────────── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 18px 0;
-      transition: background 0.4s var(--transition), border-color 0.4s;
-      border-bottom: 1px solid transparent;
-    }
-    nav.scrolled {
-      background: rgba(6,13,26,0.85);
-      backdrop-filter: blur(20px);
-      border-color: var(--border);
-    }
-    .nav-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .nav-logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.15rem;
-      letter-spacing: 0.04em;
-      color: var(--white);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .nav-logo span.accent { color: var(--accent-neon); }
-    .nav-logo .dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: var(--accent-neon);
-      animation: pulse-dot 2.4s ease-in-out infinite;
-    }
-    @keyframes pulse-dot {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(56,189,248,0.6); }
-      50% { box-shadow: 0 0 0 6px rgba(56,189,248,0); }
-    }
-    .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a {
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      text-decoration: none;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: color 0.25s;
-      position: relative;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -3px; left: 0;
-      width: 0; height: 1px;
-      background: var(--accent-neon);
-      transition: width 0.3s var(--transition);
-    }
-    .nav-links a:hover { color: var(--white); }
-    .nav-links a:hover::after { width: 100%; }
+    /* =========================================================
+       NAVBAR
+    ========================================================= */
 
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-    }
-    .hamburger span {
-      display: block;
-      width: 24px; height: 2px;
-      background: var(--text-primary);
-      border-radius: 2px;
-      transition: all 0.3s var(--transition);
-    }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 99;
-      background: rgba(6,13,26,0.97);
-      backdrop-filter: blur(20px);
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 40px;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-family: 'Syne', sans-serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .mobile-menu a:hover { color: var(--accent-neon); }
-
-    /* ─────────────────────────── SECTION SHARED ─────────────────────────── */
-    section { position: relative; padding: 100px 0; }
-
-    .section-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent-neon);
-      margin-bottom: 18px;
-    }
-    .section-eyebrow::before {
-      content: '';
-      display: block;
-      width: 28px; height: 1px;
-      background: var(--accent-neon);
+    nav{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      z-index:999;
+      backdrop-filter:blur(20px);
+      background:rgba(5,11,22,.75);
+      border-bottom:1px solid rgba(255,255,255,.06);
     }
 
-    .section-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      line-height: 1.12;
-      color: var(--white);
-      margin-bottom: 20px;
+    .nav-inner{
+      height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
     }
 
-    .section-desc {
-      font-size: 1.05rem;
-      color: var(--text-secondary);
-      max-width: 600px;
-      line-height: 1.8;
+    .logo{
+      font-family:'Syne',sans-serif;
+      font-size:1.2rem;
+      font-weight:800;
+      letter-spacing:.04em;
     }
 
-    /* ─────────────────────────── FADE-IN ANIM ───────────────────────────── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.7s var(--transition), transform 0.7s var(--transition);
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-    .reveal-delay-5 { transition-delay: 0.5s; }
-
-    /* ─────────────────────────── HERO ───────────────────────────────────── */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 140px 0 100px;
-      overflow: hidden;
+    .logo span{
+      color:var(--accent2);
     }
 
-    .hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
+    .nav-links{
+      display:flex;
+      gap:30px;
+      list-style:none;
     }
 
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 16px;
-      border: 1px solid var(--border-glow);
-      border-radius: 999px;
-      background: rgba(59,130,246,0.08);
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--accent-bright);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-    }
-    .hero-badge .badge-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: #22c55e;
-      animation: pulse-dot 1.8s infinite;
+    .nav-links a{
+      font-size:.9rem;
+      color:var(--muted);
+      transition:var(--transition);
+      position:relative;
     }
 
-    .hero-headline {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(2.4rem, 5.5vw, 4rem);
-      font-weight: 800;
-      line-height: 1.08;
-      color: var(--white);
-      margin-bottom: 16px;
-      letter-spacing: -0.02em;
-    }
-    .hero-headline .gradient-text {
-      background: linear-gradient(135deg, var(--accent-bright) 0%, var(--accent-neon) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .nav-links a:hover{
+      color:#fff;
     }
 
-    .hero-sub {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      font-weight: 600;
-      color: var(--accent-bright);
-      margin-bottom: 24px;
-      letter-spacing: 0.01em;
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-6px;
+      width:0;
+      height:2px;
+      border-radius:20px;
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      transition:var(--transition);
     }
 
-    .hero-desc {
-      font-size: 1.05rem;
-      color: var(--text-secondary);
-      line-height: 1.85;
-      margin-bottom: 40px;
-      max-width: 520px;
+    .nav-links a:hover::after{
+      width:100%;
     }
 
-    .hero-cta-row {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    #hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      padding-top:120px;
     }
 
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 32px;
-    }
-    .tag {
-      padding: 5px 14px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.68rem;
-      color: var(--text-muted);
-      letter-spacing: 0.1em;
-      transition: border-color 0.25s, color 0.25s;
-    }
-    .tag:hover { border-color: var(--accent); color: var(--accent-bright); }
-
-    /* hero visual side */
-    .hero-visual {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    .hero-orb-wrap {
-      position: relative;
-      width: 360px;
-      height: 360px;
-    }
-    .hero-orb {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: radial-gradient(ellipse at 35% 35%, rgba(59,130,246,0.35) 0%, rgba(14,165,233,0.1) 45%, transparent 70%);
-      border: 1px solid rgba(59,130,246,0.25);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: orb-float 6s ease-in-out infinite;
-      position: relative;
-    }
-    @keyframes orb-float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-18px); }
-    }
-    .hero-orb::before {
-      content: '';
-      position: absolute;
-      inset: -1px;
-      border-radius: 50%;
-      background: conic-gradient(from 0deg, transparent 0%, var(--accent-neon) 20%, transparent 40%, var(--accent) 60%, transparent 80%);
-      mask: radial-gradient(circle, transparent 85%, black 87%);
-      -webkit-mask: radial-gradient(circle, transparent 85%, black 87%);
-      animation: orb-spin 8s linear infinite;
-    }
-    @keyframes orb-spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    .hero-orb-inner {
-      width: 70%;
-      height: 70%;
-      border-radius: 50%;
-      background: radial-gradient(ellipse at 30% 30%, rgba(59,130,246,0.2), var(--bg-card));
-      border: 1px solid rgba(59,130,246,0.18);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .hero-orb-monogram {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 3rem;
-      background: linear-gradient(135deg, var(--accent-bright), var(--accent-neon));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1;
-    }
-    .hero-orb-sub {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.6rem;
-      color: var(--text-muted);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-    }
-    .orb-ring {
-      position: absolute;
-      border-radius: 50%;
-      border: 1px dashed;
-      animation: orb-float 6s ease-in-out infinite;
-    }
-    .orb-ring-1 {
-      width: 110%; height: 110%;
-      top: -5%; left: -5%;
-      border-color: rgba(59,130,246,0.12);
-      animation-duration: 7s;
-      animation-delay: -1s;
-    }
-    .orb-ring-2 {
-      width: 130%; height: 130%;
-      top: -15%; left: -15%;
-      border-color: rgba(59,130,246,0.06);
-      animation-duration: 9s;
-      animation-delay: -3s;
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:60px;
+      align-items:center;
     }
 
-    /* ─────────────────────────── BUTTONS ────────────────────────────────── */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 28px;
-      border-radius: var(--radius-sm);
-      font-family: 'Syne', sans-serif;
-      font-size: 0.88rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.28s var(--transition);
-      border: none;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-pulse) 100%);
-      color: var(--white);
-      box-shadow: 0 4px 20px rgba(59,130,246,0.35);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(59,130,246,0.55);
-    }
-    .btn-outline {
-      background: transparent;
-      color: var(--accent-bright);
-      border: 1px solid var(--border-glow);
-    }
-    .btn-outline:hover {
-      background: rgba(59,130,246,0.1);
-      border-color: var(--accent-bright);
-      transform: translateY(-2px);
-    }
-    .btn-ghost {
-      background: rgba(59,130,246,0.07);
-      color: var(--text-primary);
-      border: 1px solid var(--border);
-    }
-    .btn-ghost:hover {
-      background: rgba(59,130,246,0.14);
-      border-color: var(--border-glow);
-      transform: translateY(-2px);
-    }
-    .btn svg { width: 16px; height: 16px; flex-shrink: 0; }
-
-    /* ─────────────────────────── DIVIDER ────────────────────────────────── */
-    .section-divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
-      margin: 0;
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 18px;
+      border-radius:999px;
+      border:1px solid rgba(56,189,248,.3);
+      background:rgba(56,189,248,.08);
+      margin-bottom:26px;
+      font-size:.8rem;
+      color:var(--accent2);
     }
 
-    /* ─────────────────────────── STUDIO ─────────────────────────────────── */
-    #studio { background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-base) 50%, var(--bg-deep) 100%); }
-
-    .studio-header { margin-bottom: 64px; }
-
-    .studio-logo-row {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 24px;
-    }
-    .studio-logo-mark {
-      width: 52px; height: 52px;
-      border-radius: var(--radius-sm);
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-pulse) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 28px rgba(59,130,246,0.45);
-      font-family: 'Syne', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--white);
-      letter-spacing: -0.03em;
-    }
-    .studio-name {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
-      font-weight: 800;
-      color: var(--white);
-      letter-spacing: -0.02em;
-    }
-    .studio-name .forze { color: var(--accent-neon); }
-
-    /* app cards */
-    .apps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-bottom: 48px;
+    .badge::before{
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:#22c55e;
+      box-shadow:0 0 15px #22c55e;
     }
 
-    .app-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 32px 28px;
-      position: relative;
-      overflow: hidden;
-      transition: border-color 0.35s, transform 0.35s var(--transition), box-shadow 0.35s;
-      cursor: default;
-    }
-    .app-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(59,130,246,0.1) 0%, transparent 65%);
-      opacity: 0;
-      transition: opacity 0.35s;
-    }
-    .app-card:hover {
-      border-color: var(--border-glow);
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-glow), var(--shadow-card);
-    }
-    .app-card:hover::before { opacity: 1; }
-
-    .app-card-number {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--text-muted);
-      letter-spacing: 0.2em;
-      margin-bottom: 20px;
-    }
-    .app-icon-wrap {
-      width: 52px; height: 52px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      font-size: 1.5rem;
-      position: relative;
-    }
-    .app-icon-wrap.blue   { background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3); }
-    .app-icon-wrap.cyan   { background: rgba(56,189,248,0.15); border: 1px solid rgba(56,189,248,0.3); }
-    .app-icon-wrap.violet { background: rgba(139,92,246,0.15); border: 1px solid rgba(139,92,246,0.3); }
-
-    .app-card-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.15rem;
-      color: var(--white);
-      margin-bottom: 12px;
-      line-height: 1.3;
-    }
-    .app-card-desc {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      margin-bottom: 24px;
-    }
-    .app-card-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 3px 10px;
-      border-radius: 999px;
-      font-size: 0.66rem;
-      font-family: 'Space Mono', monospace;
-      letter-spacing: 0.08em;
-      margin-bottom: 20px;
-    }
-    .app-card-tag.blue   { background: rgba(59,130,246,0.12); color: var(--accent-bright); border: 1px solid rgba(59,130,246,0.25); }
-    .app-card-tag.cyan   { background: rgba(56,189,248,0.12); color: var(--accent-neon); border: 1px solid rgba(56,189,248,0.25); }
-    .app-card-tag.violet { background: rgba(139,92,246,0.12); color: #c4b5fd; border: 1px solid rgba(139,92,246,0.25); }
-
-    .playstore-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 18px;
-      border-radius: var(--radius-sm);
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: var(--text-secondary);
-      font-size: 0.78rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.25s;
-      font-family: 'Manrope', sans-serif;
-    }
-    .playstore-btn:hover {
-      background: rgba(59,130,246,0.12);
-      border-color: var(--border-glow);
-      color: var(--white);
-      transform: translateX(2px);
-    }
-    .playstore-btn svg { width: 14px; height: 14px; }
-
-    /* community banner */
-    .community-banner {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(56,189,248,0.3);
-      border-radius: var(--radius-lg);
-      padding: 48px;
-      background: linear-gradient(135deg, rgba(14,165,233,0.08) 0%, rgba(59,130,246,0.05) 50%, rgba(14,165,233,0.08) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 32px;
-      flex-wrap: wrap;
-    }
-    .community-banner::before {
-      content: '';
-      position: absolute;
-      top: -60px; right: -60px;
-      width: 240px; height: 240px;
-      border-radius: 50%;
-      background: radial-gradient(ellipse, rgba(56,189,248,0.12), transparent 70%);
-      pointer-events: none;
-    }
-    .community-banner::after {
-      content: '';
-      position: absolute;
-      bottom: -60px; left: -60px;
-      width: 200px; height: 200px;
-      border-radius: 50%;
-      background: radial-gradient(ellipse, rgba(59,130,246,0.1), transparent 70%);
-      pointer-events: none;
-    }
-    .community-text .eyebrow {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent-neon);
-      margin-bottom: 10px;
-    }
-    .community-text h3 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(1.3rem, 3vw, 1.8rem);
-      font-weight: 800;
-      color: var(--white);
-      margin-bottom: 8px;
-    }
-    .community-text p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      max-width: 520px;
-    }
-    .community-action { flex-shrink: 0; position: relative; z-index: 1; }
-    .btn-community {
-      background: linear-gradient(135deg, var(--accent-neon) 0%, var(--accent) 100%);
-      color: var(--bg-deep);
-      box-shadow: 0 4px 24px rgba(56,189,248,0.4);
-      font-weight: 800;
-    }
-    .btn-community:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 40px rgba(56,189,248,0.6);
+    .hero-title{
+      font-family:'Syne',sans-serif;
+      font-size:clamp(2.5rem,6vw,5rem);
+      line-height:1.05;
+      margin-bottom:20px;
+      font-weight:800;
     }
 
-    /* ─────────────────────────── CONTACT ────────────────────────────────── */
-    #contact { background: var(--bg-deep); }
-
-    .contact-header { margin-bottom: 56px; }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+    .hero-title span{
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
     }
 
-    .contact-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 28px 32px;
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
-      text-decoration: none;
-      transition: all 0.3s var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-    .contact-card::after {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 3px;
-      border-radius: 0 2px 2px 0;
-      transition: opacity 0.3s;
-    }
-    .contact-card.support::after    { background: #22c55e; }
-    .contact-card.promo::after      { background: var(--gold); }
-    .contact-card.partner::after    { background: var(--accent-neon); }
-    .contact-card.worker::after     { background: #a78bfa; }
-
-    .contact-card:hover {
-      border-color: var(--border-glow);
-      background: var(--bg-card-alt);
-      transform: translateX(4px);
-      box-shadow: var(--shadow-card);
-    }
-    .contact-icon {
-      width: 44px; height: 44px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.25rem;
-      flex-shrink: 0;
-    }
-    .contact-icon.support  { background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.25); }
-    .contact-icon.promo    { background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.25); }
-    .contact-icon.partner  { background: rgba(56,189,248,0.12); border: 1px solid rgba(56,189,248,0.25); }
-    .contact-icon.worker   { background: rgba(167,139,250,0.12); border: 1px solid rgba(167,139,250,0.25); }
-
-    .contact-info-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--white);
-      margin-bottom: 5px;
-    }
-    .contact-info-desc {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-    .contact-arrow {
-      margin-left: auto;
-      color: var(--text-muted);
-      transition: transform 0.25s, color 0.25s;
-      flex-shrink: 0;
-      align-self: center;
-    }
-    .contact-card:hover .contact-arrow {
-      transform: translateX(4px);
-      color: var(--accent-bright);
+    .hero-sub{
+      font-size:1.1rem;
+      color:var(--accent2);
+      margin-bottom:20px;
+      font-weight:600;
     }
 
-    /* ─────────────────────────── FOOTER ─────────────────────────────────── */
-    footer {
-      position: relative;
-      z-index: 2;
-      border-top: 1px solid var(--border);
-      padding: 48px 0 32px;
-      background: var(--bg-deep);
-    }
-    .footer-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    .footer-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
-      margin-bottom: 32px;
-    }
-    .footer-brand .name {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.15rem;
-      color: var(--white);
-      margin-bottom: 4px;
-    }
-    .footer-brand .tagline {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-    .footer-nav {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
-    .footer-nav a {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-nav a:hover { color: var(--accent-bright); }
-
-    .footer-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
-    }
-    .footer-copy {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-    .footer-closing {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      font-style: italic;
-    }
-    .footer-appads {
-      display: block;
-      text-align: center;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.62rem;
-      color: var(--text-muted);
-      text-decoration: none;
-      letter-spacing: 0.08em;
-      margin-top: 20px;
-      opacity: 0.4;
-      transition: opacity 0.2s;
-    }
-    .footer-appads:hover { opacity: 0.7; }
-
-    /* ─────────────────────────── RESPONSIVE ─────────────────────────────── */
-    @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; text-align: center; }
-      .hero-desc { margin-left: auto; margin-right: auto; }
-      .hero-cta-row { justify-content: center; }
-      .hero-tags { justify-content: center; }
-      .hero-visual { display: none; }
-      .apps-grid { grid-template-columns: 1fr; }
-      .contact-grid { grid-template-columns: 1fr; }
-      .community-banner { flex-direction: column; text-align: center; }
-      .community-action { align-self: center; }
-      nav .nav-links { display: none; }
-      .hamburger { display: flex; }
+    .hero-desc{
+      color:var(--muted);
+      max-width:650px;
+      margin-bottom:35px;
+      font-size:1rem;
     }
 
-    @media (max-width: 640px) {
-      section { padding: 72px 0; }
-      .hero-cta-row { flex-direction: column; align-items: center; }
-      .btn { width: 100%; justify-content: center; }
-      .footer-top { flex-direction: column; align-items: flex-start; }
-      .footer-bottom { flex-direction: column; align-items: flex-start; }
-      .community-banner { padding: 32px 24px; }
-      .contact-card { padding: 20px 20px; }
+    .hero-buttons{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
     }
 
-    /* ─────────────────────────── MISC UTILS ─────────────────────────────── */
-    .text-accent { color: var(--accent-neon); }
-    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+    .btn{
+      padding:14px 24px;
+      border-radius:16px;
+      font-weight:700;
+      transition:var(--transition);
+      border:none;
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      color:#fff;
+      box-shadow:0 10px 30px rgba(59,130,246,.3);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-3px);
+    }
+
+    .btn-outline{
+      border:1px solid rgba(255,255,255,.1);
+      background:rgba(255,255,255,.04);
+      color:#fff;
+    }
+
+    .btn-outline:hover{
+      background:rgba(255,255,255,.08);
+    }
+
+    .hero-card{
+      position:relative;
+      padding:40px;
+      border-radius:32px;
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      border-radius:inherit;
+      padding:1px;
+      background:linear-gradient(135deg,var(--accent),transparent,var(--accent2));
+      -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+      -webkit-mask-composite:xor;
+      mask-composite:exclude;
+      opacity:.5;
+    }
+
+    .orb{
+      width:240px;
+      height:240px;
+      margin:auto;
+      border-radius:50%;
+      background:
+      radial-gradient(circle at 30% 30%, rgba(255,255,255,.25), transparent),
+      linear-gradient(135deg,var(--accent),var(--accent2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:'Syne',sans-serif;
+      font-size:4rem;
+      font-weight:800;
+      box-shadow:
+      0 0 40px rgba(56,189,248,.35),
+      0 0 100px rgba(59,130,246,.2);
+      animation:float 5s ease-in-out infinite;
+    }
+
+    @keyframes float{
+      0%,100%{
+        transform:translateY(0);
+      }
+      50%{
+        transform:translateY(-15px);
+      }
+    }
+
+    /* =========================================================
+       TITLES
+    ========================================================= */
+
+    .section-tag{
+      color:var(--accent2);
+      text-transform:uppercase;
+      letter-spacing:.2em;
+      font-size:.75rem;
+      font-family:'Space Mono',monospace;
+      margin-bottom:14px;
+    }
+
+    .section-title{
+      font-family:'Syne',sans-serif;
+      font-size:clamp(2rem,4vw,3.2rem);
+      margin-bottom:18px;
+    }
+
+    .section-desc{
+      color:var(--muted);
+      max-width:700px;
+    }
+
+    /* =========================================================
+       APPS
+    ========================================================= */
+
+    .apps-grid{
+      margin-top:60px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    }
+
+    .app-card{
+      background:linear-gradient(180deg,var(--card),var(--card2));
+      border:1px solid var(--border);
+      border-radius:28px;
+      padding:28px;
+      transition:var(--transition);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .app-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(56,189,248,.4);
+    }
+
+    .app-card::before{
+      content:"";
+      position:absolute;
+      top:-120px;
+      right:-120px;
+      width:240px;
+      height:240px;
+      background:radial-gradient(circle, rgba(56,189,248,.15), transparent 70%);
+    }
+
+    .app-logo{
+      width:70px;
+      height:70px;
+      border-radius:22px;
+      overflow:hidden;
+      margin-bottom:22px;
+      border:1px solid rgba(255,255,255,.08);
+      background:#111;
+    }
+
+    .app-logo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .app-name{
+      font-size:1.3rem;
+      font-weight:700;
+      margin-bottom:10px;
+      font-family:'Syne',sans-serif;
+    }
+
+    .app-desc{
+      color:var(--muted);
+      font-size:.95rem;
+      margin-bottom:22px;
+    }
+
+    .store-btn{
+      width:100%;
+      text-align:center;
+      padding:14px;
+      border-radius:14px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+      transition:var(--transition);
+      display:block;
+      font-weight:700;
+    }
+
+    .store-btn:hover{
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      border-color:transparent;
+    }
+
+    /* =========================================================
+       LINKS SECTION
+    ========================================================= */
+
+    .published-grid{
+      margin-top:60px;
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:24px;
+    }
+
+    .published-card{
+      background:linear-gradient(180deg,var(--card),var(--card2));
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:24px;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      transition:var(--transition);
+    }
+
+    .published-card:hover{
+      transform:translateY(-5px);
+      border-color:rgba(56,189,248,.35);
+    }
+
+    .published-logo{
+      width:72px;
+      height:72px;
+      border-radius:20px;
+      overflow:hidden;
+      flex-shrink:0;
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .published-logo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .published-info h3{
+      margin-bottom:6px;
+      font-size:1.15rem;
+    }
+
+    .published-info p{
+      color:var(--muted);
+      font-size:.92rem;
+      margin-bottom:12px;
+    }
+
+    .published-link{
+      color:var(--accent2);
+      font-size:.9rem;
+      font-weight:700;
+    }
+
+    /* =========================================================
+       CONTACT
+    ========================================================= */
+
+    .contact-box{
+      margin-top:50px;
+      background:linear-gradient(180deg,var(--card),var(--card2));
+      border:1px solid var(--border);
+      border-radius:32px;
+      padding:50px;
+      text-align:center;
+    }
+
+    .contact-box p{
+      max-width:700px;
+      margin:20px auto 35px;
+      color:var(--muted);
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer{
+      padding:40px 0;
+      border-top:1px solid rgba(255,255,255,.06);
+      text-align:center;
+      color:var(--soft);
+      font-size:.9rem;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media(max-width:1000px){
+
+      .hero-grid{
+        grid-template-columns:1fr;
+        text-align:center;
+      }
+
+      .hero-desc{
+        margin-inline:auto;
+      }
+
+      .hero-buttons{
+        justify-content:center;
+      }
+
+      .apps-grid{
+        grid-template-columns:1fr;
+      }
+
+      .published-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-card{
+        max-width:500px;
+        margin:auto;
+      }
+    }
+
+    @media(max-width:768px){
+
+      section{
+        padding:75px 0;
+      }
+
+      .container{
+        width:min(100%, calc(100% - 24px));
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      .hero-title{
+        font-size:2.5rem;
+      }
+
+      .hero-desc{
+        font-size:.95rem;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .hero-buttons{
+        flex-direction:column;
+      }
+
+      .hero-card{
+        padding:25px;
+      }
+
+      .orb{
+        width:180px;
+        height:180px;
+        font-size:3rem;
+      }
+
+      .published-card{
+        flex-direction:column;
+        text-align:center;
+      }
+
+      .contact-box{
+        padding:30px 22px;
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce){
+
+      *,
+      *::before,
+      *::after{
+        animation:none!important;
+        transition:none!important;
+        scroll-behavior:auto!important;
+      }
+    }
+
   </style>
 </head>
+
 <body>
 
-<!-- Particle Canvas -->
-<canvas id="bg-canvas" aria-hidden="true"></canvas>
-<div class="grid-overlay" aria-hidden="true"></div>
-<div class="noise-overlay" aria-hidden="true"></div>
+  <!-- ======================================================
+       NAVBAR
+  ======================================================= -->
 
-<!-- ─────────────────────────── NAV ────────────────────────────────────── -->
-<nav id="navbar" role="navigation" aria-label="Main navigation">
-  <div class="nav-inner">
-    <a href="#hero" class="nav-logo">
-      <div class="dot"></div>
-      STONE <span class="accent">FORZE</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#hero">About</a></li>
-      <li><a href="#studio">Studio</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
+  <nav>
+    <div class="container nav-inner">
 
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
-  <a href="#hero" class="mobile-link">About</a>
-  <a href="#studio" class="mobile-link">Studio</a>
-  <a href="#contact" class="mobile-link">Contact</a>
-</div>
+      <a href="#" class="logo">
+        STONE <span>FORZE</span>
+      </a>
 
-<!-- ─────────────────────────── HERO ───────────────────────────────────── -->
-<section id="hero">
-  <div class="wrapper">
-    <div class="hero-inner">
+      <ul class="nav-links">
+        <li><a href="#hero">About</a></li>
+        <li><a href="#apps">Apps</a></li>
+        <li><a href="#published">Published</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
 
-      <!-- Left: Text -->
+    </div>
+  </nav>
+
+  <!-- ======================================================
+       HERO
+  ======================================================= -->
+
+  <section id="hero">
+
+    <div class="container hero-grid">
+
       <div>
-        <div class="hero-badge reveal">
-          <span class="badge-dot"></span>
+
+        <div class="badge">
           Available for Collaboration
         </div>
 
-        <h1 class="hero-headline reveal reveal-delay-1">
-          Hi, I'm<br>
-          <span class="gradient-text">Mohammad Arman</span><br>
+        <h1 class="hero-title">
+          Mohammad <span>Arman</span><br />
           Siddiqui
         </h1>
 
-        <p class="hero-sub reveal reveal-delay-2">
-          Student &nbsp;|&nbsp; Solo Mobile &amp; Web App Developer
+        <div class="hero-sub">
+          Student • App Developer • Website Creator
+        </div>
+
+        <p class="hero-desc">
+          I create premium Android apps, modern websites,
+          AI tools, developer utilities, and cinematic digital experiences.
+          I focus on clean UI, high performance, smooth animations,
+          offline-first systems, and modern futuristic design.
         </p>
 
-        <p class="hero-desc reveal reveal-delay-3">
-          I am a passionate student and independent developer specializing in high-performance mobile and web applications. Beyond writing clean code and building offline-first architectures, I am also a cinematic video editor and a creator of high-bass Phonk music. I love blending technical functionality with premium digital aesthetics.
-        </p>
-
-        <div class="hero-cta-row reveal reveal-delay-4">
-          <a href="#studio" class="btn btn-primary">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
-            View My Work
+        <div class="hero-buttons">
+          <a href="#apps" class="btn btn-primary">
+            View My Apps
           </a>
+
           <a href="#contact" class="btn btn-outline">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
-            Get in Touch
+            Contact Me
           </a>
         </div>
 
-        <div class="hero-tags reveal reveal-delay-5">
-          <span class="tag">Android Dev</span>
-          <span class="tag">Web Apps</span>
-          <span class="tag">Offline-First</span>
-          <span class="tag">Firebase</span>
-          <span class="tag">Video Editing</span>
-          <span class="tag">Phonk Music</span>
-        </div>
       </div>
 
-      <!-- Right: Visual -->
-      <div class="hero-visual reveal reveal-delay-2">
-        <div class="hero-orb-wrap">
-          <div class="orb-ring orb-ring-2"></div>
-          <div class="orb-ring orb-ring-1"></div>
-          <div class="hero-orb">
-            <div class="hero-orb-inner">
-              <div class="hero-orb-monogram">MAS</div>
-              <div class="hero-orb-sub">Stone Forze</div>
-            </div>
+      <div class="hero-card">
+
+        <div class="orb">
+          MAS
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ======================================================
+       APPS
+  ======================================================= -->
+
+  <section id="apps">
+
+    <div class="container">
+
+      <div class="section-tag">
+        My Applications
+      </div>
+
+      <h2 class="section-title">
+        Featured Projects
+      </h2>
+
+      <p class="section-desc">
+        Some of my premium applications and utility platforms
+        developed under Stone Forze Studio.
+      </p>
+
+      <div class="apps-grid">
+
+        <!-- APP 1 -->
+
+        <div class="app-card">
+
+          <div class="app-logo">
+            <img src="https://via.placeholder.com/200x200.png?text=APP" alt="App Logo">
           </div>
+
+          <h3 class="app-name">
+            OmniDash
+          </h3>
+
+          <p class="app-desc">
+            Premium all-in-one offline utility toolkit for developers,
+            creators, and productivity workflows.
+          </p>
+
+          <a href="#" class="store-btn">
+            View on Google Play
+          </a>
+
         </div>
+
+        <!-- APP 2 -->
+
+        <div class="app-card">
+
+          <div class="app-logo">
+            <img src="https://via.placeholder.com/200x200.png?text=APP" alt="App Logo">
+          </div>
+
+          <h3 class="app-name">
+            Study Pulse
+          </h3>
+
+          <p class="app-desc">
+            AI-powered educational platform with smart summaries,
+            quizzes, and productivity systems.
+          </p>
+
+          <a href="#" class="store-btn">
+            View on Google Play
+          </a>
+
+        </div>
+
+        <!-- APP 3 -->
+
+        <div class="app-card">
+
+          <div class="app-logo">
+            <img src="https://via.placeholder.com/200x200.png?text=APP" alt="App Logo">
+          </div>
+
+          <h3 class="app-name">
+            StrikeShield AI
+          </h3>
+
+          <p class="app-desc">
+            Firebase-powered secure application system with modern
+            AI security integration and cloud protection.
+          </p>
+
+          <a href="#" class="store-btn">
+            View on Google Play
+          </a>
+
+        </div>
+
       </div>
 
     </div>
-  </div>
-</section>
 
-<div class="section-divider"></div>
+  </section>
 
-<!-- ─────────────────────────── STUDIO ────────────────────────────────── -->
-<section id="studio">
-  <div class="wrapper">
+  <!-- ======================================================
+       PUBLISHED APPS SECTION
+  ======================================================= -->
 
-    <div class="studio-header">
-      <div class="section-eyebrow reveal">My Studio</div>
-      <div class="studio-logo-row reveal reveal-delay-1">
-        <div class="studio-logo-mark">SF</div>
-        <h2 class="studio-name">STONE <span class="forze">FORZE</span></h2>
+  <section id="published">
+
+    <div class="container">
+
+      <div class="section-tag">
+        Published Apps
       </div>
-      <p class="section-desc reveal reveal-delay-2">
-        Stone Forze is my independent development studio, focused on delivering utility-driven, secure, and beautifully designed Android applications. Available now on the Google Play Store.
+
+      <h2 class="section-title">
+        My Published App Links
+      </h2>
+
+      <p class="section-desc">
+        Add your published app logos, links, and store pages here.
+        This section is fully customizable.
       </p>
+
+      <div class="published-grid">
+
+        <!-- PUBLISHED APP 1 -->
+
+        <div class="published-card">
+
+          <div class="published-logo">
+            <img src="https://via.placeholder.com/200x200.png?text=LOGO" alt="App Logo">
+          </div>
+
+          <div class="published-info">
+
+            <h3>
+              Your App Name
+            </h3>
+
+            <p>
+              Short description about your app.
+            </p>
+
+            <a href="#" class="published-link">
+              Open App Link →
+            </a>
+
+          </div>
+
+        </div>
+
+        <!-- PUBLISHED APP 2 -->
+
+        <div class="published-card">
+
+          <div class="published-logo">
+            <img src="https://via.placeholder.com/200x200.png?text=LOGO" alt="App Logo">
+          </div>
+
+          <div class="published-info">
+
+            <h3>
+              Your App Name
+            </h3>
+
+            <p>
+              Add Play Store or website app details here.
+            </p>
+
+            <a href="#" class="published-link">
+              Open App Link →
+            </a>
+
+          </div>
+
+        </div>
+
+        <!-- PUBLISHED APP 3 -->
+
+        <div class="published-card">
+
+          <div class="published-logo">
+            <img src="https://via.placeholder.com/200x200.png?text=LOGO" alt="App Logo">
+          </div>
+
+          <div class="published-info">
+
+            <h3>
+              Your App Name
+            </h3>
+
+            <p>
+              Replace this with your actual published app.
+            </p>
+
+            <a href="#" class="published-link">
+              Open App Link →
+            </a>
+
+          </div>
+
+        </div>
+
+        <!-- PUBLISHED APP 4 -->
+
+        <div class="published-card">
+
+          <div class="published-logo">
+            <img src="https://via.placeholder.com/200x200.png?text=LOGO" alt="App Logo">
+          </div>
+
+          <div class="published-info">
+
+            <h3>
+              Your App Name
+            </h3>
+
+            <p>
+              Add your official app links and branding here.
+            </p>
+
+            <a href="#" class="published-link">
+              Open App Link →
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
 
-    <!-- App Cards -->
-    <div class="apps-grid">
+  </section>
 
-      <!-- App 1 -->
-      <div class="app-card reveal reveal-delay-1">
-        <div class="app-card-number">APP — 01</div>
-        <div class="app-icon-wrap blue">🛠️</div>
-        <div class="app-card-tag blue">50+ Offline Tools</div>
-        <h3 class="app-card-title">OmniDash: All-in-One Tools</h3>
-        <p class="app-card-desc">A premium, lightweight utility suite featuring 50+ offline developer and creator tools, including a Markdown previewer and YouTube Thumbnail Safe Zone guide.</p>
-        <a href="#" class="playstore-btn" aria-label="Get OmniDash on Google Play">
-          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M3.18 23.76A1.52 1.52 0 0 1 2 22.3V1.7A1.52 1.52 0 0 1 3.18.24l12.76 11.76L3.18 23.76zm14.64-6.77-2.33-2.15 2.5-2.32 2.9 1.66a1.43 1.43 0 0 1 0 2.48l-3.07 1.76.0-.43 0-.99zm-3.35-3.09L3.96 23.22 15.13 14.4l-.6-.5zm-10.47-10L14.53 9.6l.6-.5L3.96.78 14.42 9.9z"/></svg>
-          Get on Google Play
+  <!-- ======================================================
+       CONTACT
+  ======================================================= -->
+
+  <section id="contact">
+
+    <div class="container">
+
+      <div class="contact-box">
+
+        <div class="section-tag">
+          Contact
+        </div>
+
+        <h2 class="section-title">
+          Let's Build Something Amazing
+        </h2>
+
+        <p>
+          Open for collaborations, sponsorships,
+          app development, website projects,
+          and AI-powered digital experiences.
+        </p>
+
+        <a href="mailto:siddiquiarman350786@gmail.com" class="btn btn-primary">
+          Email Me
         </a>
-      </div>
 
-      <!-- App 2 -->
-      <div class="app-card reveal reveal-delay-2">
-        <div class="app-card-number">APP — 02</div>
-        <div class="app-icon-wrap cyan">📚</div>
-        <div class="app-card-tag cyan">EdTech Platform</div>
-        <h3 class="app-card-title">Study Pulse</h3>
-        <p class="app-card-desc">An intelligent educational platform featuring advanced summarizers and automated quiz generators to enhance learning workflows and boost academic performance.</p>
-        <a href="#" class="playstore-btn" aria-label="Get Study Pulse on Google Play">
-          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M3.18 23.76A1.52 1.52 0 0 1 2 22.3V1.7A1.52 1.52 0 0 1 3.18.24l12.76 11.76L3.18 23.76zm14.64-6.77-2.33-2.15 2.5-2.32 2.9 1.66a1.43 1.43 0 0 1 0 2.48l-3.07 1.76.0-.43 0-.99zm-3.35-3.09L3.96 23.22 15.13 14.4l-.6-.5zm-10.47-10L14.53 9.6l.6-.5L3.96.78 14.42 9.9z"/></svg>
-          Get on Google Play
-        </a>
-      </div>
-
-      <!-- App 3 -->
-      <div class="app-card reveal reveal-delay-3">
-        <div class="app-card-number">APP — 03</div>
-        <div class="app-icon-wrap violet">🛡️</div>
-        <div class="app-card-tag violet">Firebase + App Check</div>
-        <h3 class="app-card-title">StrikeShield AI</h3>
-        <p class="app-card-desc">A robust application built with modern Firebase backend architecture and App Check security protocols, ensuring ironclad protection for every user session.</p>
-        <a href="#" class="playstore-btn" aria-label="Get StrikeShield AI on Google Play">
-          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M3.18 23.76A1.52 1.52 0 0 1 2 22.3V1.7A1.52 1.52 0 0 1 3.18.24l12.76 11.76L3.18 23.76zm14.64-6.77-2.33-2.15 2.5-2.32 2.9 1.66a1.43 1.43 0 0 1 0 2.48l-3.07 1.76.0-.43 0-.99zm-3.35-3.09L3.96 23.22 15.13 14.4l-.6-.5zm-10.47-10L14.53 9.6l.6-.5L3.96.78 14.42 9.9z"/></svg>
-          Get on Google Play
-        </a>
       </div>
 
     </div>
 
-    <!-- Community Banner -->
-    <div class="community-banner reveal">
-      <div class="community-text">
-        <div class="eyebrow">🧪 Closed Testing Program</div>
-        <h3>Help Shape the Future of These Apps</h3>
-        <p>Want to get early access and influence the direction of Stone Forze apps? Join my Closed Testing community and become part of the development journey!</p>
-      </div>
-      <div class="community-action">
-        <a href="https://groups.google.com/g/stoneforze" class="btn btn-community btn-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z"/></svg>
-          Join my Google Group
-        </a>
-      </div>
-    </div>
+  </section>
 
-  </div>
-</section>
+  <!-- ======================================================
+       FOOTER
+  ======================================================= -->
 
-<div class="section-divider"></div>
+  <footer>
 
-<!-- ─────────────────────────── CONTACT ───────────────────────────────── -->
-<section id="contact">
-  <div class="wrapper">
+    <div class="container">
 
-    <div class="contact-header">
-      <div class="section-eyebrow reveal">Get in Touch</div>
-      <h2 class="section-title reveal reveal-delay-1">Let's Connect</h2>
-      <p class="section-desc reveal reveal-delay-2">
-        Whether you need support, want to collaborate, or are looking to sponsor a project, I am always open to new opportunities.
-      </p>
-    </div>
-
-    <div class="contact-grid">
-
-      <!-- Support -->
-      <a href="mailto:siddiquiarman350786@gmail.com?subject=App%20Support%20%26%20Feedback"
-         class="contact-card support reveal reveal-delay-1"
-         aria-label="Send support email">
-        <div class="contact-icon support" aria-hidden="true">🛠️</div>
-        <div>
-          <div class="contact-info-title">Support</div>
-          <div class="contact-info-desc">App troubleshooting and user feedback. I'll get back to you as soon as possible.</div>
-        </div>
-        <div class="contact-arrow" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
-        </div>
-      </a>
-
-      <!-- Paid Promotion -->
-      <a href="mailto:siddiquiarman350786@gmail.com?subject=Paid%20Promotion%20%2F%20Sponsorship%20Inquiry"
-         class="contact-card promo reveal reveal-delay-2"
-         aria-label="Send sponsorship email">
-        <div class="contact-icon promo" aria-hidden="true">💼</div>
-        <div>
-          <div class="contact-info-title">Paid Promotion / Sponsorship</div>
-          <div class="contact-info-desc">Brand integrations and channel sponsorships. Let's create something mutually valuable.</div>
-        </div>
-        <div class="contact-arrow" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
-        </div>
-      </a>
-
-      <!-- Partnership -->
-      <a href="mailto:siddiquiarman350786@gmail.com?subject=Partnership%20Opportunity"
-         class="contact-card partner reveal reveal-delay-3"
-         aria-label="Send partnership email">
-        <div class="contact-icon partner" aria-hidden="true">🤝</div>
-        <div>
-          <div class="contact-info-title">Partnership</div>
-          <div class="contact-info-desc">Let's build innovative apps together. Open to technical and creative collaborations.</div>
-        </div>
-        <div class="contact-arrow" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
-        </div>
-      </a>
-
-      <!-- Join as a Worker -->
-      <a href="mailto:siddiquiarman350786@gmail.com?subject=Join%20Stone%20Forze%20as%20a%20Worker"
-         class="contact-card worker reveal reveal-delay-4"
-         aria-label="Send worker application email">
-        <div class="contact-icon worker" aria-hidden="true">⚙️</div>
-        <div>
-          <div class="contact-info-title">Join as a Worker</div>
-          <div class="contact-info-desc">Looking to contribute your skills to Stone Forze projects? Reach out — all roles welcome.</div>
-        </div>
-        <div class="contact-arrow" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="18" height="18"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"/></svg>
-        </div>
-      </a>
+      © 2026 Stone Forze • Mohammad Arman Siddiqui
 
     </div>
 
-  </div>
-</section>
+  </footer>
 
-<!-- ─────────────────────────── FOOTER ───────────────────────────────── -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="name">STONE FORZE</div>
-        <div class="tagline">Independent Development Studio</div>
-      </div>
-      <ul class="footer-nav" role="list">
-        <li><a href="#hero">About</a></li>
-        <li><a href="#studio">Apps</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
+  <!-- ======================================================
+       SCRIPT
+  ======================================================= -->
 
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2026 Stone Forze | Mohammad Arman Siddiqui.</div>
-      <div class="footer-closing">Thanks for visiting and supporting independent development!</div>
-    </div>
+  <script>
 
-    <a href="app-ads.txt" class="footer-appads" aria-label="AdMob app-ads.txt verification file">
-      app-ads.txt — AdMob Domain Verification
-    </a>
-  </div>
-</footer>
+    // NAV SCROLL EFFECT
 
-<!-- ─────────────────────────── SCRIPTS ──────────────────────────────── -->
-<script>
-  // ── Particle canvas ──────────────────────────────────────────────────────
-  (function() {
-    const canvas = document.getElementById('bg-canvas');
-    const ctx = canvas.getContext('2d');
-    let W, H, particles = [], animId;
+    const nav = document.querySelector("nav");
 
-    function resize() {
-      W = canvas.width  = window.innerWidth;
-      H = canvas.height = window.innerHeight;
-    }
+    window.addEventListener("scroll", () => {
 
-    class Particle {
-      constructor() { this.reset(true); }
-      reset(initial) {
-        this.x = Math.random() * W;
-        this.y = initial ? Math.random() * H : H + 10;
-        this.r = Math.random() * 1.2 + 0.3;
-        this.speed = Math.random() * 0.35 + 0.08;
-        this.dx = (Math.random() - 0.5) * 0.3;
-        this.alpha = Math.random() * 0.5 + 0.1;
-        this.color = Math.random() > 0.6 ? '56,189,248' : '59,130,246';
+      if(window.scrollY > 20){
+        nav.style.background = "rgba(5,11,22,.92)";
+      }else{
+        nav.style.background = "rgba(5,11,22,.75)";
       }
-      update() {
-        this.y -= this.speed;
-        this.x += this.dx;
-        if (this.y < -10) this.reset(false);
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${this.color},${this.alpha})`;
-        ctx.fill();
-      }
-    }
 
-    function init() {
-      resize();
-      particles = Array.from({ length: 90 }, () => new Particle());
-    }
-
-    function loop() {
-      ctx.clearRect(0, 0, W, H);
-      particles.forEach(p => { p.update(); p.draw(); });
-      animId = requestAnimationFrame(loop);
-    }
-
-    window.addEventListener('resize', () => { resize(); });
-    init();
-    loop();
-  })();
-
-  // ── Nav scroll ───────────────────────────────────────────────────────────
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
-  }, { passive: true });
-
-  // ── Hamburger ────────────────────────────────────────────────────────────
-  const ham = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-
-  function toggleMenu(open) {
-    ham.classList.toggle('open', open);
-    mobileMenu.classList.toggle('open', open);
-    ham.setAttribute('aria-expanded', String(open));
-    document.body.style.overflow = open ? 'hidden' : '';
-  }
-
-  ham.addEventListener('click', () => toggleMenu(!ham.classList.contains('open')));
-
-  document.querySelectorAll('.mobile-link').forEach(link => {
-    link.addEventListener('click', () => toggleMenu(false));
-  });
-
-  // ── Scroll reveal (IntersectionObserver) ────────────────────────────────
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  // Hero reveals on load
-  document.querySelectorAll('#hero .reveal').forEach((el, i) => {
-    setTimeout(() => el.classList.add('visible'), 200 + i * 120);
-  });
-
-  // Other sections on scroll
-  document.querySelectorAll('section:not(#hero) .reveal').forEach(el => {
-    revealObserver.observe(el);
-  });
-</script>
+  </script>
 
 </body>
 </html>
