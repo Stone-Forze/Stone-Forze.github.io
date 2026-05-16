@@ -1,251 +1,1088 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ReviseX - Plan. Revise. Win.</title>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <meta name="description" content="ReviseX is an offline-first exam revision planner that helps students plan daily revision, track subjects, chapters, mock tests, and progress." />
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <style>
-        :root {
-            --brand: #18F2D2;
-            --brand-glow: rgba(24, 242, 210, 0.3);
-            --bg: #0D1117;
-            --surface: #161B22;
-            --text-p: #F0F6FC;
-            --text-s: #8B949E;
-            --border: #30363D;
-            --accent: #8B5CF6;
+        :root{
+            --bg-primary:#F3F7FF;
+            --bg-secondary:#EAF1FF;
+            --surface:#FFFFFF;
+            --surface-2:#F8FAFF;
+            --surface-soft:rgba(255,255,255,0.72);
+
+            --text-primary:#101828;
+            --text-secondary:#667085;
+            --text-muted:#8A94A6;
+
+            --primary:#00BFA6;
+            --primary-bright:#18F2D2;
+            --purple:#7C3AED;
+            --blue:#0284C7;
+
+            --success:#16A34A;
+            --warning:#D97706;
+            --danger:#DC2626;
+
+            --border:#D9E2F2;
+            --shadow:0 18px 50px rgba(15,23,42,0.08);
+            --soft-shadow:0 10px 30px rgba(15,23,42,0.06);
+            --glow-cyan:0 0 55px rgba(0,191,166,0.18);
+            --glow-purple:0 0 55px rgba(124,58,237,0.16);
+            --nav-bg:rgba(255,255,255,0.74);
         }
 
-        [data-theme='light'] {
-            --bg: #F8FAFC;
-            --surface: #FFFFFF;
-            --text-p: #0F172A;
-            --text-s: #64748B;
-            --border: #E2E8F0;
-            --brand: #0D9488;
+        [data-theme="dark"]{
+            --bg-primary:#070B1A;
+            --bg-secondary:#0B1024;
+            --surface:#11182F;
+            --surface-2:#18213A;
+            --surface-soft:rgba(17,24,47,0.72);
+
+            --text-primary:#F8FAFC;
+            --text-secondary:#AAB6D3;
+            --text-muted:#64748B;
+
+            --primary:#18F2D2;
+            --primary-bright:#18F2D2;
+            --purple:#7C3AED;
+            --blue:#38BDF8;
+
+            --success:#22C55E;
+            --warning:#F59E0B;
+            --danger:#EF4444;
+
+            --border:#26324D;
+            --shadow:0 18px 55px rgba(0,0,0,0.34);
+            --soft-shadow:0 10px 32px rgba(0,0,0,0.24);
+            --glow-cyan:0 0 65px rgba(24,242,210,0.14);
+            --glow-purple:0 0 65px rgba(124,58,237,0.16);
+            --nav-bg:rgba(17,24,47,0.74);
         }
 
-        * { margin: 0; padding: 0; box-box-sizing: border-box; }
-        body {
-            font-family: 'Manrope', sans-serif;
-            background-color: var(--bg);
-            color: var(--text-p);
-            line-height: 1.6;
-            overflow-x: hidden;
-            transition: background 0.4s ease;
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
         }
 
-        /* --- UI Elements --- */
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-
-        nav {
-            padding: 20px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            background: rgba(13, 17, 23, 0.8);
-            backdrop-filter: blur(12px);
-            z-index: 100;
+        html{
+            scroll-behavior:smooth;
         }
 
-        .logo { font-weight: 800; font-size: 24px; color: var(--brand); letter-spacing: -1px; }
-
-        .theme-toggle {
-            cursor: pointer;
-            padding: 8px 16px;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            font-size: 12px;
-            font-weight: bold;
-            text-transform: uppercase;
+        body{
+            font-family:'Manrope',sans-serif;
+            min-height:100vh;
+            color:var(--text-primary);
+            background:
+                radial-gradient(circle at 8% 4%, rgba(24,242,210,0.10), transparent 26%),
+                radial-gradient(circle at 90% 12%, rgba(124,58,237,0.14), transparent 28%),
+                radial-gradient(circle at 50% 100%, rgba(56,189,248,0.10), transparent 26%),
+                linear-gradient(180deg,var(--bg-secondary),var(--bg-primary));
+            line-height:1.7;
+            transition:background 0.3s ease,color 0.3s ease;
+            overflow-x:hidden;
         }
 
-        /* --- Hero Section --- */
-        .hero {
-            padding: 100px 0 60px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        a{
+            color:inherit;
         }
 
-        .hero h1 {
-            font-size: clamp(40px, 8vw, 72px);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--text-p) 0%, var(--brand) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .container{
+            width:min(1120px, calc(100% - 36px));
+            margin:auto;
         }
 
-        .hero p {
-            font-size: 18px;
-            color: var(--text-s);
-            max-width: 600px;
-            margin-bottom: 40px;
+        .topbar{
+            position:sticky;
+            top:16px;
+            z-index:100;
+            margin:16px auto 0;
+            width:min(1120px, calc(100% - 36px));
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:16px;
+            padding:14px 16px;
+            border-radius:26px;
+            background:var(--nav-bg);
+            border:1px solid var(--border);
+            backdrop-filter:blur(18px);
+            box-shadow:var(--soft-shadow);
         }
 
-        .cta-button {
-            background: var(--brand);
-            color: #000;
-            padding: 16px 40px;
-            border-radius: 30px;
-            font-weight: bold;
-            text-decoration: none;
-            display: inline-block;
-            box-shadow: 0 10px 20px var(--brand-glow);
-            transition: transform 0.2s ease;
-        }
-        .cta-button:hover { transform: translateY(-3px); }
-
-        /* --- Feature Grid --- */
-        .features { padding: 80px 0; }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
+        .brand{
+            display:flex;
+            align-items:center;
+            gap:14px;
+            text-decoration:none;
         }
 
-        .card {
-            background: var(--surface);
-            padding: 40px;
-            border-radius: 28px;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-        .card:hover { border-color: var(--brand); transform: translateY(-5px); }
-
-        .card .icon {
-            font-size: 32px;
-            margin-bottom: 20px;
-            display: block;
+        .logo-box{
+            width:48px;
+            height:48px;
+            border-radius:17px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background:linear-gradient(135deg,rgba(24,242,210,0.18),rgba(124,58,237,0.20));
+            border:1px solid rgba(255,255,255,0.08);
+            box-shadow:var(--glow-cyan);
+            overflow:hidden;
         }
 
-        .card h3 { font-size: 22px; margin-bottom: 12px; }
-        .card p { font-size: 14px; color: var(--text-s); }
-
-        /* --- Showcase Animation --- */
-        .showcase {
-            background: linear-gradient(180deg, var(--bg) 0%, var(--surface) 100%);
-            padding: 100px 0;
-            text-align: center;
+        .logo-box img{
+            width:31px;
+            height:31px;
+            object-fit:contain;
         }
 
-        .phone-mockup {
-            width: 280px;
-            height: 580px;
-            background: #000;
-            border: 8px solid #333;
-            border-radius: 40px;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 50px 100px rgba(0,0,0,0.5);
+        .brand-copy strong{
+            display:block;
+            font-size:20px;
+            font-weight:900;
+            letter-spacing:-0.6px;
         }
 
-        .phone-screen {
-            width: 100%;
-            height: 100%;
-            background: var(--bg);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        .brand-copy span{
+            display:block;
+            font-size:12px;
+            color:var(--text-secondary);
+            margin-top:-2px;
         }
 
-        .mock-card {
-            height: 80px;
-            width: 100%;
-            background: var(--surface);
-            border-radius: 15px;
-            border: 1px solid var(--border);
-            animation: slideUp 2s infinite alternate;
+        .nav-actions{
+            display:flex;
+            align-items:center;
+            gap:10px;
+            flex-wrap:wrap;
+            justify-content:flex-end;
         }
 
-        @keyframes slideUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        .theme-toggle,
+        .nav-btn,
+        .primary-btn,
+        .secondary-btn{
+            font-family:'Manrope',sans-serif;
+            border:none;
+            cursor:pointer;
+            transition:0.24s ease;
+            text-decoration:none;
+            font-weight:800;
         }
 
-        footer {
-            padding: 60px 0;
-            text-align: center;
-            border-top: 1px solid var(--border);
-            color: var(--text-s);
-            font-size: 13px;
+        .theme-toggle{
+            width:48px;
+            height:48px;
+            border-radius:16px;
+            background:var(--surface);
+            color:var(--text-primary);
+            border:1px solid var(--border);
+            box-shadow:var(--soft-shadow);
+            font-size:18px;
         }
 
-        /* --- Mobile Responsive --- */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 48px; }
+        .nav-btn{
+            min-height:48px;
+            padding:0 16px;
+            border-radius:16px;
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            gap:8px;
+            background:var(--surface);
+            color:var(--text-primary);
+            border:1px solid var(--border);
+            box-shadow:var(--soft-shadow);
+            font-size:14px;
+        }
+
+        .theme-toggle:hover,
+        .nav-btn:hover,
+        .primary-btn:hover,
+        .secondary-btn:hover{
+            transform:translateY(-2px);
+            border-color:rgba(24,242,210,0.45);
+        }
+
+        .hero{
+            padding:86px 0 54px;
+            display:grid;
+            grid-template-columns:1.08fr 0.92fr;
+            gap:38px;
+            align-items:center;
+        }
+
+        .badge{
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+            padding:10px 15px;
+            border-radius:999px;
+            background:linear-gradient(135deg,rgba(24,242,210,0.14),rgba(124,58,237,0.14));
+            border:1px solid var(--border);
+            color:var(--primary-bright);
+            font-size:13px;
+            font-weight:900;
+            letter-spacing:0.3px;
+            margin-bottom:22px;
+            box-shadow:var(--glow-cyan);
+        }
+
+        h1{
+            font-size:clamp(42px, 7vw, 76px);
+            line-height:0.98;
+            letter-spacing:-3px;
+            font-weight:900;
+            margin-bottom:22px;
+        }
+
+        .gradient-text{
+            background:linear-gradient(135deg,var(--primary-bright),var(--purple));
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+        }
+
+        .hero-text{
+            max-width:690px;
+            font-size:18px;
+            color:var(--text-secondary);
+            margin-bottom:28px;
+        }
+
+        .hero-actions{
+            display:flex;
+            align-items:center;
+            gap:14px;
+            flex-wrap:wrap;
+        }
+
+        .primary-btn{
+            min-height:56px;
+            padding:0 24px;
+            border-radius:19px;
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            color:#061018;
+            background:linear-gradient(135deg,var(--primary-bright),#38BDF8);
+            box-shadow:var(--glow-cyan);
+        }
+
+        .secondary-btn{
+            min-height:56px;
+            padding:0 22px;
+            border-radius:19px;
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            background:var(--surface);
+            color:var(--text-primary);
+            border:1px solid var(--border);
+            box-shadow:var(--soft-shadow);
+        }
+
+        .hero-panel{
+            position:relative;
+            border-radius:38px;
+            padding:24px;
+            background:
+                linear-gradient(135deg,rgba(24,242,210,0.12),rgba(124,58,237,0.14)),
+                var(--surface-soft);
+            border:1px solid var(--border);
+            box-shadow:var(--shadow);
+            overflow:hidden;
+        }
+
+        .hero-panel::before{
+            content:"";
+            position:absolute;
+            width:260px;
+            height:260px;
+            border-radius:50%;
+            background:rgba(24,242,210,0.16);
+            filter:blur(46px);
+            top:-110px;
+            right:-90px;
+        }
+
+        .phone-card{
+            position:relative;
+            z-index:2;
+            border-radius:32px;
+            background:var(--surface);
+            border:1px solid var(--border);
+            padding:22px;
+            box-shadow:var(--soft-shadow);
+        }
+
+        .mini-header{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:18px;
+        }
+
+        .mini-title strong{
+            display:block;
+            font-size:18px;
+            font-weight:900;
+        }
+
+        .mini-title span{
+            color:var(--text-secondary);
+            font-size:13px;
+        }
+
+        .score-ring{
+            width:96px;
+            height:96px;
+            border-radius:50%;
+            background:
+                conic-gradient(var(--primary-bright) 0 74%, rgba(148,163,184,0.18) 74% 100%);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            box-shadow:var(--glow-cyan);
+        }
+
+        .score-ring span{
+            width:72px;
+            height:72px;
+            border-radius:50%;
+            background:var(--surface);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-weight:900;
+            font-size:22px;
+        }
+
+        .plan-list{
+            display:grid;
+            gap:12px;
+            margin-top:18px;
+        }
+
+        .plan-item{
+            padding:14px;
+            border-radius:20px;
+            background:var(--surface-2);
+            border:1px solid var(--border);
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:14px;
+        }
+
+        .plan-item strong{
+            display:block;
+            font-size:14px;
+        }
+
+        .plan-item span{
+            color:var(--text-secondary);
+            font-size:12px;
+        }
+
+        .pill{
+            padding:7px 10px;
+            border-radius:999px;
+            font-size:11px;
+            font-weight:900;
+            white-space:nowrap;
+        }
+
+        .pill.high{
+            background:rgba(239,68,68,0.12);
+            color:var(--danger);
+        }
+
+        .pill.medium{
+            background:rgba(245,158,11,0.14);
+            color:var(--warning);
+        }
+
+        .pill.done{
+            background:rgba(34,197,94,0.14);
+            color:var(--success);
+        }
+
+        section{
+            padding:58px 0;
+        }
+
+        .section-head{
+            max-width:760px;
+            margin-bottom:28px;
+        }
+
+        .section-head h2{
+            font-size:clamp(30px, 4vw, 46px);
+            line-height:1.08;
+            letter-spacing:-1.4px;
+            font-weight:900;
+            margin-bottom:12px;
+        }
+
+        .section-head p{
+            color:var(--text-secondary);
+            font-size:16px;
+        }
+
+        .grid{
+            display:grid;
+            grid-template-columns:repeat(3, 1fr);
+            gap:18px;
+        }
+
+        .grid.two{
+            grid-template-columns:repeat(2, 1fr);
+        }
+
+        .card{
+            position:relative;
+            overflow:hidden;
+            padding:26px;
+            border-radius:28px;
+            background:var(--surface);
+            border:1px solid var(--border);
+            box-shadow:var(--soft-shadow);
+            transition:0.25s ease;
+        }
+
+        .card:hover{
+            transform:translateY(-4px);
+            border-color:rgba(24,242,210,0.44);
+        }
+
+        .icon{
+            width:52px;
+            height:52px;
+            border-radius:18px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            margin-bottom:16px;
+            font-size:22px;
+            background:linear-gradient(135deg,rgba(24,242,210,0.16),rgba(124,58,237,0.16));
+            box-shadow:var(--glow-purple);
+        }
+
+        .card h3{
+            font-size:20px;
+            font-weight:900;
+            letter-spacing:-0.4px;
+            margin-bottom:9px;
+        }
+
+        .card p,
+        .card li{
+            color:var(--text-secondary);
+            font-size:15px;
+        }
+
+        .card ul{
+            padding-left:20px;
+            margin-top:10px;
+        }
+
+        .card li{
+            margin-bottom:8px;
+        }
+
+        .workflow{
+            padding:32px;
+            border-radius:34px;
+            background:
+                linear-gradient(135deg,rgba(24,242,210,0.10),rgba(124,58,237,0.10)),
+                var(--surface);
+            border:1px solid var(--border);
+            box-shadow:var(--shadow);
+        }
+
+        .steps{
+            display:grid;
+            gap:16px;
+        }
+
+        .step{
+            display:grid;
+            grid-template-columns:52px 1fr;
+            gap:16px;
+            align-items:start;
+            padding:18px;
+            border-radius:24px;
+            background:var(--surface-2);
+            border:1px solid var(--border);
+        }
+
+        .step-number{
+            width:52px;
+            height:52px;
+            border-radius:18px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-weight:900;
+            color:#061018;
+            background:linear-gradient(135deg,var(--primary-bright),#38BDF8);
+            box-shadow:var(--glow-cyan);
+        }
+
+        .step h3{
+            font-size:18px;
+            font-weight:900;
+            margin-bottom:4px;
+        }
+
+        .step p{
+            color:var(--text-secondary);
+        }
+
+        .spec-list{
+            display:grid;
+            grid-template-columns:repeat(2, 1fr);
+            gap:14px;
+        }
+
+        .spec{
+            padding:18px;
+            border-radius:22px;
+            background:var(--surface-2);
+            border:1px solid var(--border);
+        }
+
+        .spec strong{
+            display:block;
+            font-size:14px;
+            color:var(--text-primary);
+        }
+
+        .spec span{
+            color:var(--text-secondary);
+            font-size:14px;
+        }
+
+        .promise{
+            border:1px solid rgba(24,242,210,0.34);
+            background:
+                radial-gradient(circle at top right, rgba(24,242,210,0.13), transparent 32%),
+                var(--surface);
+        }
+
+        .footer{
+            margin-top:54px;
+            padding:38px 0 46px;
+            border-top:1px solid var(--border);
+            text-align:center;
+            color:var(--text-secondary);
+        }
+
+        .footer strong{
+            color:var(--text-primary);
+        }
+
+        .footer-links{
+            margin-top:16px;
+            display:flex;
+            justify-content:center;
+            gap:18px;
+            flex-wrap:wrap;
+        }
+
+        .footer-links a{
+            text-decoration:none;
+            color:var(--text-secondary);
+            font-weight:800;
+            font-size:14px;
+        }
+
+        .footer-links a:hover{
+            color:var(--primary-bright);
+        }
+
+        @media(max-width:900px){
+            .hero{
+                grid-template-columns:1fr;
+                padding-top:54px;
+            }
+
+            .grid,
+            .grid.two,
+            .spec-list{
+                grid-template-columns:1fr;
+            }
+
+            .topbar{
+                align-items:flex-start;
+                flex-direction:column;
+            }
+
+            .nav-actions{
+                width:100%;
+                justify-content:flex-start;
+            }
+
+            .nav-btn{
+                flex:1;
+            }
+        }
+
+        @media(max-width:560px){
+            .container,
+            .topbar{
+                width:min(100% - 28px, 1120px);
+            }
+
+            .hero{
+                padding:44px 0 34px;
+            }
+
+            h1{
+                letter-spacing:-2px;
+            }
+
+            .hero-text{
+                font-size:16px;
+            }
+
+            .hero-actions{
+                align-items:stretch;
+                flex-direction:column;
+            }
+
+            .primary-btn,
+            .secondary-btn{
+                width:100%;
+            }
+
+            .workflow{
+                padding:20px;
+                border-radius:28px;
+            }
+
+            .step{
+                grid-template-columns:1fr;
+            }
+
+            .nav-btn{
+                min-width:100%;
+            }
         }
     </style>
 </head>
-<body data-theme="dark">
 
-    <nav class="container">
-        <div class="logo">ReviseX</div>
-        <div class="theme-toggle" onclick="toggleTheme()">Switch Theme</div>
-    </nav>
+<body>
 
-    <header class="hero container">
-        <h1>Plan. Revise. Win.</h1>
-        <p>The ultimate personal strategist for students. Build a data-driven battle plan, master your weak chapters, and track your exam readiness offline.</p>
-        <a href="#" class="cta-button">Download for Android</a>
-    </header>
+<header class="topbar">
+    <a class="brand" href="#home" aria-label="ReviseX homepage">
+        <div class="logo-box">
+            <img src="icon.png" alt="ReviseX logo">
+        </div>
+        <div class="brand-copy">
+            <strong>ReviseX</strong>
+            <span>Plan. Revise. Win.</span>
+        </div>
+    </a>
 
-    <section class="showcase">
-        <div class="phone-mockup">
-            <div class="phone-screen">
-                <div style="width: 50px; height: 5px; background: #333; border-radius: 10px; align-self: center;"></div>
-                <div class="mock-card" style="height: 120px; border-color: var(--brand);"></div>
-                <div class="mock-card" style="animation-delay: 0.2s"></div>
-                <div class="mock-card" style="animation-delay: 0.4s"></div>
-                <div class="mock-card" style="animation-delay: 0.6s"></div>
+    <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode">☀️</button>
+        <a href="#features" class="nav-btn">Features</a>
+        <a href="#how-it-works" class="nav-btn">How it works</a>
+        <a href="index.html" class="nav-btn">← Studio</a>
+    </div>
+</header>
+
+<main id="home">
+
+    <section class="hero container">
+        <div>
+            <div class="badge">⚡ Offline-first exam revision planner</div>
+            <h1>Know what to revise <span class="gradient-text">today.</span></h1>
+            <p class="hero-text">
+                ReviseX helps students turn exams, subjects, chapters, mock tests, and progress into a clear daily, tomorrow, and weekly revision battle plan. Built for focused preparation without login, backend, or internet dependency.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#features" class="primary-btn">Explore Features</a>
+                <a href="#privacy" class="secondary-btn">Privacy First</a>
+            </div>
+        </div>
+
+        <div class="hero-panel" aria-label="ReviseX app preview">
+            <div class="phone-card">
+                <div class="mini-header">
+                    <div class="mini-title">
+                        <strong>Today’s Battle Plan</strong>
+                        <span>Board Exam in 18 days</span>
+                    </div>
+                    <div class="score-ring"><span>74%</span></div>
+                </div>
+
+                <div class="plan-list">
+                    <div class="plan-item">
+                        <div>
+                            <strong>Algebra Revision</strong>
+                            <span>Weak + overdue • 35 min</span>
+                        </div>
+                        <span class="pill high">High</span>
+                    </div>
+
+                    <div class="plan-item">
+                        <div>
+                            <strong>Organic Chemistry</strong>
+                            <span>Important chapter • 45 min</span>
+                        </div>
+                        <span class="pill medium">Medium</span>
+                    </div>
+
+                    <div class="plan-item">
+                        <div>
+                            <strong>Physics Mock Test</strong>
+                            <span>Reminder enabled • 6:00 PM</span>
+                        </div>
+                        <span class="pill done">Mock</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="features container">
+    <section class="container" id="features">
+        <div class="section-head">
+            <h2>Built for students who need a real revision plan.</h2>
+            <p>
+                ReviseX is not just a timetable. It helps students prioritize weak chapters, track revision, manage mock tests, and stay exam-ready.
+            </p>
+        </div>
+
         <div class="grid">
             <div class="card">
-                <span class="icon">📅</span>
+                <div class="icon">📅</div>
                 <h3>Daily Battle Plan</h3>
-                <p>ReviseX automatically prioritizes your most critical chapters every morning based on strength and overdue status.</p>
+                <p>See what to revise today based on chapter strength, revision history, exam urgency, mock performance, and importance.</p>
             </div>
+
             <div class="card">
-                <span class="icon">⏱️</span>
-                <h3>Pomodoro Sessions</h3>
-                <p>Stay focused with built-in study timers. Boost your productivity and watch your progress score climb.</p>
+                <div class="icon">📘</div>
+                <h3>Subjects & Chapters</h3>
+                <p>Add subjects, chapters, notes, estimated revision time, and strength levels like Weak, Medium, or Strong.</p>
             </div>
+
             <div class="card">
-                <span class="icon">📈</span>
-                <h3>Readiness Score</h3>
-                <p>A smart algorithm that analyzes your revision depth, test scores, and consistency to tell you exactly how prepared you are.</p>
+                <div class="icon">🎯</div>
+                <h3>Smart Priority Score</h3>
+                <p>ReviseX sorts chapters by priority so weak, overdue, and important chapters appear first in your plan.</p>
             </div>
+
             <div class="card">
-                <span class="icon">🔒</span>
-                <h3>100% Privacy</h3>
-                <p>No clouds, no accounts. Your study data stays on your device. High performance with zero tracking.</p>
+                <div class="icon">🧪</div>
+                <h3>Mock Test Tracking</h3>
+                <p>Add mock tests, enable reminders, save scores, mark mistake chapters, and improve future revision priority.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">📈</div>
+                <h3>Progress Dashboard</h3>
+                <p>Track readiness score, subject progress, revised chapters, weak chapters, weekly summary, and revision streak.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🌙</div>
+                <h3>Premium Themes</h3>
+                <p>Enjoy a modern Gen Z interface with deep navy dark mode and soft blue light mode. No plain black or white screens.</p>
             </div>
         </div>
     </section>
 
-    <footer class="container">
-        <p>&copy; 2026 ReviseX Study Systems. All rights reserved.</p>
-        <p style="margin-top: 10px;">Made for focused students.</p>
-    </footer>
+    <section class="container" id="how-it-works">
+        <div class="workflow">
+            <div class="section-head">
+                <h2>How ReviseX works</h2>
+                <p>Simple setup, smart planning, and clear progress tracking for daily exam preparation.</p>
+            </div>
 
-    <script>
-        function toggleTheme() {
-            const body = document.body;
-            const current = body.getAttribute('data-theme');
-            body.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
-        }
-    </script>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>
+                        <h3>Set up your exam</h3>
+                        <p>Add exam name, exam date, daily revision capacity, and preferred reminder time.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>
+                        <h3>Add subjects and chapters</h3>
+                        <p>Organize your syllabus by subject, then add chapters with strength level, importance, notes, and revision time.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>
+                        <h3>Follow today, tomorrow, and weekly plans</h3>
+                        <p>ReviseX generates a focused battle plan and moves missed chapters to the next available day.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div>
+                        <h3>Mark revised and track readiness</h3>
+                        <p>Mark chapters revised, update strength, save mock results, and watch your readiness score improve.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="screens">
+        <div class="section-head">
+            <h2>What is included in Version 1</h2>
+            <p>The first version focuses on useful offline planning, clean UI, and smooth performance on low-end Android devices.</p>
+        </div>
+
+        <div class="grid two">
+            <div class="card">
+                <div class="icon">🏠</div>
+                <h3>Main Screens</h3>
+                <ul>
+                    <li>Splash screen using <strong>icon.png</strong></li>
+                    <li>Onboarding</li>
+                    <li>Exam setup</li>
+                    <li>Home dashboard</li>
+                    <li>Plan screen with Today, Tomorrow, Week tabs</li>
+                    <li>Subjects and subject detail</li>
+                    <li>Progress dashboard</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="icon">⚙️</div>
+                <h3>Tools & Settings</h3>
+                <ul>
+                    <li>Add/edit subjects and chapters</li>
+                    <li>Chapter detail and mark revised action</li>
+                    <li>Mock test list, reminders, and results</li>
+                    <li>Search and filters</li>
+                    <li>Theme settings</li>
+                    <li>Reminder settings</li>
+                    <li>Reset data option</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="logic">
+        <div class="section-head">
+            <h2>Revision planning logic</h2>
+            <p>ReviseX creates plans using practical priority factors instead of random scheduling.</p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="icon">🔥</div>
+                <h3>Priority Factors</h3>
+                <p>Strength level, revision gap, exam urgency, mock score impact, and important chapter status are used to rank chapters.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🧠</div>
+                <h3>Weak Chapter Focus</h3>
+                <p>Weak and overdue chapters get higher priority so students revise the most important topics first.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🔁</div>
+                <h3>Missed Chapter Handling</h3>
+                <p>Missed chapters can move to tomorrow without overloading the day beyond the selected revision capacity.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="offline">
+        <div class="section-head">
+            <h2>Offline-first by design</h2>
+            <p>Core ReviseX features work without internet. Students can open, plan, revise, and track progress anytime.</p>
+        </div>
+
+        <div class="grid two">
+            <div class="card">
+                <div class="icon">📦</div>
+                <h3>Local Data Storage</h3>
+                <p>Exam plans, subjects, chapters, mock tests, revision sessions, settings, and progress are stored locally on the device.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🚫</div>
+                <h3>No Login Required</h3>
+                <p>Version 1 does not require login, backend, Firebase, or cloud sync. The app remains simple and private.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="technical">
+        <div class="section-head">
+            <h2>Technical foundation</h2>
+            <p>ReviseX is planned as a lightweight Android app optimized for smooth performance and beginner-friendly development.</p>
+        </div>
+
+        <div class="card">
+            <div class="spec-list">
+                <div class="spec">
+                    <strong>Platform</strong>
+                    <span>Android</span>
+                </div>
+
+                <div class="spec">
+                    <strong>Language</strong>
+                    <span>Java</span>
+                </div>
+
+                <div class="spec">
+                    <strong>UI System</strong>
+                    <span>XML layouts + Material Components</span>
+                </div>
+
+                <div class="spec">
+                    <strong>Architecture</strong>
+                    <span>Basic MVVM</span>
+                </div>
+
+                <div class="spec">
+                    <strong>Storage</strong>
+                    <span>SQLite + SharedPreferences</span>
+                </div>
+
+                <div class="spec">
+                    <strong>Minimum SDK</strong>
+                    <span>API 23</span>
+                </div>
+
+                <div class="spec">
+                    <strong>Performance Target</strong>
+                    <span>Low-end Android devices with 2GB–4GB RAM</span>
+                </div>
+
+                <div class="spec">
+                    <strong>Permissions</strong>
+                    <span>Notification permission only when needed</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="design">
+        <div class="section-head">
+            <h2>Premium Gen Z design</h2>
+            <p>The interface uses a futuristic study dashboard style with smooth lightweight animations.</p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="icon">🎨</div>
+                <h3>Dark Mode</h3>
+                <p>Deep navy gradients, cyan glow, purple accents, soft glass cards, and readable contrast.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">☀️</div>
+                <h3>Light Mode</h3>
+                <p>Soft blue-tinted background, elevated white cards, cyan actions, and purple highlights.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">✨</div>
+                <h3>Smooth Animations</h3>
+                <p>Fade, slide-up, tap scale, progress ring fill, and card entrance animations designed for low-end devices.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="ads">
+        <div class="section-head">
+            <h2>Monetization safety</h2>
+            <p>Ads are optional and should never block the main study experience.</p>
+        </div>
+
+        <div class="grid two">
+            <div class="card">
+                <div class="icon">📢</div>
+                <h3>Allowed Ads</h3>
+                <p>Google AdMob banner ads, native ads, and limited interstitial ads can be used if monetization is enabled.</p>
+            </div>
+
+            <div class="card promise">
+                <div class="icon">🛡️</div>
+                <h3>Ad Promise</h3>
+                <p>No app open ads, no forced rewarded ads, no interstitial on every screen, and no ads while marking chapters revised.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="privacy">
+        <div class="section-head">
+            <h2>Privacy-first experience</h2>
+            <p>ReviseX stores study data locally and avoids unnecessary permissions.</p>
+        </div>
+
+        <div class="grid two">
+            <div class="card">
+                <div class="icon">🔒</div>
+                <h3>Local-first privacy</h3>
+                <p>Your exam, subject, chapter, mock test, and progress data stays on your device in Version 1.</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🔔</div>
+                <h3>Reminder permission</h3>
+                <p>Notification permission is used only for daily revision reminders, mock test alerts, overdue reminders, and weekly summaries.</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>© 2026 <strong>ReviseX</strong> • Plan. Revise. Win.</p>
+        <div class="footer-links">
+            <a href="revisex-policy.html">Privacy Policy</a>
+            <a href="index.html">Studio</a>
+            <a href="#home">Back to Top</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const html = document.documentElement;
+    const toggleBtn = document.getElementById('themeToggle');
+
+    const savedTheme = localStorage.getItem('revisex_theme') || 'dark';
+    html.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+
+    toggleBtn.addEventListener('click', () => {
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('revisex_theme', newTheme);
+        updateThemeIcon(newTheme);
+    });
+
+    function updateThemeIcon(theme){
+        toggleBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+    }
+</script>
+
 </body>
 </html>
