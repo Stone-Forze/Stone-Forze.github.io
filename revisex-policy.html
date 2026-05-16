@@ -1,41 +1,651 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <title>Privacy Policy - ReviseX</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <title>Privacy Policy • ReviseX</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
-        :root { --bg: #F8FAFC; --surface: #FFFFFF; --text-p: #0F172A; --text-s: #64748B; --brand: #18F2D2; --border: #E2E8F0; }
-        [data-theme='dark'] { --bg: #0D1117; --surface: #161B22; --text-p: #F0F6FC; --text-s: #8B949E; --brand: #18F2D2; --border: #30363D; }
-        body { font-family: 'Manrope', sans-serif; background: var(--bg); color: var(--text-p); margin: 0; padding: 20px; line-height: 1.6; }
-        .card { background: var(--surface); border-radius: 20px; padding: 24px; margin-bottom: 20px; border: 1px solid var(--border); }
-        h1 { font-size: 26px; color: var(--brand); margin-bottom: 30px; }
-        h2 { font-size: 18px; margin-top: 0; }
-        p, li { font-size: 14px; color: var(--text-s); }
+        :root{
+            --bg-primary:#F3F7FF;
+            --bg-secondary:#EAF1FF;
+            --surface:#FFFFFF;
+            --surface-2:#F8FAFF;
+
+            --text-primary:#101828;
+            --text-secondary:#667085;
+
+            --primary:#18F2D2;
+            --primary-dark:#00BFA6;
+            --purple:#7C3AED;
+
+            --border:#D9E2F2;
+
+            --shadow:
+                0 10px 30px rgba(0,0,0,0.06);
+
+            --glow:
+                0 0 40px rgba(24,242,210,0.15);
+
+            --nav-bg:rgba(255,255,255,0.7);
+        }
+
+        [data-theme="dark"]{
+            --bg-primary:#070B1A;
+            --bg-secondary:#0B1024;
+            --surface:#11182F;
+            --surface-2:#18213A;
+
+            --text-primary:#F8FAFC;
+            --text-secondary:#AAB6D3;
+
+            --primary:#18F2D2;
+            --primary-dark:#00BFA6;
+            --purple:#7C3AED;
+
+            --border:#26324D;
+
+            --shadow:
+                0 15px 40px rgba(0,0,0,0.35);
+
+            --glow:
+                0 0 60px rgba(24,242,210,0.12);
+
+            --nav-bg:rgba(17,24,47,0.7);
+        }
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        html{
+            scroll-behavior:smooth;
+        }
+
+        body{
+            font-family:'Manrope',sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(24,242,210,0.08), transparent 25%),
+                radial-gradient(circle at bottom right, rgba(124,58,237,0.10), transparent 30%),
+                linear-gradient(
+                    180deg,
+                    var(--bg-secondary),
+                    var(--bg-primary)
+                );
+            color:var(--text-primary);
+            min-height:100vh;
+            padding:24px;
+            line-height:1.7;
+            transition:0.3s ease;
+        }
+
+        .container{
+            max-width:1000px;
+            margin:auto;
+        }
+
+        .topbar{
+            position:sticky;
+            top:16px;
+            z-index:100;
+            backdrop-filter:blur(16px);
+            background:var(--nav-bg);
+            border:1px solid var(--border);
+            border-radius:24px;
+            padding:14px 18px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            margin-bottom:30px;
+            box-shadow:var(--shadow);
+        }
+
+        .brand{
+            display:flex;
+            align-items:center;
+            gap:14px;
+        }
+
+        .logo{
+            width:46px;
+            height:46px;
+            border-radius:16px;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(24,242,210,0.18),
+                    rgba(124,58,237,0.20)
+                );
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            border:1px solid rgba(255,255,255,0.08);
+            box-shadow:var(--glow);
+        }
+
+        .logo img{
+            width:26px;
+            height:26px;
+            object-fit:contain;
+        }
+
+        .brand-text h1{
+            font-size:20px;
+            font-weight:800;
+            letter-spacing:-0.4px;
+        }
+
+        .brand-text p{
+            font-size:13px;
+            color:var(--text-secondary);
+        }
+
+        .actions{
+            display:flex;
+            align-items:center;
+            gap:12px;
+        }
+
+        .theme-toggle,
+        .nav-btn{
+            border:none;
+            cursor:pointer;
+            transition:0.25s ease;
+            font-family:'Manrope',sans-serif;
+        }
+
+        .theme-toggle{
+            width:48px;
+            height:48px;
+            border-radius:16px;
+            background:var(--surface);
+            border:1px solid var(--border);
+            color:var(--text-primary);
+            font-size:18px;
+            box-shadow:var(--shadow);
+        }
+
+        .theme-toggle:hover{
+            transform:translateY(-2px);
+        }
+
+        .nav-btn{
+            text-decoration:none;
+            padding:12px 18px;
+            border-radius:16px;
+            background:var(--surface);
+            border:1px solid var(--border);
+            color:var(--text-primary);
+            font-size:14px;
+            font-weight:700;
+            display:flex;
+            align-items:center;
+            gap:8px;
+            box-shadow:var(--shadow);
+        }
+
+        .nav-btn:hover{
+            transform:translateY(-2px);
+            border-color:rgba(24,242,210,0.4);
+        }
+
+        .hero{
+            position:relative;
+            overflow:hidden;
+            border-radius:36px;
+            padding:42px;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(24,242,210,0.12),
+                    rgba(124,58,237,0.16)
+                );
+            border:1px solid var(--border);
+            margin-bottom:28px;
+            box-shadow:var(--shadow);
+        }
+
+        .hero::before{
+            content:"";
+            position:absolute;
+            width:300px;
+            height:300px;
+            background:rgba(24,242,210,0.12);
+            border-radius:50%;
+            top:-120px;
+            right:-100px;
+            filter:blur(40px);
+        }
+
+        .hero h2{
+            font-size:42px;
+            line-height:1.1;
+            margin-bottom:18px;
+            letter-spacing:-1px;
+            font-weight:800;
+        }
+
+        .gradient-text{
+            background:linear-gradient(
+                135deg,
+                var(--primary),
+                var(--purple)
+            );
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+        }
+
+        .hero p{
+            max-width:720px;
+            color:var(--text-secondary);
+            font-size:16px;
+        }
+
+        .updated{
+            margin-top:20px;
+            display:inline-flex;
+            align-items:center;
+            gap:10px;
+            padding:12px 16px;
+            border-radius:16px;
+            background:rgba(255,255,255,0.06);
+            border:1px solid var(--border);
+            font-size:14px;
+            color:var(--text-secondary);
+        }
+
+        .card{
+            background:var(--surface);
+            border:1px solid var(--border);
+            border-radius:28px;
+            padding:28px;
+            margin-bottom:22px;
+            box-shadow:var(--shadow);
+            transition:0.25s ease;
+        }
+
+        .card:hover{
+            transform:translateY(-3px);
+        }
+
+        .card-header{
+            display:flex;
+            align-items:center;
+            gap:14px;
+            margin-bottom:16px;
+        }
+
+        .icon-box{
+            width:52px;
+            height:52px;
+            border-radius:18px;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(24,242,210,0.18),
+                    rgba(124,58,237,0.18)
+                );
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:22px;
+            box-shadow:var(--glow);
+        }
+
+        .card h3{
+            font-size:22px;
+            font-weight:800;
+            letter-spacing:-0.4px;
+        }
+
+        .card p,
+        .card li{
+            color:var(--text-secondary);
+            font-size:15px;
+        }
+
+        .card ul{
+            margin-top:12px;
+            padding-left:22px;
+        }
+
+        .card li{
+            margin-bottom:10px;
+        }
+
+        .highlight{
+            color:var(--primary);
+            font-weight:700;
+        }
+
+        .footer{
+            margin-top:40px;
+            text-align:center;
+            color:var(--text-secondary);
+            padding-bottom:40px;
+        }
+
+        .footer strong{
+            color:var(--text-primary);
+        }
+
+        @media(max-width:768px){
+
+            body{
+                padding:18px;
+            }
+
+            .topbar{
+                flex-direction:column;
+                gap:16px;
+                align-items:flex-start;
+            }
+
+            .actions{
+                width:100%;
+                flex-wrap:wrap;
+            }
+
+            .nav-btn{
+                flex:1;
+                justify-content:center;
+            }
+
+            .hero{
+                padding:28px;
+                border-radius:28px;
+            }
+
+            .hero h2{
+                font-size:32px;
+            }
+
+            .card{
+                padding:22px;
+                border-radius:24px;
+            }
+        }
     </style>
 </head>
-<body data-theme="light">
-    <h1>Privacy Policy</h1>
 
-    <div class="card">
-        <h2>Data Collection</h2>
-        <p>ReviseX is designed to work completely offline. All your study plans, subjects, and progress are stored locally on your device database.</p>
+<body>
+
+<div class="container">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+
+        <div class="brand">
+            <div class="logo">
+                <!-- Replace with your icon.png -->
+                <img src="icon.png" alt="ReviseX Logo">
+            </div>
+
+            <div class="brand-text">
+                <h1>ReviseX</h1>
+                <p>Privacy Policy</p>
+            </div>
+        </div>
+
+        <div class="actions">
+
+            <button class="theme-toggle" id="themeToggle">
+                🌙
+            </button>
+
+            <a href="revisex.html" class="nav-btn">
+                ← Homepage
+            </a>
+
+            <a href="index.html" class="nav-btn">
+                ← Studio
+            </a>
+
+        </div>
+
     </div>
 
+    <!-- HERO -->
+    <section class="hero">
+
+        <h2>
+            Your Privacy <span class="gradient-text">Matters.</span>
+        </h2>
+
+        <p>
+            ReviseX is designed with a privacy-first approach. Your study plans,
+            revision progress, subjects, chapters, and mock tests remain stored
+            locally on your device. We do not require account creation or cloud
+            storage in this version.
+        </p>
+
+        <div class="updated">
+            📅 Last Updated: 16 May 2026
+        </div>
+
+    </section>
+
+    <!-- DATA COLLECTION -->
     <div class="card">
-        <h2>Advertising</h2>
-        <p>We use Google AdMob to show ads. AdMob may collect device identifiers to serve personalized ads. You can disable personalization in your device settings.</p>
+
+        <div class="card-header">
+            <div class="icon-box">🔒</div>
+            <h3>Data Collection & Storage</h3>
+        </div>
+
+        <p>
+            ReviseX is built as an <span class="highlight">offline-first</span>
+            Android application. Your study-related data is stored locally on
+            your device using secure local storage technologies.
+        </p>
+
+        <ul>
+            <li>Exam plans and schedules</li>
+            <li>Subjects and chapters</li>
+            <li>Revision progress and streaks</li>
+            <li>Mock test reminders and results</li>
+            <li>Theme and reminder preferences</li>
+        </ul>
+
+        <p>
+            ReviseX does <span class="highlight">not require login</span> and
+            does not upload your personal study data to external servers in
+            Version 1.
+        </p>
+
     </div>
 
+    <!-- ADS -->
     <div class="card">
-        <h2>Permissions</h2>
-        <p>ReviseX requests notification permissions to send you daily study reminders and mock test alerts. We do not access your contacts, location, or gallery.</p>
+
+        <div class="card-header">
+            <div class="icon-box">📢</div>
+            <h3>Advertising & AdMob</h3>
+        </div>
+
+        <p>
+            ReviseX may use <span class="highlight">Google AdMob</span> to
+            display lightweight advertisements inside the application.
+        </p>
+
+        <ul>
+            <li>Banner ads</li>
+            <li>Native ads</li>
+            <li>Limited interstitial ads</li>
+        </ul>
+
+        <p>
+            Google AdMob may collect device identifiers or usage-related
+            information to provide relevant advertisements and improve ad
+            performance.
+        </p>
+
+        <p>
+            Users can manage ad personalization preferences directly through
+            Android or Google account privacy settings.
+        </p>
+
     </div>
 
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        document.body.setAttribute('data-theme', urlParams.get('theme') || 'light');
-    </script>
+    <!-- PERMISSIONS -->
+    <div class="card">
+
+        <div class="card-header">
+            <div class="icon-box">🛡️</div>
+            <h3>Permissions</h3>
+        </div>
+
+        <p>
+            ReviseX only requests permissions necessary for core app features.
+        </p>
+
+        <ul>
+            <li>
+                <span class="highlight">Notification Permission</span> —
+                used for daily revision reminders, mock test reminders, and
+                weekly study notifications.
+            </li>
+        </ul>
+
+        <p>
+            ReviseX does not request access to:
+        </p>
+
+        <ul>
+            <li>Contacts</li>
+            <li>Location</li>
+            <li>Microphone</li>
+            <li>Camera</li>
+            <li>SMS</li>
+            <li>Call logs</li>
+        </ul>
+
+    </div>
+
+    <!-- SECURITY -->
+    <div class="card">
+
+        <div class="card-header">
+            <div class="icon-box">⚡</div>
+            <h3>Data Security</h3>
+        </div>
+
+        <p>
+            ReviseX is designed with modern Android best practices to protect
+            local app data.
+        </p>
+
+        <ul>
+            <li>Local-only data storage</li>
+            <li>No unnecessary permissions</li>
+            <li>No forced account creation</li>
+            <li>No background tracking services</li>
+            <li>No hidden data collection</li>
+        </ul>
+
+    </div>
+
+    <!-- CHILDREN -->
+    <div class="card">
+
+        <div class="card-header">
+            <div class="icon-box">🎓</div>
+            <h3>Children & Student Safety</h3>
+        </div>
+
+        <p>
+            ReviseX is intended for students and learners. We aim to provide a
+            safe and focused study environment with minimal distractions and
+            privacy-first functionality.
+        </p>
+
+    </div>
+
+    <!-- CHANGES -->
+    <div class="card">
+
+        <div class="card-header">
+            <div class="icon-box">📝</div>
+            <h3>Policy Updates</h3>
+        </div>
+
+        <p>
+            This Privacy Policy may be updated periodically to reflect app
+            improvements, new features, or legal requirements.
+        </p>
+
+        <p>
+            Users are encouraged to review this page occasionally for updates.
+        </p>
+
+    </div>
+
+    <!-- CONTACT -->
+    <div class="card">
+
+        <div class="card-header">
+            <div class="icon-box">✉️</div>
+            <h3>Contact</h3>
+        </div>
+
+        <p>
+            If you have questions regarding this Privacy Policy or ReviseX,
+            you can contact the developer through the official support channels
+            listed on the app store page.
+        </p>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p>
+            © 2026 <strong>ReviseX</strong> • Plan. Revise. Win.
+        </p>
+    </div>
+
+</div>
+
+<script>
+
+    const html = document.documentElement;
+    const toggleBtn = document.getElementById('themeToggle');
+
+    const savedTheme =
+        localStorage.getItem('revisex_theme') || 'dark';
+
+    html.setAttribute('data-theme', savedTheme);
+
+    updateThemeIcon(savedTheme);
+
+    toggleBtn.addEventListener('click', () => {
+
+        const currentTheme = html.getAttribute('data-theme');
+
+        const newTheme =
+            currentTheme === 'dark'
+                ? 'light'
+                : 'dark';
+
+        html.setAttribute('data-theme', newTheme);
+
+        localStorage.setItem('revisex_theme', newTheme);
+
+        updateThemeIcon(newTheme);
+    });
+
+    function updateThemeIcon(theme){
+
+        toggleBtn.textContent =
+            theme === 'dark'
+                ? '☀️'
+                : '🌙';
+    }
+
+</script>
+
 </body>
 </html>
