@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join ReviseX Testing</title>
+    <meta name="description" content="Join the ReviseX testing program and help improve the offline-first exam revision planner for students." />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --bg-primary:#F3F7FF; --bg-secondary:#EAF1FF; --surface:#FFFFFF; --surface-2:#F8FAFF; --surface-soft:rgba(255,255,255,0.74);
+            --text-primary:#101828; --text-secondary:#667085; --primary:#00BFA6; --primary-bright:#18F2D2; --purple:#7C3AED; --border:#D9E2F2;
+            --shadow:0 18px 50px rgba(15,23,42,0.08); --soft-shadow:0 10px 30px rgba(15,23,42,0.06); --glow-cyan:0 0 55px rgba(0,191,166,0.18); --glow-purple:0 0 55px rgba(124,58,237,0.16); --nav-bg:rgba(255,255,255,0.74);
+        }
+        [data-theme="dark"]{
+            --bg-primary:#070B1A; --bg-secondary:#0B1024; --surface:#11182F; --surface-2:#18213A; --surface-soft:rgba(17,24,47,0.74);
+            --text-primary:#F8FAFC; --text-secondary:#AAB6D3; --primary:#18F2D2; --primary-bright:#18F2D2; --purple:#7C3AED; --border:#26324D;
+            --shadow:0 18px 55px rgba(0,0,0,0.34); --soft-shadow:0 10px 32px rgba(0,0,0,0.24); --glow-cyan:0 0 65px rgba(24,242,210,0.14); --glow-purple:0 0 65px rgba(124,58,237,0.16); --nav-bg:rgba(17,24,47,0.74);
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{
+            font-family:'Manrope',sans-serif; min-height:100vh; color:var(--text-primary);
+            background:radial-gradient(circle at 8% 4%, rgba(24,242,210,0.10), transparent 26%), radial-gradient(circle at 90% 12%, rgba(124,58,237,0.14), transparent 28%), radial-gradient(circle at 50% 100%, rgba(56,189,248,0.10), transparent 26%), linear-gradient(180deg,var(--bg-secondary),var(--bg-primary));
+            line-height:1.7; transition:background 0.3s ease,color 0.3s ease; overflow-x:hidden;
+        }
+        a{color:inherit}
+        .container{width:min(1120px, calc(100% - 36px)); margin:auto}
+        .topbar{
+            position:sticky; top:16px; z-index:100; margin:16px auto 0; width:min(1120px, calc(100% - 36px));
+            display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 16px; border-radius:26px;
+            background:var(--nav-bg); border:1px solid var(--border); backdrop-filter:blur(18px); box-shadow:var(--soft-shadow);
+        }
+        .brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+        .logo-box{
+            width:48px;height:48px;border-radius:17px;display:flex;align-items:center;justify-content:center;
+            background:linear-gradient(135deg,rgba(24,242,210,0.18),rgba(124,58,237,0.20));border:1px solid rgba(255,255,255,0.08);box-shadow:var(--glow-cyan);overflow:hidden;
+        }
+        .logo-box img{width:31px;height:31px;object-fit:contain}
+        .brand-copy strong{display:block;font-size:20px;font-weight:900;letter-spacing:-0.6px}
+        .brand-copy span{display:block;font-size:12px;color:var(--text-secondary);margin-top:-2px}
+        .nav-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+        .theme-toggle,.nav-btn,.primary-btn,.secondary-btn,.link-btn{font-family:'Manrope',sans-serif;border:none;cursor:pointer;transition:0.24s ease;text-decoration:none;font-weight:800}
+        .theme-toggle{width:48px;height:48px;border-radius:16px;background:var(--surface);color:var(--text-primary);border:1px solid var(--border);box-shadow:var(--soft-shadow);font-size:18px}
+        .nav-btn{min-height:48px;padding:0 16px;border-radius:16px;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--surface);color:var(--text-primary);border:1px solid var(--border);box-shadow:var(--soft-shadow);font-size:14px}
+        .theme-toggle:hover,.nav-btn:hover,.primary-btn:hover,.secondary-btn:hover,.link-btn:hover{transform:translateY(-2px);border-color:rgba(24,242,210,0.45)}
+        .hero{padding:86px 0 42px;display:grid;grid-template-columns:1.02fr 0.98fr;gap:38px;align-items:center}
+        .badge{display:inline-flex;align-items:center;gap:8px;padding:10px 15px;border-radius:999px;background:linear-gradient(135deg,rgba(24,242,210,0.14),rgba(124,58,237,0.14));border:1px solid var(--border);color:var(--primary-bright);font-size:13px;font-weight:900;letter-spacing:0.3px;margin-bottom:22px;box-shadow:var(--glow-cyan)}
+        h1{font-size:clamp(42px, 7vw, 74px);line-height:0.98;letter-spacing:-3px;font-weight:900;margin-bottom:22px}
+        .gradient-text{background:linear-gradient(135deg,var(--primary-bright),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .hero-text{max-width:690px;font-size:18px;color:var(--text-secondary);margin-bottom:28px}
+        .hero-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+        .primary-btn{min-height:56px;padding:0 24px;border-radius:19px;display:inline-flex;align-items:center;justify-content:center;color:#061018;background:linear-gradient(135deg,var(--primary-bright),#38BDF8);box-shadow:var(--glow-cyan)}
+        .secondary-btn{min-height:56px;padding:0 22px;border-radius:19px;display:inline-flex;align-items:center;justify-content:center;background:var(--surface);color:var(--text-primary);border:1px solid var(--border);box-shadow:var(--soft-shadow)}
+        .invite-panel{position:relative;border-radius:38px;padding:24px;background:linear-gradient(135deg,rgba(24,242,210,0.12),rgba(124,58,237,0.14)),var(--surface-soft);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden}
+        .invite-panel::before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(24,242,210,0.16);filter:blur(46px);top:-110px;right:-90px}
+        .tester-card{position:relative;z-index:2;border-radius:32px;background:var(--surface);border:1px solid var(--border);padding:26px;box-shadow:var(--soft-shadow)}
+        .tester-card h2{font-size:28px;line-height:1.12;letter-spacing:-0.8px;font-weight:900;margin-bottom:10px}
+        .tester-card p{color:var(--text-secondary);margin-bottom:18px}
+        .status-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0}
+        .status{padding:14px;border-radius:20px;background:var(--surface-2);border:1px solid var(--border)}
+        .status strong{display:block;font-size:18px;font-weight:900}.status span{display:block;color:var(--text-secondary);font-size:12px}
+        section{padding:54px 0}.section-head{max-width:760px;margin-bottom:28px}.section-head h2{font-size:clamp(30px, 4vw, 46px);line-height:1.08;letter-spacing:-1.4px;font-weight:900;margin-bottom:12px}.section-head p{color:var(--text-secondary);font-size:16px}
+        .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.grid.two{grid-template-columns:repeat(2,1fr)}
+        .card{position:relative;overflow:hidden;padding:26px;border-radius:28px;background:var(--surface);border:1px solid var(--border);box-shadow:var(--soft-shadow);transition:0.25s ease}
+        .card:hover{transform:translateY(-4px);border-color:rgba(24,242,210,0.44)}
+        .icon{width:52px;height:52px;border-radius:18px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:22px;background:linear-gradient(135deg,rgba(24,242,210,0.16),rgba(124,58,237,0.16));box-shadow:var(--glow-purple)}
+        .card h3{font-size:20px;font-weight:900;letter-spacing:-0.4px;margin-bottom:9px}.card p,.card li{color:var(--text-secondary);font-size:15px}.card ul{padding-left:20px;margin-top:10px}.card li{margin-bottom:8px}
+        .steps{display:grid;gap:16px}.step{display:grid;grid-template-columns:58px 1fr auto;gap:16px;align-items:center;padding:18px;border-radius:26px;background:var(--surface);border:1px solid var(--border);box-shadow:var(--soft-shadow)}
+        .step-number{width:58px;height:58px;border-radius:20px;display:flex;align-items:center;justify-content:center;font-weight:900;color:#061018;background:linear-gradient(135deg,var(--primary-bright),#38BDF8);box-shadow:var(--glow-cyan)}
+        .step h3{font-size:18px;font-weight:900;margin-bottom:3px}.step p{color:var(--text-secondary);font-size:15px}
+        .link-btn{min-height:48px;padding:0 16px;border-radius:16px;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;background:var(--surface-2);color:var(--text-primary);border:1px solid var(--border)}
+        .notice{padding:24px;border-radius:28px;background:radial-gradient(circle at top right, rgba(24,242,210,0.13), transparent 32%),var(--surface);border:1px solid rgba(24,242,210,0.34);box-shadow:var(--soft-shadow)}.notice strong{color:var(--primary-bright)}
+        .footer{margin-top:54px;padding:38px 0 46px;border-top:1px solid var(--border);text-align:center;color:var(--text-secondary)}.footer strong{color:var(--text-primary)}
+        .footer-links{margin-top:16px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap}.footer-links a{text-decoration:none;color:var(--text-secondary);font-weight:800;font-size:14px}.footer-links a:hover{color:var(--primary-bright)}
+        @media(max-width:920px){.hero{grid-template-columns:1fr;padding-top:54px}.grid,.grid.two{grid-template-columns:1fr}.topbar{align-items:flex-start;flex-direction:column}.nav-actions{width:100%;justify-content:flex-start}.nav-btn{flex:1}.step{grid-template-columns:58px 1fr}.step .link-btn{grid-column:1 / -1;width:100%}}
+        @media(max-width:560px){.container,.topbar{width:min(100% - 28px, 1120px)}.hero{padding:44px 0 34px}h1{letter-spacing:-2px}.hero-text{font-size:16px}.hero-actions{align-items:stretch;flex-direction:column}.primary-btn,.secondary-btn{width:100%}.status-row{grid-template-columns:1fr}.step{grid-template-columns:1fr}.nav-btn{min-width:100%}}
+    </style>
+</head>
+<body>
+<header class="topbar">
+    <a class="brand" href="revisex.html" aria-label="ReviseX homepage">
+        <div class="logo-box"><img src="icon.png" alt="ReviseX logo"></div>
+        <div class="brand-copy"><strong>ReviseX</strong><span>Tester Invitation</span></div>
+    </a>
+    <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode">☀️</button>
+        <a href="revisex.html" class="nav-btn">← Homepage</a>
+        <a href="index.html" class="nav-btn">← Studio</a>
+    </div>
+</header>
+<main>
+    <section class="hero container">
+        <div>
+            <div class="badge">🚀 Early access testing is open</div>
+            <h1>Become a <span class="gradient-text">ReviseX tester.</span></h1>
+            <p class="hero-text">Join the ReviseX testing program and help improve an offline-first exam revision planner made for students. Test the app, explore the revision battle plan, and share feedback before the public release.</p>
+            <div class="hero-actions">
+                <a class="primary-btn" href="https://groups.google.com/g/stoneforze/" target="_blank" rel="noopener noreferrer">Join Tester Group</a>
+                <a class="secondary-btn" href="https://play.google.com/apps/testing/com.stoneforze.revisex" target="_blank" rel="noopener noreferrer">Accept Tester Invite</a>
+            </div>
+        </div>
+        <div class="invite-panel">
+            <div class="tester-card">
+                <h2>Testing Access Steps</h2>
+                <p>Follow the steps in order to access ReviseX testing on Google Play.</p>
+                <div class="status-row">
+                    <div class="status"><strong>1</strong><span>Join group</span></div>
+                    <div class="status"><strong>2</strong><span>Accept invite</span></div>
+                    <div class="status"><strong>3</strong><span>Install app</span></div>
+                </div>
+                <div class="notice"><p><strong>Important:</strong> Use the same Google account for the group, tester invite, and Play Store installation.</p></div>
+            </div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="section-head"><h2>How to join ReviseX testing</h2><p>Complete these three steps to become a tester and install the app from Google Play.</p></div>
+        <div class="steps">
+            <div class="step"><div class="step-number">1</div><div><h3>Join the Google Group</h3><p>First, join the StoneForze tester group. This allows your Google account to become eligible for testing access.</p></div><a class="link-btn" href="https://groups.google.com/g/stoneforze/" target="_blank" rel="noopener noreferrer">Open Group</a></div>
+            <div class="step"><div class="step-number">2</div><div><h3>Accept the tester invitation</h3><p>After joining the group, open the testing invitation page and accept becoming a tester for ReviseX.</p></div><a class="link-btn" href="https://play.google.com/apps/testing/com.stoneforze.revisex" target="_blank" rel="noopener noreferrer">Accept Invite</a></div>
+            <div class="step"><div class="step-number">3</div><div><h3>Install ReviseX from Google Play</h3><p>Once accepted, open the Play Store listing and install ReviseX on your Android device.</p></div><a class="link-btn" href="https://play.google.com/store/apps/details?id=com.stoneforze.revisexapp" target="_blank" rel="noopener noreferrer">Open App</a></div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="section-head"><h2>What testers should check</h2><p>Use the app normally and report anything that feels confusing, broken, slow, or missing.</p></div>
+        <div class="grid">
+            <div class="card"><div class="icon">📅</div><h3>Revision Planning</h3><p>Check if today, tomorrow, and weekly revision plans feel useful and easy to understand.</p></div>
+            <div class="card"><div class="icon">📘</div><h3>Subjects & Chapters</h3><p>Test adding subjects, adding chapters, marking weak or strong, and updating revision status.</p></div>
+            <div class="card"><div class="icon">🧪</div><h3>Mock Test Reminders</h3><p>Check reminders, mock test entries, and progress updates after saving mock test details.</p></div>
+            <div class="card"><div class="icon">📈</div><h3>Progress Score</h3><p>Review whether the progress score and dashboard feel clear, motivating, and accurate.</p></div>
+            <div class="card"><div class="icon">🌙</div><h3>Dark & Light Mode</h3><p>Check readability, spacing, colors, cards, buttons, and premium Gen Z visual consistency.</p></div>
+            <div class="card"><div class="icon">⚡</div><h3>Performance</h3><p>Report lag, crashes, slow screens, broken navigation, reminder issues, or offline problems.</p></div>
+        </div>
+    </section>
+    <section class="container">
+        <div class="section-head"><h2>About ReviseX</h2><p>ReviseX is built to help students stop guessing what to study next.</p></div>
+        <div class="grid two">
+            <div class="card"><div class="icon">🎯</div><h3>Core purpose</h3><p>ReviseX creates a simple exam revision battle plan based on subjects, chapters, weak areas, mock tests, and progress.</p></div>
+            <div class="card"><div class="icon">🔒</div><h3>Offline-first</h3><p>The app is designed to work offline. Study plans, subjects, chapters, reminders, and progress are stored locally on the device.</p></div>
+        </div>
+    </section>
+</main>
+<footer class="footer">
+    <div class="container">
+        <p>© 2026 <strong>ReviseX</strong> • Plan. Revise. Win.</p>
+        <div class="footer-links">
+            <a href="https://groups.google.com/g/stoneforze/" target="_blank" rel="noopener noreferrer">Tester Group</a>
+            <a href="https://play.google.com/apps/testing/com.stoneforze.revisex" target="_blank" rel="noopener noreferrer">Accept Invite</a>
+            <a href="https://play.google.com/store/apps/details?id=com.stoneforze.revisexapp" target="_blank" rel="noopener noreferrer">Play Store</a>
+            <a href="revisex.html">Homepage</a>
+            <a href="index.html">Studio</a>
+        </div>
+    </div>
+</footer>
+<script>
+    const html = document.documentElement;
+    const toggleBtn = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('revisex_theme') || 'dark';
+    html.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+    toggleBtn.addEventListener('click', () => {
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('revisex_theme', newTheme);
+        updateThemeIcon(newTheme);
+    });
+    function updateThemeIcon(theme){ toggleBtn.textContent = theme === 'dark' ? '☀️' : '🌙'; }
+</script>
+</body>
+</html>
