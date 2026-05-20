@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join SpotKeeper Beta | Closed Testing</title>
+  <meta name="description" content="Join the SpotKeeper beta testing program by Stone Forze and help test the private offline-first place diary app before public release." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="https://i.ibb.co/0ySVZL0L/logo.png" />
+  <link rel="apple-touch-icon" href="https://i.ibb.co/0ySVZL0L/logo.png" />
+  <style>
+    :root {
+      --bg: #F7F2EA;
+      --surface: #FFFFFF;
+      --surface-soft: #FFF9F0;
+      --primary: #8B5E3C;
+      --primary-dark: #5C3A24;
+      --accent: #D4A373;
+      --green: #6B8F71;
+      --text: #1F1B16;
+      --muted: #6F6257;
+      --divider: #E6D8C8;
+      --header-bg: rgba(247, 242, 234, 0.82);
+      --body-bg:
+        radial-gradient(circle at 12% 8%, rgba(212, 163, 115, 0.30), transparent 34%),
+        radial-gradient(circle at 92% 18%, rgba(107, 143, 113, 0.17), transparent 32%),
+        linear-gradient(180deg, #F7F2EA 0%, #FFF9F0 52%, #F7F2EA 100%);
+      --card-glass: rgba(255, 255, 255, 0.74);
+      --soft-glass: rgba(255, 249, 240, 0.86);
+      --shadow: 0 24px 70px rgba(92, 58, 36, 0.16);
+      --shadow-soft: 0 14px 35px rgba(92, 58, 36, 0.10);
+    }
+
+    body.dark-mode {
+      --bg: #12100E;
+      --surface: #1E1A16;
+      --surface-soft: #241E19;
+      --primary: #D4A373;
+      --primary-dark: #E8C39E;
+      --accent: #B98252;
+      --green: #8FAF91;
+      --text: #FFF8F0;
+      --muted: #C7B8A8;
+      --divider: #3A3028;
+      --header-bg: rgba(18, 16, 14, 0.88);
+      --body-bg:
+        radial-gradient(circle at 12% 8%, rgba(212, 163, 115, 0.13), transparent 34%),
+        radial-gradient(circle at 92% 18%, rgba(143, 175, 145, 0.11), transparent 32%),
+        linear-gradient(180deg, #12100E 0%, #18130F 52%, #12100E 100%);
+      --card-glass: rgba(30, 26, 22, 0.82);
+      --soft-glass: rgba(36, 30, 25, 0.88);
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+      --shadow-soft: 0 14px 35px rgba(0, 0, 0, 0.26);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--body-bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: var(--header-bg);
+      border-bottom: 1px solid rgba(230, 216, 200, 0.72);
+    }
+
+    .nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -0.045em;
+      font-size: 22px;
+      color: var(--primary-dark);
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 15px;
+      background: var(--surface);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 12px 26px rgba(139, 94, 60, 0.22);
+      overflow: hidden;
+      border: 1px solid rgba(139, 94, 60, 0.12);
+    }
+
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn,
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      font-weight: 900;
+      border: 1px solid transparent;
+      transition: 0.22s ease;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn {
+      min-height: 50px;
+      padding: 0 20px;
+      font-size: 14px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: #fff;
+      box-shadow: 0 18px 34px rgba(92, 58, 36, 0.24);
+    }
+
+    body.dark-mode .btn-primary {
+      background: linear-gradient(135deg, #B98252, #D4A373);
+      color: #12100E;
+      box-shadow: 0 18px 34px rgba(212, 163, 115, 0.18);
+    }
+
+    .btn-ghost,
+    .theme-toggle {
+      background: var(--card-glass);
+      color: var(--primary-dark);
+      border-color: rgba(139, 94, 60, 0.14);
+    }
+
+    .theme-toggle {
+      width: 50px;
+      height: 50px;
+      font-size: 18px;
+    }
+
+    .btn:hover,
+    .theme-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero {
+      padding: 74px 0 46px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: var(--card-glass);
+      border: 1px solid rgba(230, 216, 200, 0.9);
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 22px;
+      box-shadow: 0 12px 26px rgba(92, 58, 36, 0.06);
+    }
+
+    .badge img {
+      width: 22px;
+      height: 22px;
+      border-radius: 7px;
+      object-fit: cover;
+    }
+
+    h1 {
+      font-size: clamp(44px, 7vw, 82px);
+      line-height: 0.96;
+      letter-spacing: -0.078em;
+      color: var(--primary-dark);
+      max-width: 760px;
+    }
+
+    .hero p {
+      margin-top: 24px;
+      max-width: 640px;
+      font-size: 18px;
+      line-height: 1.72;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .mission-card {
+      position: relative;
+      padding: 28px;
+      border-radius: 34px;
+      background: linear-gradient(145deg, rgba(92, 58, 36, 0.96), rgba(139, 94, 60, 0.92));
+      color: #fff;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .mission-card::before {
+      content: '';
+      position: absolute;
+      width: 270px;
+      height: 270px;
+      right: -92px;
+      top: -92px;
+      border-radius: 999px;
+      background: rgba(212, 163, 115, 0.34);
+    }
+
+    .mission-card::after {
+      content: '';
+      position: absolute;
+      width: 190px;
+      height: 190px;
+      left: -70px;
+      bottom: -70px;
+      border-radius: 999px;
+      background: rgba(107, 143, 113, 0.28);
+    }
+
+    .mission-card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .mission-card h2 {
+      font-size: 34px;
+      line-height: 1.06;
+      letter-spacing: -0.06em;
+      margin-bottom: 14px;
+    }
+
+    .mission-card p {
+      color: rgba(255, 248, 240, 0.78);
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    .mini-list {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .mini-item {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding: 13px 14px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255, 248, 240, 0.86);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .steps-section {
+      padding: 34px 0 86px;
+    }
+
+    .section-head {
+      max-width: 780px;
+      margin-bottom: 28px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 1.04;
+      letter-spacing: -0.065em;
+      color: var(--primary-dark);
+    }
+
+    .section-head p {
+      margin-top: 14px;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .step-card {
+      position: relative;
+      padding: 26px;
+      border-radius: 28px;
+      background: var(--card-glass);
+      border: 1px solid rgba(230, 216, 200, 0.82);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    body.dark-mode .step-card,
+    body.dark-mode .badge,
+    body.dark-mode .btn-ghost,
+    body.dark-mode .theme-toggle,
+    body.dark-mode .note-box {
+      border-color: rgba(232, 195, 158, 0.14);
+    }
+
+    .step-number {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff;
+      font-size: 20px;
+      font-weight: 900;
+      box-shadow: 0 12px 26px rgba(139, 94, 60, 0.18);
+      margin-bottom: 20px;
+    }
+
+    body.dark-mode .step-number {
+      color: #12100E;
+    }
+
+    .step-card h3 {
+      font-size: 22px;
+      color: var(--primary-dark);
+      letter-spacing: -0.045em;
+      margin-bottom: 12px;
+    }
+
+    .step-card p {
+      color: var(--muted);
+      line-height: 1.68;
+      font-size: 14.5px;
+      font-weight: 500;
+    }
+
+    .step-card .btn {
+      margin-top: 22px;
+      width: 100%;
+    }
+
+    .note-box {
+      margin-top: 20px;
+      padding: 22px;
+      border-radius: 26px;
+      background: var(--soft-glass);
+      border: 1px solid rgba(230, 216, 200, 0.78);
+      color: var(--muted);
+      line-height: 1.72;
+      font-weight: 500;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .note-box strong {
+      color: var(--primary-dark);
+    }
+
+    .cta {
+      padding: 0 0 86px;
+    }
+
+    .cta-box {
+      border-radius: 38px;
+      padding: 44px;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(212, 163, 115, 0.30), transparent 34%),
+        linear-gradient(145deg, var(--surface), var(--surface-soft));
+      border: 1px solid rgba(230, 216, 200, 0.9);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 28px;
+      align-items: center;
+    }
+
+    body.dark-mode .cta-box {
+      background:
+        radial-gradient(circle at 10% 0%, rgba(212, 163, 115, 0.14), transparent 34%),
+        linear-gradient(145deg, #1E1A16, #241E19);
+      border-color: rgba(232, 195, 158, 0.14);
+    }
+
+    .cta-box h2 {
+      font-size: clamp(30px, 4vw, 50px);
+      letter-spacing: -0.065em;
+      color: var(--primary-dark);
+      line-height: 1.05;
+    }
+
+    .cta-box p {
+      margin-top: 12px;
+      color: var(--muted);
+      font-weight: 500;
+      line-height: 1.65;
+      max-width: 680px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(230, 216, 200, 0.9);
+      padding: 36px 0;
+      background: var(--soft-glass);
+    }
+
+    body.dark-mode footer {
+      background: rgba(18, 16, 14, 0.74);
+      border-top-color: rgba(232, 195, 158, 0.12);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 0.8fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .footer-grid h4 {
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    .footer-grid p,
+    .footer-grid a {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+      font-weight: 500;
+      display: block;
+    }
+
+    .copyright {
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(230, 216, 200, 0.8);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 960px) {
+      .hero,
+      .steps-grid,
+      .cta-box,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page { width: min(100% - 24px, 1120px); }
+      .brand { font-size: 19px; }
+      .brand-mark { width: 38px; height: 38px; }
+      .btn { min-height: 46px; padding: 0 15px; }
+      .nav-actions .btn-ghost { display: none; }
+      .nav-actions .btn-primary { display: none; }
+      .hero { padding-top: 54px; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; }
+      .mission-card { min-height: 360px; }
+      .cta-box { padding: 30px 22px; border-radius: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="page nav">
+      <a class="brand" href="https://stone-forze.github.io/spotkeeper.html" aria-label="SpotKeeper Home">
+        <span class="brand-mark"><img src="https://i.ibb.co/0ySVZL0L/logo.png" alt="SpotKeeper logo"></span>
+        <span>SpotKeeper</span>
+      </a>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark and light mode">☾</button>
+        <a class="btn btn-ghost" href="https://stone-forze.github.io/spotkeeper.html">Back to App</a>
+        <a class="btn btn-primary" href="https://stone-forze.github.io" target="_blank" rel="noopener noreferrer">Visit Studio</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page hero">
+      <div>
+        <div class="badge"><img src="https://i.ibb.co/mrpLkvSM/icon.png" alt="SpotKeeper icon"> Exclusive beta access</div>
+        <h1>Join the SpotKeeper Beta</h1>
+        <p>
+          Help test SpotKeeper before public release. Follow the steps below to become an official tester and support the private offline-first place diary experience.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="YOUR_GOOGLE_GROUP_LINK_HERE" target="_blank" rel="noopener noreferrer">Join Google Group</a>
+          <a class="btn btn-ghost" href="#steps">View Steps</a>
+        </div>
+      </div>
+
+      <aside class="mission-card" aria-label="Beta testing mission">
+        <div class="mission-card-content">
+          <h2>Your testing mission</h2>
+          <p>
+            Save sample places, add notes, test photos, check search and filters, open map links, and report anything that feels confusing, slow, or broken.
+          </p>
+        </div>
+        <div class="mini-list">
+          <div class="mini-item">✓ Test offline app opening</div>
+          <div class="mini-item">✓ Add cafes, doctors, shops, and parks</div>
+          <div class="mini-item">✓ Try photos, ratings, notes, and map links</div>
+          <div class="mini-item">✓ Keep the app installed during testing</div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="steps-section" id="steps">
+      <div class="page">
+        <div class="section-head">
+          <h2>Complete these 3 steps to become a tester.</h2>
+          <p>Use the same Google account on your Android device, Google Group, and Play Store tester opt-in page.</p>
+        </div>
+
+        <div class="steps-grid">
+          <article class="step-card">
+            <div>
+              <div class="step-number">1</div>
+              <h3>Join the Google Group</h3>
+              <p>
+                First, join the official Stone Forze beta testing Google Group. Google uses this group to authorize your email as a tester.
+              </p>
+            </div>
+            <a class="btn btn-primary" href="YOUR_GOOGLE_GROUP_LINK_HERE" target="_blank" rel="noopener noreferrer">Join Google Group</a>
+          </article>
+
+          <article class="step-card">
+            <div>
+              <div class="step-number">2</div>
+              <h3>Accept the tester invite</h3>
+              <p>
+                After joining the group, open the tester opt-in link and accept the invitation. Make sure you see the confirmation screen before continuing.
+              </p>
+            </div>
+            <a class="btn btn-primary" href="YOUR_TESTER_OPT_IN_LINK_HERE" target="_blank" rel="noopener noreferrer">Accept Tester Invite</a>
+          </article>
+
+          <article class="step-card">
+            <div>
+              <div class="step-number">3</div>
+              <h3>Download and test</h3>
+              <p>
+                Download SpotKeeper from Google Play, keep it installed during the closed testing period, and use it naturally to test core features.
+              </p>
+            </div>
+            <a class="btn btn-primary" href="YOUR_PLAY_STORE_LINK_HERE" target="_blank" rel="noopener noreferrer">Download on Google Play</a>
+          </article>
+        </div>
+
+        <div class="note-box">
+          <p><strong>Important:</strong> If the Play Store says you are not eligible, confirm that you joined the Google Group using the same email account that is active on your Android device and Play Store. After joining the group, wait a few minutes and try the tester opt-in link again.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="page">
+        <div class="cta-box">
+          <div>
+            <h2>Thank you for helping shape SpotKeeper.</h2>
+            <p>Your feedback helps improve performance, privacy, offline behavior, and the overall place diary experience before launch.</p>
+          </div>
+          <a class="btn btn-primary" href="YOUR_TESTER_OPT_IN_LINK_HERE" target="_blank" rel="noopener noreferrer">Start Beta Access</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="page">
+      <div class="footer-grid">
+        <div>
+          <div class="brand" style="margin-bottom: 12px;">
+            <span class="brand-mark"><img src="https://i.ibb.co/0ySVZL0L/logo.png" alt="SpotKeeper logo"></span>
+            <span>SpotKeeper</span>
+          </div>
+          <p>A private offline-first place diary by Stone Forze. Save places, notes, ratings, photos, and map links on your phone.</p>
+        </div>
+
+        <div>
+          <h4>Beta Links</h4>
+          <a href="YOUR_GOOGLE_GROUP_LINK_HERE" target="_blank" rel="noopener noreferrer">Join Google Group</a>
+          <a href="YOUR_TESTER_OPT_IN_LINK_HERE" target="_blank" rel="noopener noreferrer">Accept Tester Invite</a>
+          <a href="YOUR_PLAY_STORE_LINK_HERE" target="_blank" rel="noopener noreferrer">Download on Google Play</a>
+        </div>
+
+        <div>
+          <h4>App</h4>
+          <a href="https://stone-forze.github.io/spotkeeper.html">SpotKeeper Website</a>
+          <a href="https://stone-forze.github.io/spotkeeper-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+          <a href="https://stone-forze.github.io" target="_blank" rel="noopener noreferrer">Visit Studio</a>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <span>© 2026 Stone Forze. All rights reserved.</span>
+        <span>Package: com.stoneforze.spotkeeper</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('spotkeeper-theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    function applyTheme(theme) {
+      document.body.classList.toggle('dark-mode', theme === 'dark');
+      themeToggle.textContent = theme === 'dark' ? '☀' : '☾';
+      localStorage.setItem('spotkeeper-theme', theme);
+    }
+
+    applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+
+    themeToggle.addEventListener('click', () => {
+      const nextTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
+      applyTheme(nextTheme);
+    });
+  </script>
+</body>
+</html>
