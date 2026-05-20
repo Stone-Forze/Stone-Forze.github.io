@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpotKeeper | Your Personal Location Diary</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-soft: rgba(99, 102, 241, 0.1);
+            --accent: #f43f5e;
+            --bg-light: #f8fafc;
+            --bg-dark: #0f172a;
+            --card-light: rgba(255, 255, 255, 0.7);
+            --card-dark: rgba(30, 41, 59, 0.6);
+            --text-light: #1e293b;
+            --text-dark: #f1f5f9;
+            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] {
+            --bg: var(--bg-dark);
+            --card: var(--card-dark);
+            --text: var(--text-dark);
+            --border: rgba(255, 255, 255, 0.05);
+        }
+
+        [data-theme="light"] {
+            --bg: var(--bg-light);
+            --card: var(--card-light);
+            --text: var(--text-light);
+            --border: rgba(0, 0, 0, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        /* --- Navbar --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1.2rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo { font-size: 1.6rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 12px; }
+
+        .nav-right { display: flex; gap: 1.5rem; align-items: center; }
+
+        .btn {
+            padding: 0.7rem 1.4rem;
+            border-radius: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            border: none;
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        .btn-studio { background: var(--primary); color: white; box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4); }
+        .btn-studio:hover { transform: translateY(-3px) scale(1.02); }
+
+        .theme-toggle {
+            background: var(--card);
+            color: var(--text);
+            width: 48px; height: 48px;
+            display: grid; place-items: center;
+            border-radius: 50%; border: 1px solid var(--border);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 100vh;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            text-align: center; padding: 0 10%;
+            background: radial-gradient(circle at top right, var(--primary-soft), transparent);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--primary), #a855f7);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .hero p { font-size: 1.3rem; max-width: 700px; opacity: 0.8; margin-bottom: 2rem; }
+
+        /* --- Features Section --- */
+        .section-title { text-align: center; margin-bottom: 4rem; }
+        .section-title h2 { font-size: 2.5rem; }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem; padding: 0 8% 100px;
+        }
+
+        .card {
+            background: var(--card);
+            padding: 2.5rem;
+            border-radius: 28px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover { transform: translateY(-10px); }
+
+        .icon-box {
+            width: 60px; height: 60px;
+            background: var(--primary-soft);
+            color: var(--primary);
+            border-radius: 18px;
+            display: grid; place-items: center;
+            font-size: 1.5rem; margin-bottom: 1.5rem;
+        }
+
+        /* --- Animations --- */
+        .reveal { opacity: 0; transform: translateY(40px); transition: 1s all ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        footer { padding: 4rem; text-align: center; border-top: 1px solid var(--border); }
+        .footer-links { margin-top: 1rem; display: flex; justify-content: center; gap: 2rem; }
+        .footer-links a { color: var(--text); text-decoration: none; opacity: 0.6; font-weight: 600; }
+        .footer-links a:hover { opacity: 1; color: var(--primary); }
+
+    </style>
+</head>
+<body data-theme="dark">
+
+    <nav>
+        <div class="logo">
+            <i class="fas fa-compass"></i> SpotKeeper
+        </div>
+        <div class="nav-right">
+            <a href="https://stone-forze.github.io" class="btn btn-studio">
+                <i class="fas fa-rocket"></i> Visit Studio
+            </a>
+            <button class="btn theme-toggle" id="themeBtn">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h1 class="reveal">Map Your Memories.</h1>
+            <p class="reveal">A privacy-focused location diary. Save your favorite spots with 3D icons, personal notes, and photos. All stored securely on your device.</p>
+            <div class="reveal">
+                <a href="#features" class="btn btn-studio">Explore Features</a>
+            </div>
+        </section>
+
+        <div class="section-title reveal">
+            <h2>Why SpotKeeper?</h2>
+        </div>
+
+        <section class="grid" id="features">
+            <div class="card reveal">
+                <div class="icon-box"><i class="fas fa-shield-halved"></i></div>
+                <h3>Privacy First</h3>
+                <p>No cloud, no tracking. Your locations and photos never leave your device.</p>
+            </div>
+            <div class="card reveal">
+                <div class="icon-box"><i class="fas fa-cubes"></i></div>
+                <h3>3D Icon Library</h3>
+                <p>Choose from 17+ beautiful high-quality 3D icons to categorize your spots.</p>
+            </div>
+            <div class="card reveal">
+                <div class="icon-box"><i class="fas fa-map-location-dot"></i></div>
+                <h3>Offline Maps</h3>
+                <p>Integrated OpenStreetMap support for finding your way back to saved spots.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 <strong>Stone Forze</strong>. Crafted with passion.</p>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="https://stone-forze.github.io">Developer</a>
+        </div>
+    </footer>
+
+    <script>
+        const themeBtn = document.getElementById('themeBtn');
+        const body = document.body;
+        const icon = themeBtn.querySelector('i');
+
+        // Theme Toggle Logic
+        themeBtn.addEventListener('click', () => {
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.setAttribute('data-theme', 'light');
+                icon.className = 'fas fa-sun';
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                icon.className = 'fas fa-moon';
+            }
+        });
+
+        // Intersection Observer for Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
