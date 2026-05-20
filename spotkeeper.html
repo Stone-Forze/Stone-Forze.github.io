@@ -3,260 +3,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SpotKeeper - Save Your Favorite Places</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>SpotKeeper | Your World, Organized</title>
+    <!-- App Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
+            /* Exact App Color Palette */
+            --primary: #6366f1; /* from colors.xml */
+            --primary-variant: #4f46e5;
+            --secondary: #94a3b8;
+            
+            /* Light Mode (matches activity_main.xml background) */
             --bg-light: #f8fafc;
+            --surface-light: #ffffff;
+            --text-main-light: #0f172a;
+            --text-sub-light: #64748b;
+            --border-light: rgba(0, 0, 0, 0.05);
+
+            /* Dark Mode (matches dark theme colors) */
             --bg-dark: #0f172a;
-            --card-light: rgba(255, 255, 255, 0.8);
-            --card-dark: rgba(30, 41, 59, 0.7);
-            --text-light: #1e293b;
-            --text-dark: #f1f5f9;
+            --surface-dark: rgba(30, 41, 59, 0.7);
+            --text-main-dark: #f1f5f9;
+            --text-sub-dark: #94a3b8;
+            --border-dark: rgba(255, 255, 255, 0.05);
+
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius: 28px; /* Exact match to your cardCornerRadius in XML */
         }
 
         [data-theme="dark"] {
-            --bg-color: var(--bg-dark);
-            --card-bg: var(--card-dark);
-            --text-color: var(--text-dark);
+            --bg: var(--bg-dark);
+            --surface: var(--surface-dark);
+            --text: var(--text-main-dark);
+            --text-sub: var(--text-sub-dark);
+            --border: var(--border-dark);
         }
 
         [data-theme="light"] {
-            --bg-color: var(--bg-light);
-            --card-bg: var(--card-light);
-            --text-color: var(--text-light);
+            --bg: var(--bg-light);
+            --surface: var(--surface-light);
+            --text: var(--text-main-light);
+            --text-sub: var(--text-sub-light);
+            --border: var(--border-light);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus+Jakarta+Sans', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg);
+            color: var(--text);
             transition: var(--transition);
-            line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* --- Header & Navigation --- */
-        header {
+        /* --- App-Style Toolbar --- */
+        nav {
             position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.5rem 10%;
+            top: 0; width: 100%;
+            height: 72px;
+            padding: 0 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(20px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid var(--border);
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .logo { 
+            font-size: 1.4rem; 
+            font-weight: 800; 
+            color: var(--primary); 
+            display: flex; 
+            align-items: center; 
+            gap: 12px;
+            letter-spacing: -0.5px;
         }
 
-        .nav-btns {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
+        .nav-right { display: flex; gap: 1rem; align-items: center; }
 
+        /* --- Material 3 Style Buttons --- */
         .btn {
-            padding: 0.6rem 1.2rem;
-            border-radius: 12px;
-            font-weight: 600;
+            padding: 0.8rem 1.5rem;
+            border-radius: 16px; /* Matches app button cornerRadius */
+            font-weight: 700;
             cursor: pointer;
             transition: var(--transition);
             text-decoration: none;
             border: none;
+            font-size: 0.95rem;
         }
 
-        .btn-studio {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-studio:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
-        }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: var(--primary-variant); transform: translateY(-2px); }
 
         .theme-toggle {
-            background: var(--card-bg);
-            color: var(--text-color);
-            width: 45px;
-            height: 45px;
-            display: grid;
-            place-items: center;
+            background: var(--surface);
+            color: var(--text);
+            width: 48px; height: 48px;
+            display: grid; place-items: center;
             border-radius: 50%;
+            border: 1px solid var(--border);
         }
 
-        /* --- Hero Section --- */
+        /* --- Hero Section (Matches Splash/Hero vibe) --- */
         .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            padding: 160px 10% 80px;
             text-align: center;
-            padding: 0 10%;
+            display: flex; flex-direction: column; align-items: center;
         }
 
         .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(to right, var(--primary), #a855f7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            max-width: 600px;
-            opacity: 0.8;
-        }
-
-        /* --- Content Sections --- */
-        section {
-            padding: 100px 10%;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 24px;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-            animation: slideUp 0.8s ease forwards;
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h2 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
             margin-bottom: 1.5rem;
-            color: var(--primary);
+            letter-spacing: -1.5px;
+            line-height: 1.1;
         }
 
-        .privacy-content {
-            text-align: left;
-            max-width: 800px;
-            margin: 0 auto;
+        .hero span { color: var(--primary); }
+
+        .hero p { 
+            font-size: 1.2rem; 
+            color: var(--text-sub); 
+            max-width: 600px; 
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
         }
 
-        .privacy-content h3 {
-            margin: 1.5rem 0 0.5rem;
+        /* --- App Feature Grid (Matches ItemPlaceBinding) --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            padding: 40px 10% 120px;
         }
 
+        .app-card {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-card:hover { transform: scale(1.02); border-color: var(--primary); }
+
+        .icon-circle {
+            width: 56px; height: 56px;
+            background: var(--primary);
+            color: white;
+            border-radius: 18px;
+            display: grid; place-items: center;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .app-card h3 { font-size: 1.4rem; margin-bottom: 0.8rem; font-weight: 700; }
+        .app-card p { color: var(--text-sub); font-size: 1rem; line-height: 1.5; }
+
+        /* --- Footer (Matches Settings Menu style) --- */
         footer {
-            padding: 3rem;
+            background: var(--surface);
+            padding: 80px 10% 40px;
+            border-top: 1px solid var(--border);
             text-align: center;
-            opacity: 0.6;
+        }
+
+        .footer-logo { font-size: 1.8rem; font-weight: 800; margin-bottom: 2rem; color: var(--primary); }
+        
+        .footer-links {
+            display: flex; justify-content: center; gap: 3rem; margin-bottom: 3rem;
+        }
+
+        .footer-links a {
+            color: var(--text-sub); text-decoration: none; font-weight: 600; font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover { color: var(--primary); }
+
+        .copyright {
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-sub);
             font-size: 0.9rem;
+            display: flex; justify-content: space-between; align-items: center;
         }
 
         /* --- Animations --- */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: 0.6s all ease-out;
-        }
-
-        .scroll-reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
     </style>
 </head>
 <body data-theme="dark">
 
-    <header>
+    <nav>
         <div class="logo">
-            <i class="fas fa-location-dot"></i> SpotKeeper
+            <i class="fas fa-location-arrow"></i> SpotKeeper
         </div>
-        <div class="nav-btns">
-            <a href="https://stone-forze.github.io" class="btn btn-studio">Visit Studio</a>
+        <div class="nav-right">
+            <a href="https://stone-forze.github.io" class="btn btn-primary">Visit Studio</a>
             <button class="btn theme-toggle" id="themeBtn">
                 <i class="fas fa-moon"></i>
             </button>
         </div>
+    </nav>
+
+    <header class="hero">
+        <h1 class="reveal">Save your <span>spots</span>.<br>Keep your privacy.</h1>
+        <p class="reveal">The ultimate personal location diary. Organize your favorite places with beautiful 3D icons, notes, and local storage.</p>
+        <div class="reveal">
+            <a href="#" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Download App</a>
+        </div>
     </header>
 
-    <div class="hero">
-        <h1 data-aos="fade-up">Your World, Organized.</h1>
-        <p>Save favorite spots, add 3D icons, and keep your memories private on your device.</p>
+    <div class="grid">
+        <!-- Feature 1 -->
+        <div class="app-card reveal">
+            <div class="icon-circle"><i class="fas fa-fingerprint"></i></div>
+            <h3>Privacy First</h3>
+            <p>Your locations are personal. That's why SpotKeeper stores everything locally. No cloud, no tracking, just you.</p>
+        </div>
+        <!-- Feature 2 -->
+        <div class="app-card reveal">
+            <div class="icon-circle"><i class="fas fa-shapes"></i></div>
+            <h3>3D Icon Magic</h3>
+            <p>Categorize your spots with 17+ high-quality 3D icons like Hospital, Cafe, and Park for a beautiful map view.</p>
+        </div>
+        <!-- Feature 3 -->
+        <div class="app-card reveal">
+            <div class="icon-circle"><i class="fas fa-route"></i></div>
+            <h3>Quick Navigate</h3>
+            <p>Need to get back? Use integrated maps to find the exact route to your saved coordinates with one tap.</p>
+        </div>
     </div>
 
-    <section id="privacy">
-        <div class="card scroll-reveal">
-            <h2>Privacy Policy</h2>
-            <div class="privacy-content">
-                <p>Last Updated: October 2023</p>
-                
-                <h3>1. Data Collection</h3>
-                <p>SpotKeeper is built with privacy in mind. We <strong>do not</strong> collect your personal data or save your places on any external server. All coordinates, notes, and photos stay locally on your device.</p>
-
-                <h3>2. Location Permissions</h3>
-                <p>Location access is used only to show your current position on the map and calculate distances to your saved spots. This data is never shared with us or third parties.</p>
-
-                <h3>3. Third-Party Services</h3>
-                <p>We use Google AdMob for monetization. AdMob may collect device identifiers to serve relevant ads. Please refer to Google's Privacy Policy for more details.</p>
-
-                <h3>4. Data Security</h3>
-                <p>Since your data is stored locally, you are responsible for its safety. You can use the "Export" feature in settings to create backups of your saved places.</p>
-            </div>
-        </div>
-    </section>
-
     <footer>
-        <p>&copy; 2023 Stone Forze. All rights reserved.</p>
+        <div class="footer-logo">SpotKeeper</div>
+        <div class="footer-links">
+            <a href="https://stone-forze.github.io">Visit Studio</a>
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+            <a href="mailto:support@stoneforze.com">Support</a>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 <strong>Stone Forze Studio</strong></p>
+            <p>Made for Android with Love</p>
+        </div>
     </footer>
 
     <script>
         const themeBtn = document.getElementById('themeBtn');
-        const body = document.body;
         const icon = themeBtn.querySelector('i');
+        const body = document.body;
 
-        // Theme Toggle Logic
+        // Persist theme or default to Dark
         themeBtn.addEventListener('click', () => {
-            if (body.getAttribute('data-theme') === 'dark') {
-                body.setAttribute('data-theme', 'light');
-                icon.className = 'fas fa-sun';
-            } else {
-                body.setAttribute('data-theme', 'dark');
-                icon.className = 'fas fa-moon';
-            }
+            const isDark = body.getAttribute('data-theme') === 'dark';
+            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+            icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
         });
 
-        // Scroll Reveal Logic
-        const observerOptions = { threshold: 0.1 };
+        // Scroll Reveal logic like the App's RecyclerView animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('active');
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
-        document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
