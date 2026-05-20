@@ -3,91 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SpotKeeper | Your World, Organized</title>
-    <!-- App Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>SpotKeeper | Premium Personal Location Intelligence</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            /* Exact App Color Palette */
-            --primary: #6366f1; /* from colors.xml */
-            --primary-variant: #4f46e5;
-            --secondary: #94a3b8;
-            
-            /* Light Mode (matches activity_main.xml background) */
-            --bg-light: #f8fafc;
-            --surface-light: #ffffff;
-            --text-main-light: #0f172a;
-            --text-sub-light: #64748b;
-            --border-light: rgba(0, 0, 0, 0.05);
-
-            /* Dark Mode (matches dark theme colors) */
-            --bg-dark: #0f172a;
-            --surface-dark: rgba(30, 41, 59, 0.7);
-            --text-main-dark: #f1f5f9;
-            --text-sub-dark: #94a3b8;
-            --border-dark: rgba(255, 255, 255, 0.05);
-
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --radius: 28px; /* Exact match to your cardCornerRadius in XML */
-        }
-
-        [data-theme="dark"] {
-            --bg: var(--bg-dark);
-            --surface: var(--surface-dark);
-            --text: var(--text-main-dark);
-            --text-sub: var(--text-sub-dark);
-            --border: var(--border-dark);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.4);
+            --bg-dark: #020617;
+            --surface-dark: rgba(15, 23, 42, 0.8);
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --border: rgba(255, 255, 255, 0.08);
+            --accent: #8b5cf6;
+            --radius: 32px;
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         [data-theme="light"] {
-            --bg: var(--bg-light);
-            --surface: var(--surface-light);
-            --text: var(--text-main-light);
-            --text-sub: var(--text-sub-light);
-            --border: var(--border-light);
+            --bg-dark: #f8fafc;
+            --surface-dark: rgba(255, 255, 255, 0.8);
+            --text-main: #0f172a;
+            --text-sub: #475569;
+            --border: rgba(0, 0, 0, 0.06);
+            --primary-glow: rgba(99, 102, 241, 0.15);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
 
         body {
-            background-color: var(--bg);
-            color: var(--text);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             transition: var(--transition);
+            line-height: 1.6;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
         }
 
-        /* --- App-Style Toolbar --- */
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+        /* --- Navbar --- */
         nav {
             position: fixed;
-            top: 0; width: 100%;
-            height: 72px;
-            padding: 0 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            top: 0; width: 100%; height: 80px;
+            padding: 0 10%;
+            display: flex; justify-content: space-between; align-items: center;
             backdrop-filter: blur(20px);
             z-index: 1000;
             border-bottom: 1px solid var(--border);
         }
 
-        .logo { 
-            font-size: 1.4rem; 
-            font-weight: 800; 
-            color: var(--primary); 
-            display: flex; 
-            align-items: center; 
-            gap: 12px;
-            letter-spacing: -0.5px;
-        }
+        .logo { font-size: 1.6rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 10px; letter-spacing: -1px; }
 
-        .nav-right { display: flex; gap: 1rem; align-items: center; }
-
-        /* --- Material 3 Style Buttons --- */
         .btn {
-            padding: 0.8rem 1.5rem;
-            border-radius: 16px; /* Matches app button cornerRadius */
+            padding: 0.8rem 1.8rem;
+            border-radius: 16px;
             font-weight: 700;
             cursor: pointer;
             transition: var(--transition);
@@ -96,108 +69,120 @@
             font-size: 0.95rem;
         }
 
-        .btn-primary { background: var(--primary); color: white; }
-        .btn-primary:hover { background: var(--primary-variant); transform: translateY(-2px); }
-
-        .theme-toggle {
-            background: var(--surface);
-            color: var(--text);
-            width: 48px; height: 48px;
-            display: grid; place-items: center;
-            border-radius: 50%;
-            border: 1px solid var(--border);
+        .btn-premium {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            box-shadow: 0 15px 30px var(--primary-glow);
         }
 
-        /* --- Hero Section (Matches Splash/Hero vibe) --- */
+        .btn-premium:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 20px 40px var(--primary-glow); }
+
+        .theme-toggle {
+            background: var(--surface-dark);
+            color: var(--text-main);
+            width: 48px; height: 48px;
+            display: grid; place-items: center;
+            border-radius: 50%; border: 1px solid var(--border);
+        }
+
+        /* --- Hero Section --- */
         .hero {
-            padding: 160px 10% 80px;
+            padding: 200px 10% 100px;
             text-align: center;
-            display: flex; flex-direction: column; align-items: center;
+            position: relative;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 800;
             margin-bottom: 1.5rem;
-            letter-spacing: -1.5px;
-            line-height: 1.1;
+            letter-spacing: -3px;
+            line-height: 1;
+            background: linear-gradient(to bottom, #fff 40%, rgba(255,255,255,0.5));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        .hero span { color: var(--primary); }
+        [data-theme="light"] .hero h1 { background: linear-gradient(to bottom, #000 40%, #666); -webkit-background-clip: text; }
 
-        .hero p { 
-            font-size: 1.2rem; 
-            color: var(--text-sub); 
-            max-width: 600px; 
-            margin-bottom: 2.5rem;
-            line-height: 1.6;
+        .hero p { font-size: 1.4rem; color: var(--text-sub); max-width: 800px; margin: 0 auto 3rem; }
+
+        /* --- Floating UI Element (Animated) --- */
+        .floating-icon {
+            width: 120px; height: 120px;
+            background: var(--surface-dark);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            display: grid; place-items: center;
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            z-index: -1;
         }
 
-        /* --- App Feature Grid (Matches ItemPlaceBinding) --- */
-        .grid {
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+
+        /* --- Feature Cards --- */
+        .section-header { text-align: center; padding: 100px 10% 40px; }
+        .section-header h2 { font-size: 3rem; font-weight: 800; }
+
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            padding: 40px 10% 120px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            padding: 40px 10% 100px;
         }
 
-        .app-card {
-            background: var(--surface);
-            padding: 2rem;
+        .feature-card {
+            background: var(--surface-dark);
+            padding: 3.5rem 2.5rem;
             border-radius: var(--radius);
             border: 1px solid var(--border);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
             transition: var(--transition);
-            position: relative;
-            overflow: hidden;
         }
 
-        .app-card:hover { transform: scale(1.02); border-color: var(--primary); }
+        .feature-card:hover { border-color: var(--primary); transform: translateY(-10px); }
 
-        .icon-circle {
-            width: 56px; height: 56px;
-            background: var(--primary);
-            color: white;
-            border-radius: 18px;
-            display: grid; place-items: center;
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem;
+        .feature-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 2rem; }
+
+        .feature-card h3 { font-size: 1.8rem; margin-bottom: 1.2rem; }
+
+        /* --- Legal/Privacy Section --- */
+        .legal-section {
+            background: rgba(99, 102, 241, 0.03);
+            padding: 100px 10%;
+            border-radius: 60px 60px 0 0;
+            border-top: 1px solid var(--border);
         }
 
-        .app-card h3 { font-size: 1.4rem; margin-bottom: 0.8rem; font-weight: 700; }
-        .app-card p { color: var(--text-sub); font-size: 1rem; line-height: 1.5; }
+        .legal-content { max-width: 900px; margin: 0 auto; text-align: left; }
 
-        /* --- Footer (Matches Settings Menu style) --- */
+        /* --- Footer --- */
         footer {
-            background: var(--surface);
             padding: 80px 10% 40px;
+            background: var(--bg-dark);
             border-top: 1px solid var(--border);
-            text-align: center;
         }
 
-        .footer-logo { font-size: 1.8rem; font-weight: 800; margin-bottom: 2rem; color: var(--primary); }
-        
-        .footer-links {
-            display: flex; justify-content: center; gap: 3rem; margin-bottom: 3rem;
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 60px;
         }
 
-        .footer-links a {
-            color: var(--text-sub); text-decoration: none; font-weight: 600; font-size: 1rem;
-            transition: var(--transition);
-        }
+        .footer-logo { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; color: var(--primary); }
 
-        .footer-links a:hover { color: var(--primary); }
-
-        .copyright {
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-            color: var(--text-sub);
-            font-size: 0.9rem;
-            display: flex; justify-content: space-between; align-items: center;
-        }
+        .footer-col h4 { margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 0.8rem; }
+        .footer-col a { color: var(--text-sub); text-decoration: none; transition: var(--transition); }
+        .footer-col a:hover { color: var(--primary); padding-left: 5px; }
 
         /* --- Animations --- */
-        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+        .reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
     </style>
@@ -205,76 +190,119 @@
 <body data-theme="dark">
 
     <nav>
-        <div class="logo">
-            <i class="fas fa-location-arrow"></i> SpotKeeper
-        </div>
-        <div class="nav-right">
-            <a href="https://stone-forze.github.io" class="btn btn-primary">Visit Studio</a>
-            <button class="btn theme-toggle" id="themeBtn">
-                <i class="fas fa-moon"></i>
-            </button>
+        <div class="logo">SPOTKEEPER</div>
+        <div style="display: flex; gap: 1.5rem; align-items: center;">
+            <button class="theme-toggle" id="themeBtn"><i class="fas fa-moon"></i></button>
+            <a href="https://stone-forze.github.io" class="btn btn-premium">Visit Studio</a>
         </div>
     </nav>
 
     <header class="hero">
-        <h1 class="reveal">Save your <span>spots</span>.<br>Keep your privacy.</h1>
-        <p class="reveal">The ultimate personal location diary. Organize your favorite places with beautiful 3D icons, notes, and local storage.</p>
+        <!-- Floating Elements -->
+        <div class="floating-icon" style="top: 15%; left: 10%;"><i class="fas fa-hospital-alt" style="font-size: 3rem; color: var(--primary);"></i></div>
+        <div class="floating-icon" style="top: 25%; right: 12%; animation-delay: -2s;"><i class="fas fa-coffee" style="font-size: 3rem; color: var(--accent);"></i></div>
+        
+        <h1 class="reveal">Intelligence for<br>Your Locations.</h1>
+        <p class="reveal">The premium Android utility for the modern traveler. SpotKeeper bridges the gap between raw coordinates and meaningful memories with 17+ 3D categorized icons and local-first security.</p>
         <div class="reveal">
-            <a href="#" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Download App</a>
+            <a href="#" class="btn btn-premium" style="padding: 1.2rem 3.5rem; font-size: 1.1rem;">Download on Play Store</a>
         </div>
     </header>
 
-    <div class="grid">
-        <!-- Feature 1 -->
-        <div class="app-card reveal">
-            <div class="icon-circle"><i class="fas fa-fingerprint"></i></div>
-            <h3>Privacy First</h3>
-            <p>Your locations are personal. That's why SpotKeeper stores everything locally. No cloud, no tracking, just you.</p>
-        </div>
-        <!-- Feature 2 -->
-        <div class="app-card reveal">
-            <div class="icon-circle"><i class="fas fa-shapes"></i></div>
-            <h3>3D Icon Magic</h3>
-            <p>Categorize your spots with 17+ high-quality 3D icons like Hospital, Cafe, and Park for a beautiful map view.</p>
-        </div>
-        <!-- Feature 3 -->
-        <div class="app-card reveal">
-            <div class="icon-circle"><i class="fas fa-route"></i></div>
-            <h3>Quick Navigate</h3>
-            <p>Need to get back? Use integrated maps to find the exact route to your saved coordinates with one tap.</p>
-        </div>
+    <div class="section-header reveal">
+        <h2>Designed for Precision.</h2>
     </div>
 
+    <section class="features-grid">
+        <div class="feature-card reveal">
+            <i class="fas fa-microchip"></i>
+            <h3>Local-First Engine</h3>
+            <p>We believe privacy is a right. SpotKeeper processes all location queries and photo storage on-device. Zero cloud exposure.</p>
+        </div>
+        <div class="feature-card reveal">
+            <i class="fas fa-layer-group"></i>
+            <h3>17+ 3D Categories</h3>
+            <p>From Hospitals to hidden Cafes. Our curated 3D icon library ensures your place diary looks professional and organized.</p>
+        </div>
+        <div class="feature-card reveal">
+            <i class="fas fa-satellite"></i>
+            <h3>GPS Intelligence</h3>
+            <p>Seamless integration with OpenStreetMap. Calculate distances, get accurate coordinates, and navigate back with one tap.</p>
+        </div>
+    </section>
+
+    <section class="legal-section" id="privacy">
+        <div class="legal-content reveal">
+            <h2>Privacy Policy & Terms</h2>
+            <br>
+            <p>SpotKeeper ("the App") is developed by <strong>Stone Forze</strong>. This application is designed to function as a standalone utility.</p>
+            <br>
+            <h3>Data Stewardship</h3>
+            <p>We do not collect, transmit, or sell your location data. All "Spots" you save are encrypted and stored within the App's private directory. The location permission (ACCESS_FINE_LOCATION) is invoked only during active use to pin your current coordinates.</p>
+            <br>
+            <h3>Monetization</h3>
+            <p>To keep the project sustainable, we utilize Google AdMob. Third-party advertisers may process device identifiers for personalized ad delivery. Please consult the AdMob privacy statement for details.</p>
+        </div>
+    </section>
+
     <footer>
-        <div class="footer-logo">SpotKeeper</div>
-        <div class="footer-links">
-            <a href="https://stone-forze.github.io">Visit Studio</a>
-            <a href="#privacy">Privacy Policy</a>
-            <a href="#terms">Terms of Service</a>
-            <a href="mailto:support@stoneforze.com">Support</a>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-logo">SPOTKEEPER</div>
+                <p>The premium choice for location management. Built by developers, for travelers.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="https://stone-forze.github.io">Visit Studio</a></li>
+                    <li><a href="#">Release Notes</a></li>
+                    <li><a href="#">3D Icons Pack</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                    <li><a href="#privacy">Terms of Service</a></li>
+                    <li><a href="mailto:stoneforze@gmail.com">Contact Us</a></li>
+                </ul>
+            </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2023 <strong>Stone Forze Studio</strong></p>
-            <p>Made for Android with Love</p>
+            <p>&copy; 2023 Stone Forze Studio. All Rights Reserved.</p>
+            <p>Built with Material 3 Principles</p>
         </div>
     </footer>
 
     <script>
+        // Premium Theme Switcher
         const themeBtn = document.getElementById('themeBtn');
         const icon = themeBtn.querySelector('i');
         const body = document.body;
 
-        // Persist theme or default to Dark
         themeBtn.addEventListener('click', () => {
-            const isDark = body.getAttribute('data-theme') === 'dark';
-            body.setAttribute('data-theme', isDark ? 'light' : 'dark');
-            icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            const current = body.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', next);
+            icon.className = next === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+            
+            // LocalStorage persistence
+            localStorage.setItem('spotkeeper-theme', next);
         });
 
-        // Scroll Reveal logic like the App's RecyclerView animations
+        // Load saved theme
+        const savedTheme = localStorage.getItem('spotkeeper-theme');
+        if (savedTheme) {
+            body.setAttribute('data-theme', savedTheme);
+            icon.className = savedTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+        }
+
+        // Professional Scroll Reveal
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
             });
         }, { threshold: 0.1 });
 
