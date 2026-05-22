@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clip Stone | Secure Offline Clipboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables for Theming */
+        :root {
+            /* Dark Mode (Default App Theme) */
+            --bg-color: #022b22;
+            --surface-color: #101c13;
+            --primary-accent: #275d46;
+            --primary-hover: #357a5c;
+            --secondary-accent: #569578;
+            --text-primary: #ffffff;
+            --text-secondary: #A0AAB2;
+            --card-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            --nav-bg: rgba(2, 43, 34, 0.85);
+        }
+
+        [data-theme="light"] {
+            /* Premium Light Mode */
+            --bg-color: #f2f7f5;
+            --surface-color: #ffffff;
+            --primary-accent: #275d46;
+            --primary-hover: #1e4a37;
+            --secondary-accent: #569578;
+            --text-primary: #022b22;
+            --text-secondary: #4a5c54;
+            --card-shadow: 0 8px 24px rgba(39, 93, 70, 0.08);
+            --nav-bg: rgba(242, 247, 245, 0.85);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Top Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(86, 149, 120, 0.2);
+        }
+
+        .brand-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-logo span {
+            color: var(--secondary-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-btn {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(86, 149, 120, 0.1);
+            color: var(--secondary-accent);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-accent);
+            color: #ffffff !important;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Theme Toggle Button */
+        #theme-toggle {
+            background: none;
+            border: 2px solid var(--secondary-accent);
+            color: var(--secondary-accent);
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            transition: all 0.3s ease;
+        }
+
+        #theme-toggle:hover {
+            background-color: var(--secondary-accent);
+            color: var(--bg-color);
+        }
+
+        /* Container & Sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding-top: 10rem;
+            padding-bottom: 5rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        /* Grid Layouts for Info Cards */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Premium App Cards */
+        .card {
+            background-color: var(--surface-color);
+            border-radius: 16px; /* Matches app UI */
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(86, 149, 120, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: var(--secondary-accent);
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Section Headers */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--surface-color);
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(86, 149, 120, 0.1);
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Can be replaced with a hamburger menu later */
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="brand-logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--secondary-accent);">
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+            </svg>
+            Clip <span>Stone</span>
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-btn">Visit Studio</a>
+            <a href="clipstone-policy.html" class="nav-btn">Privacy Policy</a>
+            <button id="theme-toggle" aria-label="Toggle Theme">
+                <svg id="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+            <a href="#download" class="btn-primary">Download App</a>
+        </div>
+    </nav>
+
+    <section class="hero container">
+        <h1>Your Secure Offline<br>Clipboard Vault.</h1>
+        <p>A premium, lightning-fast clipboard manager designed to solve a simple problem: never lose your copied text again. 100% offline. Zero tracking.</p>
+        <a href="#download" class="btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">Get it on Google Play</a>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title">Premium Features by Design</h2>
+        <div class="grid-3">
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3>Fluid Performance</h3>
+                <p>Built natively in Kotlin for Android. Optimized for flawless 60fps scrolling and sub-second load times on all devices, ensuring zero battery drain.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌙</div>
+                <h3>Dark Mode Optimized</h3>
+                <p>Designed with a deep forest green aesthetic (#022b22) that looks beautiful and actively conserves OLED battery life.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📤</div>
+                <h3>Share-to-Save</h3>
+                <p>Seamlessly send text directly to your vault from any app using Android's native share menu, without even opening Clip Stone.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" style="background-color: var(--surface-color); border-radius: 24px; padding: 4rem 2rem; box-shadow: var(--card-shadow);">
+        <div class="grid-2" style="align-items: center;">
+            <div>
+                <h2 style="font-size: 2rem; margin-bottom: 1rem;">Is Your Data Secured?</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">Absolute privacy is the core foundation of Clip Stone. Because your clipboard naturally handles sensitive information like passwords, we engineered this app to ensure your data remains entirely under your control.</p>
+                <ul style="color: var(--text-secondary); list-style-position: inside; margin-bottom: 1.5rem;">
+                    <li style="margin-bottom: 0.5rem;"><strong>100% Offline Vault:</strong> No backend servers. No cloud sync.</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Android Sandbox:</strong> Locked via OS-level security.</li>
+                    <li style="margin-bottom: 0.5rem;"><strong>Zero Harvesting:</strong> We have zero visibility into your history.</li>
+                </ul>
+            </div>
+            <div style="background-color: var(--bg-color); padding: 2rem; border-radius: 16px; border: 1px solid var(--secondary-accent);">
+                <h3 style="margin-bottom: 1rem; color: var(--secondary-accent);">No Internet Required</h3>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">Clip Stone operates entirely offline. Every piece of text you copy is saved directly into a local SQLite Room database located purely on your device’s physical storage. What happens on your device, stays on your device.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title">Transparent Monetization</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3>How Ads Work</h3>
+                <p>To keep the core features free, we use Google AdMob. If you are offline, ads simply disappear. AdMob operates in an isolated sandbox and <strong>cannot read, access, or scan</strong> your saved clipboard history.</p>
+            </div>
+            <div class="card">
+                <h3>Non-Intrusive Placements</h3>
+                <p>We strictly limit ad placements to protect your workflow. You will see an adaptive banner at the bottom and occasional native cards in your list. We never use launch interstitials that block your immediate access to clips.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h3 style="margin-bottom: 0.5rem; color: var(--text-primary);">A Stoneforze Project</h3>
+        <p style="margin-bottom: 1rem;">Developed by Mohammad Arman Siddiqui</p>
+        <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 1rem;">
+            <a href="index.html" style="color: var(--secondary-accent); text-decoration: none;">Visit Studio</a>
+            <span style="color: var(--text-secondary);">|</span>
+            <a href="clipstone-policy.html" style="color: var(--secondary-accent); text-decoration: none;">Privacy Policy</a>
+        </div>
+        <p>&copy; 2026 Stoneforze. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('moon-icon');
+        const htmlElement = document.documentElement;
+
+        // Check for saved theme preference, otherwise default to dark (app style)
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        htmlElement.setAttribute('data-theme', savedTheme);
+        updateIcon(savedTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+
+        function updateIcon(theme) {
+            if (theme === 'light') {
+                // Sun Icon for light mode
+                themeIcon.innerHTML = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+            } else {
+                // Moon Icon for dark mode
+                themeIcon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+            }
+        }
+    </script>
+</body>
+  </html>
