@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Sundry</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --surface-color: #1E1E2C;
+            --surface-elevated: #2D2D44;
+            --text-primary: #FFFFFF;
+            --text-secondary: #B0B0C0;
+            --accent-color: #00E676; /* Premium Green Accent */
+            --accent-glow: rgba(0, 230, 118, 0.2);
+            --border-color: #38384F;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 0;
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent-color), #00BFA5);
+            border-radius: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: #121212;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px var(--accent-glow);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .effective-date {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            margin-top: 16px;
+            display: inline-block;
+            background: var(--accent-glow);
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-weight: 600;
+        }
+
+        section {
+            background-color: var(--surface-color);
+            border-radius: 24px;
+            padding: 32px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            border-color: var(--surface-elevated);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 24px;
+            background-color: var(--accent-color);
+            border-radius: 4px;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+
+        ul {
+            list-style-type: none;
+            margin-bottom: 16px;
+        }
+
+        ul li {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            padding-left: 28px;
+            position: relative;
+            font-size: 1.05rem;
+        }
+
+        ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .contact-box {
+            background: linear-gradient(145deg, var(--surface-elevated), var(--surface-color));
+            text-align: center;
+        }
+
+        .contact-box h2::before {
+            display: none;
+        }
+        
+        .contact-box h2 {
+            justify-content: center;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 24px 16px;
+            }
+            
+            section {
+                padding: 24px;
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo-placeholder">S</div>
+            <h1>Privacy Policy</h1>
+            <p class="subtitle">Sundry - Precision Financial Ledger</p>
+            <span class="effective-date">Last Updated: August 25, 2026</span>
+        </header>
+
+        <section>
+            <h2>1. Introduction</h2>
+            <p>Welcome to <strong>Sundry</strong> ("we", "our", or "us"). We are committed to protecting your privacy and ensuring that your financial data remains secure and firmly under your control. This Privacy Policy details how we handle the information you provide when using our mobile application.</p>
+            <p>Because Sundry is designed as a precision, offline-first ledger, our philosophy is simple: <strong>Your data is yours.</strong></p>
+        </section>
+
+        <section>
+            <h2>2. Data Collection and Storage</h2>
+            <p>Sundry operates primarily as an offline application. The financial data you enter into the app is stored locally on your physical device.</p>
+            <ul>
+                <li><strong>Local Storage:</strong> Transactions, budgets, groups, and receipt data are encrypted and stored within the app's secure internal database on your device.</li>
+                <li><strong>No Cloud Syncing:</strong> We do not upload, store, or transmit your financial records, transaction history, or budget details to any external servers or databases owned by us.</li>
+                <li><strong>Backups:</strong> You have the ability to manually export and import your database (e.g., as a local backup file or CSV). These backups are initiated by you and saved to a location of your choosing on your device.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>3. Third-Party Services</h2>
+            <p>While your core financial data remains local, Sundry integrates with a few carefully selected third-party services to enhance app functionality and support development:</p>
+            <ul>
+                <li><strong>Google AdMob:</strong> We use Google AdMob to display advertisements. AdMob may automatically collect certain device information, such as your IP address, device identifiers (like the Android Advertising ID), and usage data to serve relevant ads. You can manage your ad preferences or opt-out of personalized ads via your device's Google Settings.</li>
+                <li><strong>Google Play Services:</strong> The app utilizes the Google Play Core API to seamlessly check for app updates and request in-app reviews. This process communicates directly with the Google Play Store.</li>
+                <li><strong>Currency Exchange Rates:</strong> When utilizing currency conversion features, the app makes secure, anonymous requests to public exchange rate APIs. No personal or transaction data is sent during these requests; only the currency codes are queried.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>4. Permissions Required</h2>
+            <p>To provide you with a premium experience, Sundry requires the following device permissions:</p>
+            <ul>
+                <li><strong>Camera:</strong> Used strictly for the Receipt Scanner feature to capture images of your physical receipts. Images are processed locally on your device and are not uploaded to our servers.</li>
+                <li><strong>Internet/Network Access:</strong> Required to fetch live currency exchange rates and to serve advertisements via Google AdMob.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>5. Data Retention and Deletion</h2>
+            <p>Because your data is stored exclusively on your device, you maintain absolute control over its lifecycle.</p>
+            <ul>
+                <li>You can delete individual transactions, budgets, or groups at any time within the app.</li>
+                <li>You can permanently delete all your data by navigating to the device Settings and clearing the app's data or by uninstalling Sundry entirely.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>6. Children's Privacy</h2>
+            <p>Sundry is a financial utility application intended for a general audience. We do not knowingly collect personal information from children under the age of 13. If you are a parent or guardian and believe your child has provided us with personal data without your consent, please contact us so we can take immediate action to remove the information.</p>
+        </section>
+
+        <section>
+            <h2>7. Changes to This Policy</h2>
+            <p>We reserve the right to update or modify this Privacy Policy at any time to reflect changes in our practices, technology, or legal requirements. When we make significant changes, we will update the "Last Updated" date at the top of this document. We encourage you to review this policy periodically.</p>
+        </section>
+
+        <section class="contact-box">
+            <h2>Contact Us</h2>
+            <p>If you have any questions, concerns, or feedback regarding this Privacy Policy or how your data is handled, we'd love to hear from you.</p>
+            <p>Email: <a href="mailto:support@stoneforze.com">support@stoneforze.com</a></p>
+        </section>
+
+        <footer>
+            &copy; 2026 Stoneforze. All rights reserved.
+        </footer>
+    </div>
+
+</body>
+</html>
