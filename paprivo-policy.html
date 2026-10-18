@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Privacy Policy | Paprivo: PDF Reader &amp; Tools</title>
+  <meta name="description" content="Privacy Policy for Paprivo: PDF Reader &amp; Tools. Explains our offline-first local document processing, local storage, permissions, and Google AdMob integration.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0B6B46" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0D1612" media="(prefers-color-scheme: dark)">
+
+  <style>
+    /* ==========================================================================
+       Paprivo Privacy Policy - Design System Tokens & Base Styles
+       Matches Paprivo Emerald Theme (Light & Dark Mode)
+       ========================================================================== */
+    :root {
+      --color-primary: #0B6B46;
+      --color-primary-dark: #06452F;
+      --color-primary-light: #128F5E;
+      --color-mint-accent: #C9F7E2;
+      --color-mint-glow: rgba(11, 107, 70, 0.12);
+      
+      --color-bg: #F4F9F6;
+      --color-surface: #FFFFFF;
+      --color-surface-elevated: #FFFFFF;
+      --color-surface-variant: #E8F3EC;
+      
+      --color-text-main: #17231D;
+      --color-text-secondary: #5C6962;
+      --color-text-muted: #7E8D85;
+      --color-border: #D8E6DE;
+      --color-border-subtle: #E6F0EA;
+      
+      --color-badge-bg: #E1F7EC;
+      --color-badge-text: #065B3B;
+      
+      --shadow-sm: 0 1px 3px rgba(11, 107, 70, 0.05), 0 1px 2px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 4px 14px rgba(11, 107, 70, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
+      --shadow-lg: 0 10px 28px rgba(11, 107, 70, 0.12), 0 4px 10px rgba(0, 0, 0, 0.04);
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      
+      --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      
+      --transition-fluid: 200ms cubic-bezier(0.16, 1, 0.3, 1);
+      --max-content-width: 860px;
+    }
+
+    [data-theme="dark"] {
+      --color-primary: #34D399;
+      --color-primary-dark: #059669;
+      --color-primary-light: #6EE7B7;
+      --color-mint-accent: #064E3B;
+      --color-mint-glow: rgba(52, 211, 153, 0.15);
+      
+      --color-bg: #0D1612;
+      --color-surface: #14221C;
+      --color-surface-elevated: #1B2C24;
+      --color-surface-variant: #1E332A;
+      
+      --color-text-main: #EBF5F0;
+      --color-text-secondary: #A3B8AD;
+      --color-text-muted: #748B80;
+      --color-border: #263E33;
+      --color-border-subtle: #1D3128;
+      
+      --color-badge-bg: #113627;
+      --color-badge-text: #6EE7B7;
+      
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.45);
+      --shadow-lg: 0 10px 28px rgba(0, 0, 0, 0.55);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --color-primary: #34D399;
+        --color-primary-dark: #059669;
+        --color-primary-light: #6EE7B7;
+        --color-mint-accent: #064E3B;
+        --color-mint-glow: rgba(52, 211, 153, 0.15);
+        
+        --color-bg: #0D1612;
+        --color-surface: #14221C;
+        --color-surface-elevated: #1B2C24;
+        --color-surface-variant: #1E332A;
+        
+        --color-text-main: #EBF5F0;
+        --color-text-secondary: #A3B8AD;
+        --color-text-muted: #748B80;
+        --color-border: #263E33;
+        --color-border-subtle: #1D3128;
+        
+        --color-badge-bg: #113627;
+        --color-badge-text: #6EE7B7;
+        
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+        --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.45);
+        --shadow-lg: 0 10px 28px rgba(0, 0, 0, 0.55);
+      }
+    }
+
+    /* ==========================================================================
+       CSS Reset & Typography
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--font-stack);
+      background-color: var(--color-bg);
+      color: var(--color-text-main);
+      line-height: 1.65;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color var(--transition-fluid), color var(--transition-fluid);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ==========================================================================
+       Layout Containers
+       ========================================================================== */
+    .site-header {
+      background-color: var(--color-surface);
+      border-bottom: 1px solid var(--color-border-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: background-color var(--transition-fluid), border-color var(--transition-fluid);
+    }
+
+    .header-inner {
+      max-width: var(--max-content-width);
+      margin: 0 auto;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      box-shadow: var(--shadow-sm);
+      flex-shrink: 0;
+    }
+
+    .brand-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    .brand-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--color-text-main);
+    }
+
+    .brand-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background-color: var(--color-badge-bg);
+      color: var(--color-badge-text);
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-full);
+      margin-left: 0.25rem;
+    }
+
+    .theme-toggle-btn {
+      background: var(--color-surface-variant);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-main);
+      padding: 0.45rem 0.85rem;
+      border-radius: var(--radius-full);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all var(--transition-fluid);
+    }
+
+    .theme-toggle-btn:hover {
+      background: var(--color-border);
+      transform: translateY(-1px);
+    }
+
+    .theme-toggle-btn:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    .main-container {
+      max-width: var(--max-content-width);
+      margin: 0 auto;
+      padding: 2.25rem 1.25rem 4rem;
+      flex: 1;
+      width: 100%;
+    }
+
+    /* ==========================================================================
+       Hero Section
+       ========================================================================== */
+    .hero-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.75rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--color-primary), #34D399);
+    }
+
+    .hero-title {
+      font-size: 2.1rem;
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -0.03em;
+      color: var(--color-text-main);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--color-text-secondary);
+      max-width: 680px;
+      line-height: 1.55;
+      margin-bottom: 1.4rem;
+    }
+
+    .metadata-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      font-size: 0.84rem;
+      color: var(--color-text-muted);
+      border-top: 1px solid var(--color-border-subtle);
+      padding-top: 1rem;
+    }
+
+    .metadata-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .metadata-item strong {
+      color: var(--color-text-secondary);
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       Table of Contents (TOC)
+       ========================================================================== */
+    .toc-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.4rem 1.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .toc-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-primary);
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.45rem 1.25rem;
+    }
+
+    .toc-link {
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.4rem;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition-fluid);
+    }
+
+    .toc-link:hover {
+      color: var(--color-primary);
+      background-color: var(--color-mint-glow);
+      transform: translateX(2px);
+    }
+
+    .toc-link::before {
+      content: "•";
+      color: var(--color-primary);
+      font-weight: bold;
+    }
+
+    /* ==========================================================================
+       Policy Content & Headings
+       ========================================================================== */
+    .policy-content section {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      margin-bottom: 1.75rem;
+      box-shadow: var(--shadow-sm);
+      scroll-margin-top: 5rem;
+      transition: border-color var(--transition-fluid);
+    }
+
+    .policy-content section:focus-within {
+      border-color: var(--color-primary);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+
+    .section-num {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--color-primary);
+      font-family: var(--font-mono);
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 750;
+      letter-spacing: -0.02em;
+      color: var(--color-text-main);
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--color-text-main);
+      margin: 1.3rem 0 0.5rem;
+    }
+
+    p {
+      margin-bottom: 0.9rem;
+      color: var(--color-text-secondary);
+      font-size: 0.96rem;
+      line-height: 1.65;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    strong {
+      color: var(--color-text-main);
+      font-weight: 650;
+    }
+
+    ul, ol {
+      margin: 0.7rem 0 1rem 1.4rem;
+      color: var(--color-text-secondary);
+      font-size: 0.95rem;
+    }
+
+    li {
+      margin-bottom: 0.45rem;
+      line-height: 1.55;
+    }
+
+    a {
+      color: var(--color-primary);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      transition: color var(--transition-fluid);
+    }
+
+    a:hover {
+      color: var(--color-primary-light);
+    }
+
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.88em;
+      background-color: var(--color-surface-variant);
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      border: 1px solid var(--color-border);
+      color: var(--color-text-main);
+    }
+
+    /* Highlight & Notice Boxes */
+    .notice-box {
+      background-color: var(--color-surface-variant);
+      border-left: 4px solid var(--color-primary);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 1rem 1.15rem;
+      margin: 1.15rem 0;
+      font-size: 0.92rem;
+    }
+
+    .notice-box.alert {
+      border-left-color: #F59E0B;
+      background-color: rgba(245, 158, 11, 0.08);
+    }
+
+    .notice-box p {
+      color: var(--color-text-main);
+      font-size: 0.92rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .notice-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Verification Badge Callout */
+    .verified-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background-color: var(--color-badge-bg);
+      color: var(--color-badge-text);
+      font-size: 0.78rem;
+      font-weight: 650;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-full);
+      margin-bottom: 0.75rem;
+    }
+
+    .placeholder-tag {
+      display: inline-block;
+      background-color: rgba(245, 158, 11, 0.15);
+      color: #B45309;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.85em;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      border: 1px dashed #D97706;
+    }
+
+    /* Table Styles */
+    .data-table-wrapper {
+      overflow-x: auto;
+      margin: 1rem 0 1.25rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+
+    th {
+      background-color: var(--color-surface-variant);
+      color: var(--color-text-main);
+      font-weight: 700;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--color-border);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--color-border-subtle);
+      color: var(--color-text-secondary);
+      vertical-align: top;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* ==========================================================================
+       Site Footer
+       ========================================================================== */
+    .site-footer {
+      background-color: var(--color-surface);
+      border-top: 1px solid var(--color-border-subtle);
+      padding: 2.25rem 1.25rem;
+      margin-top: auto;
+      text-align: center;
+      font-size: 0.88rem;
+      color: var(--color-text-muted);
+      transition: background-color var(--transition-fluid);
+    }
+
+    .footer-inner {
+      max-width: var(--max-content-width);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.25rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      color: var(--color-primary);
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+      }
+      .site-header, .theme-toggle-btn, .toc-card, .site-footer {
+        display: none !important;
+      }
+      .main-container {
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+      .hero-card, .policy-content section {
+        box-shadow: none !important;
+        border: 1px solid #CCCCCC !important;
+        page-break-inside: avoid;
+        margin-bottom: 1.5rem !important;
+      }
+      a {
+        text-decoration: underline !important;
+        color: #000000 !important;
+      }
+    }
+
+    /* Small Screen Adjustments */
+    @media (max-width: 640px) {
+      .hero-title {
+        font-size: 1.65rem;
+      }
+      .hero-card {
+        padding: 1.4rem 1.2rem;
+      }
+      .policy-content section {
+        padding: 1.25rem;
+      }
+      .toc-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       Site Header
+       ========================================================================== -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="#top" class="brand-group" aria-label="Paprivo Home">
+        <div class="brand-icon" aria-hidden="true">
+          <!-- Document Shield Icon SVG -->
+          <svg viewBox="0 0 24 24">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 20V4h7v5h5v11H6zm10-7h-8v-2h8v2zm-2 4h-6v-2h6v2z"/>
+          </svg>
+        </div>
+        <div>
+          <span class="brand-name">Paprivo</span>
+          <span class="brand-tag">Privacy</span>
+        </div>
+      </a>
+
+      <button id="themeToggle" class="theme-toggle-btn" type="button" aria-label="Toggle visual theme">
+        <span id="themeIcon" aria-hidden="true">🌙</span>
+        <span id="themeLabel">Dark Mode</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       Main Content Container
+       ========================================================================== -->
+  <main class="main-container" id="top" role="main">
+
+    <!-- Hero Card -->
+    <div class="hero-card">
+      <div class="verified-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+        </svg>
+        Production Privacy Policy
+      </div>
+      <h1 class="hero-title">Privacy Policy for Paprivo: PDF Reader &amp; Tools</h1>
+      <p class="hero-subtitle">
+        Paprivo is engineered with an <strong>offline-first, on-device document processing model</strong>. Your personal documents, images, and markups remain under your direct control on your device.
+      </p>
+
+      <div class="metadata-bar">
+        <div class="metadata-item">
+          <strong>Application:</strong> Paprivo: PDF Reader &amp; Tools
+        </div>
+        <div class="metadata-item">
+          <strong>Package ID:</strong> <code>com.stoneforze.paprivo</code> <small>(also referenced in legacy declarations as <code>com.paperlite.app</code>)</small>
+        </div>
+        <div class="metadata-item">
+          <strong>Effective Date:</strong> October 18, 2026
+        </div>
+        <div class="metadata-item">
+          <strong>Last Updated:</strong> October 18, 2026
+        </div>
+      </div>
+    </div>
+
+    <!-- Table of Contents -->
+    <nav class="toc-card" aria-label="Table of contents">
+      <div class="toc-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/>
+        </svg>
+        Table of Contents
+      </div>
+      <ul class="toc-list">
+        <li><a class="toc-link" href="#introduction">1. Introduction &amp; Overview</a></li>
+        <li><a class="toc-link" href="#information-we-collect">2. Information We Collect</a></li>
+        <li><a class="toc-link" href="#how-information-is-used">3. How Information Is Used</a></li>
+        <li><a class="toc-link" href="#on-device-processing">4. On-Device Document Processing</a></li>
+        <li><a class="toc-link" href="#permissions-and-access">5. Permissions &amp; File Access</a></li>
+        <li><a class="toc-link" href="#advertising-third-party">6. Advertising &amp; Third-Party Services</a></li>
+        <li><a class="toc-link" href="#data-sharing-disclosure">7. Data Sharing &amp; Disclosure</a></li>
+        <li><a class="toc-link" href="#data-retention-deletion">8. Data Retention &amp; Deletion</a></li>
+        <li><a class="toc-link" href="#security-safeguards">9. Security Safeguards</a></li>
+        <li><a class="toc-link" href="#childrens-privacy">10. Children's Privacy &amp; Audience</a></li>
+        <li><a class="toc-link" href="#international-processing">11. International Processing</a></li>
+        <li><a class="toc-link" href="#user-privacy-rights">12. Your Privacy Rights</a></li>
+        <li><a class="toc-link" href="#policy-changes">13. Changes to This Policy</a></li>
+        <li><a class="toc-link" href="#contact-information">14. Contact Information</a></li>
+      </ul>
+    </nav>
+
+    <!-- Policy Sections -->
+    <div class="policy-content">
+
+      <!-- Section 1: Introduction -->
+      <section id="introduction">
+        <div class="section-header">
+          <span class="section-num">01.</span>
+          <h2>Introduction &amp; Overview</h2>
+        </div>
+        <p>
+          Welcome to <strong>Paprivo: PDF Reader &amp; Tools</strong> (referred to as "Paprivo", "the Application", "we", "our", or "us"). Paprivo is a native Android application built to provide offline-first PDF viewing, document creation, image conversion, page management, and annotation utilities.
+        </p>
+        <p>
+          This Privacy Policy describes our practices regarding the handling of information when you install, access, or use Paprivo. The core architecture of Paprivo is designed so that <strong>your files, documents, and creative inputs are processed locally on your Android device</strong>. We do not operate remote document-processing servers, we do not require user accounts or logins, and we do not transmit your document contents to cloud storage.
+        </p>
+        <div class="notice-box">
+          <p>
+            <strong>Summary:</strong> Paprivo works offline for all document tasks. Network connectivity is utilized exclusively by third-party advertising SDKs (Google AdMob) and user consent management (Google User Messaging Platform) to deliver advertising and fraud prevention.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 2: Information We Collect -->
+      <section id="information-we-collect">
+        <div class="section-header">
+          <span class="section-num">02.</span>
+          <h2>Information We Collect</h2>
+        </div>
+        <p>
+          We categorize the information handled in connection with Paprivo into the following distinct categories:
+        </p>
+
+        <h3>A. User Documents and Media Files</h3>
+        <ul>
+          <li><strong>PDF Documents:</strong> Files you explicitly pick or open from device storage, file managers, or third-party applications via standard Android intents.</li>
+          <li><strong>Image Files:</strong> Photographs or images you select from your device gallery or photo picker for conversion into PDF documents.</li>
+          <li><strong>Processed Outputs:</strong> New files generated at your direction (such as merged PDFs, split page ranges, compressed PDFs, rotated documents, or newly created notes).</li>
+          <li><strong>Markups &amp; Annotations:</strong> Freehand pen strokes, highlighter paths, and colors you draw on document pages.</li>
+        </ul>
+        <p>
+          <strong>Crucial Privacy Principle:</strong> All document contents, text, images, and drawings remain strictly local on your device. Paprivo does <em>not</em> upload, duplicate to remote servers, read for profiling, or expose your documents to external networks.
+        </p>
+
+        <h3>B. Local Application Data &amp; Preferences</h3>
+        <p>
+          To provide continuity across reading sessions, Paprivo saves operational metadata locally on your device using Android's private Room SQLite database and <code>SharedPreferences</code>:
+        </p>
+        <ul>
+          <li><strong>Document Library History:</strong> Document URI references, filenames, file sizes, page counts, last-read page numbers, and timestamps.</li>
+          <li><strong>Favorites &amp; Bookmarks:</strong> Specific documents you mark as favorites or individual page indices you bookmark.</li>
+          <li><strong>Annotation Geometry:</strong> Normalized vector coordinates of pen and highlighter markings tied to specific document URIs and page indices.</li>
+          <li><strong>User Preferences:</strong> Theme selection (Light / Dark / System Default), document sorting preferences (by Name, Date, Size, Ascending/Descending), reader zoom defaults, page scroll modes (Paged swipe vs. Continuous scroll), and page transition animation styles.</li>
+        </ul>
+        <p>
+          This data is stored entirely in Android's app-private sandbox storage and is deleted automatically if you clear application data or uninstall the app.
+        </p>
+
+        <h3>C. Advertising &amp; Device Identifiers (Google AdMob &amp; UMP)</h3>
+        <p>
+          Paprivo integrates the <strong>Google Mobile Ads (AdMob) SDK</strong> and <strong>Google User Messaging Platform (UMP)</strong> to support free access to the application through advertisements.
+        </p>
+        <p>
+          Depending on your regional location, consent choices, and Android device settings, Google AdMob and its advertising partners may automatically process:
+        </p>
+        <ul>
+          <li><strong>Device &amp; Hardware Information:</strong> Device model, manufacturer, operating system version, screen dimensions, language, and carrier.</li>
+          <li><strong>Advertising Identifiers:</strong> Google Advertising ID (GAID), subject to your Android OS privacy settings and consent declarations.</li>
+          <li><strong>Network Information:</strong> Coarse IP address (used by Google for general geographic estimation, fraud prevention, and regional ad compliance).</li>
+          <li><strong>Ad Interaction Metrics:</strong> Information regarding ad impressions, clicks, viewability, and diagnostic signals.</li>
+        </ul>
+        <p>
+          <em>Note:</em> The developer of Paprivo does not collect, sell, or receive personal identity records from AdMob. All advertising data collection is governed directly by Google's Privacy Policy.
+        </p>
+
+        <h3>D. Information You Voluntarily Provide</h3>
+        <p>
+          Paprivo does not include user registration, profiles, or login screens. If you contact our support or developer contact email directly, we receive your email address, name (if attached to your email client), and whatever details you include in your message. This information is used strictly to assist with your technical inquiries.
+        </p>
+      </section>
+
+      <!-- Section 3: How Information Is Used -->
+      <section id="how-information-is-used">
+        <div class="section-header">
+          <span class="section-num">03.</span>
+          <h2>How Information Is Used</h2>
+        </div>
+        <p>
+          Every piece of information processed in Paprivo serves a specific functional purpose:
+        </p>
+
+        <div class="data-table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Data Type</th>
+                <th>Processing Location</th>
+                <th>Primary Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>PDF Documents &amp; Images</strong></td>
+                <td>Local (On-Device Memory)</td>
+                <td>Rendering pages, converting images to PDF, merging, splitting, compressing, and rotating documents as instructed by you.</td>
+              </tr>
+              <tr>
+                <td><strong>Page Annotations &amp; Drawings</strong></td>
+                <td>Local Room Database</td>
+                <td>Displaying and persisting your visual markings on document pages, with optional export/baking into new PDF files.</td>
+              </tr>
+              <tr>
+                <td><strong>Reading Progress &amp; Bookmarks</strong></td>
+                <td>Local Room Database</td>
+                <td>Returning you to your last-read page, displaying reading progress bars, and restoring your saved bookmarked pages.</td>
+              </tr>
+              <tr>
+                <td><strong>UI &amp; Reader Preferences</strong></td>
+                <td>Local SharedPreferences</td>
+                <td>Applying your chosen theme, sorting order, zoom scale, and page transition animations across sessions.</td>
+              </tr>
+              <tr>
+                <td><strong>Ad Delivery &amp; Consent Signals</strong></td>
+                <td>Third-Party (Google AdMob/UMP)</td>
+                <td>Serving non-intrusive ads, frequency capping, fraud prevention, and honoring European Economic Area (EEA) / UK consent requirements.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="notice-box alert">
+          <p>
+            <strong>What We Never Do:</strong> We do not sell your personal data. We do not use your documents to train artificial intelligence or machine learning models. We do not track your activity across other applications or websites.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 4: On-Device Document Processing -->
+      <section id="on-device-processing">
+        <div class="section-header">
+          <span class="section-num">04.</span>
+          <h2>On-Device Document Processing Model</h2>
+        </div>
+        <p>
+          Paprivo’s core document engine is built on Android’s native <code>PdfRenderer</code> API and local open-source libraries (Apache PDFBox for Android).
+        </p>
+        <ul>
+          <li><strong>Zero Remote Uploads:</strong> When you open a PDF, convert images, merge files, or rotate pages, the byte processing happens entirely within your device's memory (RAM and CPU/GPU).</li>
+          <li><strong>Storage Access Framework (SAF):</strong> Paprivo interacts with documents through Android’s secure Storage Access Framework. The application requests access only to the specific files or folders you authorize through the Android system file picker.</li>
+          <li><strong>Temporary &amp; Cache Data:</strong> During rendering, bitmap thumbnails and page caches are created in volatile memory or the app's private cache directory (<code>context.cacheDir</code>). These temporary caches are trimmed automatically during low-memory conditions and can be purged at any time by clearing the app cache.</li>
+          <li><strong>Non-Destructive Operations:</strong> Editing operations (such as rotating, splitting, or merging) generate a fresh output file in your designated storage location. Your original source files remain intact and unmodified unless you explicitly delete them using a file manager.</li>
+        </ul>
+      </section>
+
+      <!-- Section 5: Permissions & File Access -->
+      <section id="permissions-and-access">
+        <div class="section-header">
+          <span class="section-num">05.</span>
+          <h2>Android Permissions &amp; File Access</h2>
+        </div>
+        <p>
+          Paprivo declares only the permissions strictly required to deliver its documented functionality. We do not request broad device administration or unrestricted access to personal folders.
+        </p>
+
+        <div class="data-table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Declared Permission</th>
+                <th>Type</th>
+                <th>Specific Purpose in Paprivo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>INTERNET</code></td>
+                <td>Normal Permission</td>
+                <td>Required by the Google Mobile Ads SDK and Google User Messaging Platform to request and display advertisements and update consent statuses. <em>Not used for document transmission.</em></td>
+              </tr>
+              <tr>
+                <td><code>ACCESS_NETWORK_STATE</code></td>
+                <td>Normal Permission</td>
+                <td>Allows the advertising framework to check whether an active internet connection is available before requesting ad content.</td>
+              </tr>
+              <tr>
+                <td><code>CAMERA</code></td>
+                <td>Runtime Permission</td>
+                <td>Optional. Used only if you choose to capture physical documents or photographs directly with your camera for conversion to PDF. <em>Declared with <code>android.hardware.camera required="false"</code> so devices without cameras can still install the app.</em></td>
+              </tr>
+              <tr>
+                <td><code>READ_MEDIA_IMAGES</code></td>
+                <td>Runtime Permission (API 33+)</td>
+                <td>Enables the photo picker to display and select images from your gallery for the Image-to-PDF conversion tool.</td>
+              </tr>
+              <tr>
+                <td><code>READ_EXTERNAL_STORAGE</code></td>
+                <td>Runtime Permission (API &le; 32)</td>
+                <td>Legacy storage permission for Android 12 and earlier, enabling user-directed selection of PDF files and images.</td>
+              </tr>
+              <tr>
+                <td><code>POST_NOTIFICATIONS</code></td>
+                <td>Runtime Permission (API 33+)</td>
+                <td>Allows Paprivo to notify you when long-running file operations (such as large PDF merges or batch exports) have successfully finished.</td>
+              </tr>
+              <tr>
+                <td><code>RECEIVE_BOOT_COMPLETED</code></td>
+                <td>Normal Permission</td>
+                <td>Used solely to refresh Paprivo's home screen widget ("Recent Documents") when your device boots up.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          You may grant or revoke optional runtime permissions (such as Camera) at any time through your device's <code>Settings &gt; Apps &gt; Paprivo &gt; Permissions</code> without affecting core PDF viewing capabilities.
+        </p>
+      </section>
+
+      <!-- Section 6: Advertising & Third-Party Services -->
+      <section id="advertising-third-party">
+        <div class="section-header">
+          <span class="section-num">06.</span>
+          <h2>Advertising &amp; Third-Party Services</h2>
+        </div>
+        <p>
+          Paprivo is made available at no monetary charge by displaying advertisements supplied by <strong>Google AdMob</strong>.
+        </p>
+
+        <h3>A. Google AdMob</h3>
+        <p>
+          Google AdMob serves banner ads, interstitial transitions, app open ads, and optional rewarded ads within the application. The AdMob SDK may collect and process device identifiers, advertising identifiers, cookies or mobile identifiers, and IP addresses to provide:
+        </p>
+        <ul>
+          <li>Frequency capping (ensuring you do not see the same advertisement repeatedly).</li>
+          <li>Fraud and bot detection to safeguard advertisers and publishers.</li>
+          <li>Aggregate measurement, attribution, and reporting.</li>
+          <li>Personalized or contextual advertising based on your consent.</li>
+        </ul>
+
+        <h3>B. European Economic Area (EEA) &amp; UK Consent (Google UMP)</h3>
+        <p>
+          In accordance with Google policy and European privacy laws (GDPR / ePrivacy Directive), Paprivo integrates the <strong>Google User Messaging Platform (UMP) SDK</strong>.
+        </p>
+        <ul>
+          <li>When launched in applicable jurisdictions, Paprivo presents a certified Consent Management Platform (CMP) dialog.</li>
+          <li>You may choose whether to consent to personalized advertisements, non-personalized advertisements, or vendor cookies.</li>
+          <li>You can reset or change your advertising consent preferences at any time through the in-app Settings menu or through your Google Account settings.</li>
+        </ul>
+
+        <h3>C. Third-Party Documentation Links</h3>
+        <p>
+          We encourage you to review Google's official privacy documentation:
+        </p>
+        <ul>
+          <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a></li>
+          <li><a href="https://developers.google.com/admob/android/privacy" target="_blank" rel="noopener noreferrer">Google AdMob Privacy &amp; Security Documentation</a></li>
+          <li><a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer">Google Ads Settings &amp; Personalization Controls</a></li>
+        </ul>
+      </section>
+
+      <!-- Section 7: Data Sharing & Disclosure -->
+      <section id="data-sharing-disclosure">
+        <div class="section-header">
+          <span class="section-num">07.</span>
+          <h2>Data Sharing &amp; Disclosure</h2>
+        </div>
+        <p>
+          We adhere to strict data-minimization practices regarding sharing and disclosure:
+        </p>
+        <ul>
+          <li><strong>Document Content Sharing:</strong> We do <em>not</em> share, sell, rent, or transfer your document contents, file paths, images, or annotations to any third party.</li>
+          <li><strong>Advertising Partners:</strong> Google AdMob operates as an independent data controller with respect to ad serving and fraud mitigation data collected through its SDK, as governed by Google's privacy policy.</li>
+          <li><strong>System Sharing via Android Intents:</strong> When you use Paprivo's "Share PDF", "Print", or "Open With" features, document files are shared strictly with the destination application you choose (such as your email client, cloud drive, or printer service) through Android's secure <code>FileProvider</code>.</li>
+          <li><strong>Legal Compulsion:</strong> Because we do not transmit or store your documents or account credentials on remote servers, we have no user document repositories to provide to third parties or law enforcement agencies.</li>
+        </ul>
+      </section>
+
+      <!-- Section 8: Data Retention & Deletion -->
+      <section id="data-retention-deletion">
+        <div class="section-header">
+          <span class="section-num">08.</span>
+          <h2>Data Retention &amp; Deletion</h2>
+        </div>
+        <p>
+          Because Paprivo operates primarily on your device, you have direct control over data retention:
+        </p>
+        <ul>
+          <li><strong>User Documents:</strong> Documents you create or save (such as merged PDFs or exports) remain in your device’s storage until you delete them using a file manager or storage tool. Removing a document from Paprivo’s "Recent" library list simply removes the database reference; it does not delete the physical file from your device.</li>
+          <li><strong>In-App Database Records:</strong> Document history, favorites, bookmarks, and markup coordinates are stored in the app’s internal Room database. You can clear this at any time by going to <code>Settings &gt; Apps &gt; Paprivo &gt; Storage &gt; Clear Storage / Clear Data</code>.</li>
+          <li><strong>Temporary Bitmaps:</strong> Rendered page previews and thumbnail caches in <code>context.cacheDir</code> are purged when system memory is low and can be cleared via <code>Clear Cache</code> in Android Settings.</li>
+          <li><strong>Application Uninstallation:</strong> Uninstalling Paprivo immediately and permanently removes all internal database records, preferences, and cached thumbnails from your device. Files stored in public storage (such as your Downloads folder) remain under your file manager's control.</li>
+        </ul>
+      </section>
+
+      <!-- Section 9: Security Safeguards -->
+      <section id="security-safeguards">
+        <div class="section-header">
+          <span class="section-num">09.</span>
+          <h2>Security Safeguards &amp; Architecture</h2>
+        </div>
+        <p>
+          We employ robust mobile engineering safeguards to protect your document privacy:
+        </p>
+        <ul>
+          <li><strong>Android Application Sandbox:</strong> Paprivo runs in a dedicated Android process with a unique Linux user ID, preventing other non-root applications from accessing its private database or temporary rendering files.</li>
+          <li><strong>Secure File Sharing:</strong> When sharing or exporting documents, Paprivo uses <code>androidx.core.content.FileProvider</code> with short-lived, granular URI permissions (<code>FLAG_GRANT_READ_URI_PERMISSION</code>), eliminating insecure exposed filesystem paths.</li>
+          <li><strong>Local Isolation:</strong> By avoiding cloud processing pipelines, your documents are shielded from network interception, server data breaches, and remote configuration errors.</li>
+        </ul>
+        <div class="notice-box">
+          <p>
+            <strong>Security Notice:</strong> While on-device processing minimizes external exposure, the security of files stored on your device depends on your device's security configuration (screen lock PIN/biometrics, encryption status, and avoidance of rooted or untrusted operating systems).
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 10: Children's Privacy -->
+      <section id="childrens-privacy">
+        <div class="section-header">
+          <span class="section-num">10.</span>
+          <h2>Children's Privacy &amp; Target Audience</h2>
+        </div>
+        <p>
+          Paprivo is designed for general adult utility and productivity purposes and is declared on the Google Play Store for users <strong>aged 18 and older</strong>.
+        </p>
+        <p>
+          The application does not intentionally solicit, collect, or target personal information from children under the age of 13 (or under 16 in applicable European jurisdictions). If you are a parent or guardian and believe that a child under your care has provided personal data through technical support communications, please contact us at <a href="mailto:stoneforze.help@gmail.com">stoneforze.help@gmail.com</a> so we can promptly delete the information.
+        </p>
+      </section>
+
+      <!-- Section 11: International Data Processing -->
+      <section id="international-processing">
+        <div class="section-header">
+          <span class="section-num">11.</span>
+          <h2>International Data Processing</h2>
+        </div>
+        <p>
+          Because Paprivo processes all documents locally on your device, your document files are never transferred across international borders by Paprivo.
+        </p>
+        <p>
+          Advertising interactions and diagnostic telemetry handled by Google AdMob may be transferred to and processed on servers located in the United States and other international jurisdictions where Google and its service providers maintain facilities. These transfers are governed by Google's compliance frameworks and standard contractual clauses.
+        </p>
+      </section>
+
+      <!-- Section 12: User Privacy Rights -->
+      <section id="user-privacy-rights">
+        <div class="section-header">
+          <span class="section-num">12.</span>
+          <h2>Your Privacy Rights &amp; Choices</h2>
+        </div>
+        <p>
+          Depending on your country or state of residence (such as the European Economic Area under GDPR, the United Kingdom under UK-GDPR, or California under CCPA/CPRA), you may hold statutory rights regarding your personal information:
+        </p>
+        <ul>
+          <li><strong>Right of Access &amp; Portability:</strong> All documents created or managed in Paprivo exist in standard open formats (.pdf) directly on your device storage, fully accessible to you at all times.</li>
+          <li><strong>Right to Deletion / Erasure:</strong> You can purge all in-app records and preferences at any time by clearing application storage in Android Settings or uninstalling the app.</li>
+          <li><strong>Advertising &amp; Tracking Choices:</strong>
+            <ul>
+              <li><strong>Reset Consent (EEA &amp; UK):</strong> You can revoke or re-configure your advertising choices via the in-app Consent Management dialog.</li>
+              <li><strong>Android Ad Controls:</strong> You can reset or delete your Google Advertising ID on your device by navigating to <code>Settings &gt; Privacy &gt; Ads</code> (or <code>Settings &gt; Google &gt; Ads</code>).</li>
+            </ul>
+          </li>
+          <li><strong>Right to Object or Restrict Processing:</strong> You have the right to request restriction of processing by contacting us at <a href="mailto:stoneforze.help@gmail.com">stoneforze.help@gmail.com</a>.</li>
+        </ul>
+      </section>
+
+      <!-- Section 13: Changes to This Policy -->
+      <section id="policy-changes">
+        <div class="section-header">
+          <span class="section-num">13.</span>
+          <h2>Changes to This Privacy Policy</h2>
+        </div>
+        <p>
+          We may update this Privacy Policy from time to time to reflect modifications in our application features, software dependencies, legal requirements, or Google Play policy updates.
+        </p>
+        <p>
+          When updates occur, we will revise the "Last Updated" date at the top of this document. Any revisions become effective immediately upon posting. We encourage you to review this policy periodically when updating Paprivo.
+        </p>
+      </section>
+
+      <!-- Section 14: Contact Information -->
+      <section id="contact-information">
+        <div class="section-header">
+          <span class="section-num">14.</span>
+          <h2>Contact Information</h2>
+        </div>
+        <p>
+          If you have any questions, concerns, or inquiries regarding this Privacy Policy, our offline processing model, or our third-party advertising integrations, please contact us:
+        </p>
+        <div class="notice-box">
+          <p><strong>Developer / Application:</strong> Paprivo: PDF Reader &amp; Tools</p>
+          <p><strong>Package Name:</strong> <code>com.stoneforze.paprivo</code></p>
+          <p><strong>Privacy &amp; Support Contact Email:</strong> <a href="mailto:stoneforze.help@gmail.com" style="font-weight: 600;">stoneforze.help@gmail.com</a></p>
+          <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--color-text-secondary);">For inquiries regarding data privacy, local document processing, or AdMob consent management, please include &ldquo;Paprivo Privacy&rdquo; in the subject line for expedited assistance.</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       Site Footer
+       ========================================================================== */
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <p>&copy; 2026 Paprivo. All rights reserved.</p>
+      <ul class="footer-links">
+        <li><a href="#top">Back to Top</a></li>
+        <li><a href="mailto:stoneforze.help@gmail.com">Contact Support</a></li>
+        <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy</a></li>
+        <li><a href="https://developers.google.com/admob/android/privacy" target="_blank" rel="noopener noreferrer">AdMob Policy</a></li>
+      </ul>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.75;">
+        Designed for Paprivo: PDF Reader &amp; Tools &bull; Offline-First Document Reliability
+      </p>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       Accessible Theme Switcher Script (Vanilla JS, No Dependencies)
+       ========================================================================== -->
+  <script>
+    (function() {
+      'use strict';
+      
+      const themeToggle = document.getElementById('themeToggle');
+      const themeIcon = document.getElementById('themeIcon');
+      const themeLabel = document.getElementById('themeLabel');
+      
+      // Determine initial theme: check localStorage, otherwise follow system preference
+      const savedTheme = localStorage.getItem('paprivo_policy_theme');
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      let currentTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+      applyTheme(currentTheme);
+      
+      function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        if (theme === 'dark') {
+          themeIcon.textContent = '☀️';
+          themeLabel.textContent = 'Light Mode';
+        } else {
+          themeIcon.textContent = '🌙';
+          themeLabel.textContent = 'Dark Mode';
+        }
+      }
+      
+      if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+          const activeTheme = document.documentElement.getAttribute('data-theme') || (systemPrefersDark ? 'dark' : 'light');
+          const nextTheme = activeTheme === 'dark' ? 'light' : 'dark';
+          applyTheme(nextTheme);
+          try {
+            localStorage.setItem('paprivo_policy_theme', nextTheme);
+          } catch (e) {
+            // LocalStorage might be disabled in private browsing; ignore gracefully
+          }
+        });
+      }
+
+      // Smooth scroll focus management for accessibility
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const targetId = this.getAttribute('href').substring(1);
+          const targetElem = document.getElementById(targetId);
+          if (targetElem) {
+            targetElem.setAttribute('tabindex', '-1');
+            targetElem.focus();
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
