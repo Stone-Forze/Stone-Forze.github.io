@@ -1,0 +1,1876 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>Ownly Privacy Policy – Personal Inventory Manager</title>
+  <meta name="description" content="Read the Ownly Privacy Policy to understand how your inventory information, photographs, QR codes, cloud synchronization and advertising data are handled.">
+  <meta name="keywords" content="Ownly, Privacy Policy, Personal Inventory Manager, Stoneforze, Android Inventory App, Data Privacy, GDPR, CCPA, AdMob, Firebase">
+  <meta name="author" content="Stoneforze">
+  <meta name="application-name" content="Ownly – Personal Inventory Manager">
+  <meta name="theme-color" content="#834DFB">
+  
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ownly Privacy Policy – Personal Inventory Manager">
+  <meta property="og:description" content="Official Privacy Policy for Ownly – Personal Inventory Manager (com.stoneforze.ownly) operated by Stoneforze.">
+  <meta property="og:site_name" content="Ownly">
+  
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><rect width='48' height='48' rx='12' fill='%23834DFB'/><path d='M14 16 L24 10 L34 16 L24 22 Z' fill='%23F0E100'/><path d='M14 16 L24 22 L24 36 L14 30 Z' fill='%23ECE5FF'/><path d='M34 16 L24 22 L24 36 L34 30 Z' fill='%23FFFFFF'/></svg>">
+
+  <style>
+    /* ==========================================================================
+       OWNLY QUANTUM PALETTE 2025 & APP DESIGN SYSTEM TOKENS
+       Directly mirroring Ownly's colors.xml, themes.xml, and Material 3 styles
+       ========================================================================== */
+    :root {
+      /* Shared Quantum Palette Colors */
+      --electric-violet: #834DFB;
+      --electric-violet-dark: #6E38E6;
+      --electric-violet-light: #9E72FF;
+      --turbo: #F0E100;
+      --turbo-dark: #D1C400;
+      --haiti: #18102B;
+      --blue-chalk: #F5F3FF;
+      --signal-coral: #FF6B5A;
+
+      /* Dark Mode (Default matching the App's signature Haiti Dark experience) */
+      --bg-canvas: #18102B;
+      --bg-card: #231A3D;
+      --bg-card-subtle: #2C214C;
+      --bg-card-hover: #342858;
+      --border-card: #3A2E63;
+      --border-subtle: #2D224E;
+      --divider: #342858;
+
+      --text-primary: #F5F3FF;
+      --text-secondary: #A89EC4;
+      --text-muted: #7E739E;
+      --text-inverse: #18102B;
+
+      --nav-glass-bg: rgba(30, 22, 53, 0.85);
+      --nav-glass-stroke: rgba(158, 114, 255, 0.25);
+      --nav-indicator: rgba(131, 77, 251, 0.35);
+
+      --badge-active: #9E72FF;
+      --badge-active-bg: rgba(158, 114, 255, 0.16);
+
+      --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.25);
+      --shadow-header: 0 8px 30px rgba(0, 0, 0, 0.4);
+      --shadow-fab: 0 6px 22px rgba(131, 77, 251, 0.45);
+    }
+
+    [data-theme="light"] {
+      /* Light Mode (Mirroring Ownly's Light 60-30-10 Blue Chalk Foundation) */
+      --bg-canvas: #F5F3FF;
+      --bg-card: #FFFFFF;
+      --bg-card-subtle: #EFEBFD;
+      --bg-card-hover: #F8F6FF;
+      --border-card: #E2DCF8;
+      --border-subtle: #ECE7FB;
+      --divider: #E9E5F7;
+
+      --text-primary: #18102B;
+      --text-secondary: #6E6489;
+      --text-muted: #8D83A8;
+      --text-inverse: #FFFFFF;
+
+      --nav-glass-bg: rgba(255, 255, 255, 0.90);
+      --nav-glass-stroke: rgba(226, 220, 248, 0.9);
+      --nav-indicator: rgba(131, 77, 251, 0.12);
+
+      --badge-active: #7033E0;
+      --badge-active-bg: rgba(112, 51, 224, 0.12);
+
+      --shadow-card: 0 4px 18px rgba(24, 16, 43, 0.06);
+      --shadow-header: 0 4px 20px rgba(131, 77, 251, 0.12);
+      --shadow-fab: 0 6px 20px rgba(131, 77, 251, 0.35);
+    }
+
+    /* CSS Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      scroll-padding-top: 130px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      line-height: 1.62;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background-color 0.25s ease, color 0.25s ease;
+      padding-bottom: 100px;
+    }
+
+    a {
+      color: var(--electric-violet-light);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.15s ease;
+    }
+
+    [data-theme="light"] a {
+      color: var(--electric-violet);
+    }
+
+    a:hover {
+      color: var(--turbo);
+    }
+
+    /* ==========================================================================
+       APP SHELL CONTAINER & STATUS BAR
+       ========================================================================== */
+    .app-viewport {
+      max-width: 960px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Android System Status Bar Simulation */
+    .status-bar-sim {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 24px 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+      user-select: none;
+    }
+
+    .status-bar-icons {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-bar-icons svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    /* ==========================================================================
+       APP TOP BAR (OWNLY SIGNATURE ELECTRIC VIOLET GRADIENT)
+       ========================================================================== */
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: linear-gradient(135deg, #834DFB 0%, #6E38E6 60%, #5B27CF 100%);
+      color: #FFFFFF;
+      box-shadow: var(--shadow-header);
+      padding: 16px 24px 20px;
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+    }
+
+    .app-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .app-brand-area {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .app-logo-badge {
+      width: 44px;
+      height: 44px;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      flex-shrink: 0;
+    }
+
+    .app-logo-badge svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .app-title-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .app-brand-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: #FFFFFF;
+    }
+
+    .app-brand-sub {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.85);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .app-header-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pkg-chip {
+      background: rgba(0, 0, 0, 0.22);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: var(--turbo);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .theme-toggle-btn {
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #FFFFFF;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.05rem;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+
+    .theme-toggle-btn:hover {
+      background: rgba(255, 255, 255, 0.28);
+      transform: scale(1.05);
+    }
+
+    /* Sub-header Banner */
+    .app-header-subbanner {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .app-header-subbanner span.highlight {
+      color: var(--turbo);
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       APP CATEGORY / FILTER CHIP CAROUSEL (JUST LIKE DASHBOARD/ITEMS)
+       ========================================================================== */
+    .chip-scroll-container {
+      padding: 16px 20px 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      display: flex;
+      gap: 10px;
+      user-select: none;
+    }
+
+    .chip-scroll-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-chip {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      color: var(--text-secondary);
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      white-space: nowrap;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .filter-chip:hover {
+      border-color: var(--electric-violet);
+      color: var(--text-primary);
+      transform: translateY(-1px);
+    }
+
+    .filter-chip.active {
+      background: var(--electric-violet);
+      color: #FFFFFF;
+      border-color: var(--electric-violet);
+      box-shadow: 0 4px 12px rgba(131, 77, 251, 0.35);
+    }
+
+    .filter-chip svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    /* ==========================================================================
+       KEY METRICS DASHBOARD CARDS (QUANTUM 2025 WIDGETS)
+       ========================================================================== */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      padding: 12px 20px 20px;
+    }
+
+    .metric-widget {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 20px;
+      padding: 18px 20px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric-widget::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--electric-violet) 0%, var(--turbo) 100%);
+    }
+
+    .metric-widget-label {
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    .metric-widget-val {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .metric-widget-note {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+    }
+
+    /* ==========================================================================
+       MAIN CONTENT: MATERIAL YOU / QUANTUM SECTIONS (APP CARDS)
+       ========================================================================== */
+    .policy-sections-wrapper {
+      padding: 0 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .app-card-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 24px;
+      padding: 30px 28px;
+      box-shadow: var(--shadow-card);
+      scroll-margin-top: 130px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .app-card-section:hover {
+      border-color: rgba(131, 77, 251, 0.45);
+    }
+
+    /* Card Section Header */
+    .card-sec-head {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .card-icon-badge {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-card);
+      color: var(--electric-violet-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    [data-theme="light"] .card-icon-badge {
+      color: var(--electric-violet);
+    }
+
+    .card-icon-badge svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    .card-title-meta {
+      flex: 1;
+    }
+
+    .sec-num-pill {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--turbo);
+      background: rgba(240, 225, 0, 0.12);
+      border: 1px solid rgba(240, 225, 0, 0.3);
+      padding: 2px 8px;
+      border-radius: 9999px;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+
+    [data-theme="light"] .sec-num-pill {
+      color: #8C7800;
+      background: rgba(240, 225, 0, 0.2);
+      border-color: rgba(200, 180, 0, 0.4);
+    }
+
+    .card-sec-title {
+      font-size: 1.38rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+    }
+
+    /* Typography inside Cards */
+    .app-card-section h3 {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 22px 0 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .app-card-section h3::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 16px;
+      background: var(--electric-violet);
+      border-radius: 2px;
+    }
+
+    .app-card-section p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+      line-height: 1.68;
+    }
+
+    .app-card-section ul, .app-card-section ol {
+      margin: 10px 0 16px 20px;
+      color: var(--text-secondary);
+    }
+
+    .app-card-section li {
+      margin-bottom: 8px;
+      font-size: 0.93rem;
+      line-height: 1.62;
+    }
+
+    .app-card-section strong {
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       OWNLY APP-STYLE CALLOUT CONTAINERS
+       ========================================================================== */
+    .app-callout {
+      border-radius: 18px;
+      padding: 18px 20px;
+      margin: 18px 0;
+      font-size: 0.92rem;
+      line-height: 1.62;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      border: 1px solid transparent;
+    }
+
+    .app-callout svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      fill: currentColor;
+    }
+
+    .app-callout-info {
+      background: rgba(131, 77, 251, 0.12);
+      border-color: rgba(131, 77, 251, 0.35);
+      color: var(--text-primary);
+    }
+    .app-callout-info svg { color: var(--electric-violet-light); }
+
+    .app-callout-turbo {
+      background: rgba(240, 225, 0, 0.1);
+      border-color: rgba(240, 225, 0, 0.35);
+      color: var(--text-primary);
+    }
+    .app-callout-turbo svg { color: var(--turbo); }
+
+    .app-callout-coral {
+      background: rgba(255, 107, 90, 0.12);
+      border-color: rgba(255, 107, 90, 0.4);
+      color: var(--text-primary);
+    }
+    .app-callout-coral svg { color: var(--signal-coral); }
+
+    /* Developer Placeholders */
+    .dev-placeholder {
+      display: inline-block;
+      background: rgba(240, 225, 0, 0.16);
+      border: 1px dashed var(--turbo);
+      color: var(--turbo);
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    [data-theme="light"] .dev-placeholder {
+      background: #FFF9DB;
+      border-color: #D1C400;
+      color: #7D6B00;
+    }
+
+    /* ==========================================================================
+       TABLES (STYLED AS QUANTUM DATA SHEETS)
+       ========================================================================== */
+    .app-table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      margin: 18px 0;
+      border: 1px solid var(--border-card);
+      border-radius: 16px;
+      background: var(--bg-card-subtle);
+    }
+
+    table.app-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.86rem;
+      text-align: left;
+    }
+
+    table.app-table th {
+      background: rgba(131, 77, 251, 0.15);
+      color: var(--text-primary);
+      font-weight: 700;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-card);
+      white-space: nowrap;
+    }
+
+    table.app-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    table.app-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    table.app-table code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.8rem;
+      background: rgba(131, 77, 251, 0.2);
+      color: var(--electric-violet-light);
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+
+    [data-theme="light"] table.app-table code {
+      color: var(--electric-violet-dark);
+      background: rgba(131, 77, 251, 0.1);
+    }
+
+    /* Mini status badges */
+    .status-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .badge-offline { background: rgba(16, 185, 129, 0.2); color: #34D399; }
+    .badge-cloud { background: rgba(240, 225, 0, 0.2); color: var(--turbo); }
+    .badge-runtime { background: rgba(131, 77, 251, 0.2); color: var(--electric-violet-light); }
+    .badge-none { background: rgba(255, 107, 90, 0.2); color: var(--signal-coral); }
+
+    [data-theme="light"] .badge-offline { color: #065F46; background: #D1FAE5; }
+    [data-theme="light"] .badge-cloud { color: #854D0E; background: #FEF3C7; }
+    [data-theme="light"] .badge-runtime { color: #5B21B6; background: #EDE9FE; }
+    [data-theme="light"] .badge-none { color: #991B1B; background: #FEE2E2; }
+
+    /* ==========================================================================
+       SUB-FEATURE CARDS (GRID OF 2 OR 3)
+       ========================================================================== */
+    .app-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+      margin: 16px 0;
+    }
+
+    .app-subcard {
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-card);
+      border-radius: 18px;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .app-subcard h4 {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .app-subcard p {
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       GLASSMORPHIC BOTTOM NAVIGATION BAR (MATCHING OWNLY'S FROSTED NAV BAR)
+       ========================================================================== */
+    .app-bottom-nav {
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 32px);
+      max-width: 580px;
+      background: var(--nav-glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--nav-glass-stroke);
+      border-radius: 9999px;
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      z-index: 99;
+    }
+
+    .nav-tab-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .nav-tab-item svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .nav-tab-item:hover, .nav-tab-item.active {
+      color: var(--electric-violet-light);
+      background: var(--nav-indicator);
+    }
+
+    [data-theme="light"] .nav-tab-item:hover, [data-theme="light"] .nav-tab-item.active {
+      color: var(--electric-violet);
+    }
+
+    /* Floating Scroll Top FAB */
+    .fab-scroll-top {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--electric-violet);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-fab);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      text-decoration: none;
+      z-index: 98;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .fab-scroll-top:hover {
+      background: var(--electric-violet-dark);
+      transform: translateY(-3px);
+    }
+
+    .fab-scroll-top svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* ==========================================================================
+       APP FOOTER (QUANTUM STYLE)
+       ========================================================================== */
+    .app-footer {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 24px;
+      margin: 10px 20px 40px;
+      padding: 30px 28px;
+      box-shadow: var(--shadow-card);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .footer-logo-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-primary);
+      font-weight: 800;
+      font-size: 1.15rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .app-header {
+        padding: 14px 16px 16px;
+        border-bottom-left-radius: 18px;
+        border-bottom-right-radius: 18px;
+      }
+      .app-card-section {
+        padding: 22px 18px;
+        border-radius: 20px;
+      }
+      .card-sec-title {
+        font-size: 1.18rem;
+      }
+      .app-bottom-nav {
+        width: calc(100% - 20px);
+        bottom: 10px;
+        padding: 4px 6px;
+      }
+      .nav-tab-item {
+        padding: 4px 8px;
+        font-size: 0.68rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Accessible Skip Link -->
+  <a href="#section-1" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:999;background:var(--electric-violet);color:#fff;padding:8px 16px;" onfocus="this.style.position='static';this.style.width='auto';this.style.height='auto';">Skip to main content</a>
+
+  <div class="app-viewport">
+
+    <!-- ========================================================================
+         SIMULATED ANDROID STATUS BAR (Matches App Edge-to-Edge Experience)
+         ======================================================================== -->
+    <div class="status-bar-sim" aria-hidden="true">
+      <span>9:41</span>
+      <div class="status-bar-icons">
+        <!-- 5G Signal -->
+        <svg viewBox="0 0 24 24"><path d="M2 17h2v4H2v-4zm4-4h2v8H6v-8zm4-4h2v12h-2V9zm4-4h2v16h-2V5zm4-4h2v20h-2V1z"/></svg>
+        <!-- Wi-Fi -->
+        <svg viewBox="0 0 24 24"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4zm0 3.5c3.78 0 7.21 1.5 9.77 3.94L12 18.25 2.23 11.44C4.79 9 8.22 7.5 12 7.5z"/></svg>
+        <!-- Battery -->
+        <svg viewBox="0 0 24 24"><path d="M16 4h-2V2h-4v2H8C6.9 4 6 4.9 6 6v14c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H8V6h8v14z"/></svg>
+      </div>
+    </div>
+
+    <!-- ========================================================================
+         APP TOP BAR (ELECTRIC VIOLET QUANTUM HEADER)
+         ======================================================================== -->
+    <header class="app-header" role="banner">
+      <div class="app-header-inner">
+        <div class="app-brand-area">
+          <div class="app-logo-badge" title="Ownly Brand Logo">
+            <!-- Signature Isometric Box Vector Logo -->
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M14 17.5 L24 11.5 L34 17.5 L24 23.5 Z" fill="#F0E100"/>
+              <path d="M14 17.5 L24 23.5 L24 36.5 L14 30.5 Z" fill="#ECE5FF"/>
+              <path d="M34 17.5 L24 23.5 L24 36.5 L34 30.5 Z" fill="#FFFFFF"/>
+              <circle cx="24" cy="17.5" r="2.5" fill="#834DFB"/>
+            </svg>
+          </div>
+          <div class="app-title-wrap">
+            <span class="app-brand-title">Ownly</span>
+            <span class="app-brand-sub">Privacy &amp; Compliance Center</span>
+          </div>
+        </div>
+
+        <div class="app-header-controls">
+          <div class="pkg-chip" title="Verified Android Package Name">
+            <span>PKG:</span>
+            <span>com.stoneforze.ownly</span>
+          </div>
+          <button class="theme-toggle-btn" id="theme-toggle-button" aria-label="Toggle App Theme (Light / Dark)" title="Toggle Theme">
+            <span id="theme-icon">&#9790;</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="app-header-subbanner">
+        <div>Operator: <span class="highlight">Stoneforze</span> &bull; Effective: <span class="highlight">November 9, 2026</span></div>
+        <div>Policy Version: <span class="highlight">v2.1.0 (Production)</span></div>
+      </div>
+    </header>
+
+    <!-- ========================================================================
+         APP FILTER / TOPIC CHIPS CAROUSEL (Simulating App UI Navigation)
+         ======================================================================== -->
+    <nav class="chip-scroll-container" aria-label="Section Quick Navigation">
+      <a href="#section-1" class="filter-chip active">
+        <!-- Info Icon -->
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+        <span>Overview</span>
+      </a>
+      <a href="#section-2" class="filter-chip">
+        <!-- Box / Data -->
+        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9h-4v2h4v7H5v-7h4v-2H5V5h14v6z"/></svg>
+        <span>Data Collection</span>
+      </a>
+      <a href="#section-4" class="filter-chip">
+        <!-- Database / Storage -->
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 4.02 2 6.5s4.48 4.5 10 4.5 10-2.02 10-4.5S17.52 2 12 2zm0 6c-3.87 0-7-1.34-7-2.5S8.13 3 12 3s7 1.34 7 2.5S15.87 8 12 8zm8 3.5c0 1.16-3.13 2.5-8 2.5s-8-1.34-8-2.5V9.38C5.23 10.42 8.35 11 12 11s6.77-.58 8-1.62v2.12zm0 5c0 1.16-3.13 2.5-8 2.5s-8-1.34-8-2.5v-2.12c1.23 1.04 4.35 1.62 8 1.62s6.77-.58 8-1.62v2.12z"/></svg>
+        <span>Offline &amp; Sync</span>
+      </a>
+      <a href="#section-5" class="filter-chip">
+        <!-- Ads / Megaphone -->
+        <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+        <span>AdMob Ads</span>
+      </a>
+      <a href="#section-8" class="filter-chip">
+        <!-- Trash / Delete -->
+        <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+        <span>Data Deletion</span>
+      </a>
+      <a href="#section-12" class="filter-chip">
+        <!-- Shield / Rights -->
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+        <span>Privacy Rights</span>
+      </a>
+      <a href="#section-14" class="filter-chip">
+        <!-- Lock / Permissions -->
+        <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+        <span>Permissions</span>
+      </a>
+      <a href="#section-16" class="filter-chip">
+        <!-- Mail / Contact -->
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <span>Contact</span>
+      </a>
+    </nav>
+
+    <!-- ========================================================================
+         KEY METRICS DASHBOARD
+         ======================================================================== -->
+    <section class="metrics-grid" aria-label="Key Privacy Metrics">
+      <div class="metric-widget">
+        <div class="metric-widget-label">Application Scope</div>
+        <div class="metric-widget-val">Offline-First</div>
+        <div class="metric-widget-note">Room SQLite in private device sandbox</div>
+      </div>
+      <div class="metric-widget">
+        <div class="metric-widget-label">Cloud Sync</div>
+        <div class="metric-widget-val">Opt-In Only</div>
+        <div class="metric-widget-note">Encrypted Firestore path under your UID</div>
+      </div>
+      <div class="metric-widget">
+        <div class="metric-widget-label">Photographs</div>
+        <div class="metric-widget-val">100% Local</div>
+        <div class="metric-widget-note">Compressed locally, not uploaded to cloud</div>
+      </div>
+      <div class="metric-widget">
+        <div class="metric-widget-label">User Inventory Data</div>
+        <div class="metric-widget-val">Never Sold</div>
+        <div class="metric-widget-note">Zero broker sharing or marketing profiling</div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         MAIN LEGAL SECTIONS (STYLED AS QUANTUM APP CARDS)
+         ======================================================================== -->
+    <main class="policy-sections-wrapper" role="main">
+
+      <!-- ====================================================================
+           SECTION 1: INTRODUCTION
+           ==================================================================== -->
+      <article class="app-card-section" id="section-1">
+        <div class="card-sec-head">
+          <div class="card-icon-badge">
+            <!-- Sparkle / Star Icon -->
+            <svg viewBox="0 0 24 24"><path d="M12 2L9.5 8.5 3 11l6.5 2.5L12 20l2.5-6.5L21 11l-6.5-2.5z"/></svg>
+          </div>
+          <div class="card-title-meta">
+            <span class="sec-num-pill">Section 1</span>
+            <h2 class="card-sec-title">Introduction &amp; Brand Commitment</h2>
+          </div>
+        </div>
+
+        <p>
+          Welcome to <strong>Ownly – Personal Inventory Manager</strong> (&ldquo;Ownly&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;), an Android utility application designed to catalog, organize, track, and protect household belongings, home assets, warranties, and purchase receipts.
+        </p>
+
+        <p>
+          The application is developed and operated by <strong>Stoneforze</strong>. The official application identifier registered across Google Play and compiled throughout our codebase is:
+        </p>
+        <p style="text-align:center; margin: 12px 0;">
+          <code style="font-size:1.05rem; padding:6px 16px; border-radius:10px; background:var(--bg-card-subtle); border:1px solid var(--border-card); color:var(--electric-violet-light);">com.stoneforze.ownly</code>
+        </p>
+
+        <div class="app-callout app-callout-info">
+          <!-- Info SVG -->
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          <div>
+            <strong>Core Architecture: Offline-First Utility</strong><br>
+            Ownly operates on an <em>offline-first foundation</em>. By default, your inventory records, valuation amounts, serial numbers, condition notes, and receipts reside exclusively on your physical Android device. We do not sell or commercialize your household inventory data.
+          </div>
+        </div>
+
+        <p>
+          By downloading, installing, or continuing to use Ownly, you acknowledge the privacy and data handling practices described in this policy. If you do not agree with these practices, you may uninstall the application at any time.
+        </p>
+      </article>
+
+      <!-- ====================================================================
+           SECTION 2: INFORMATION WE COLLECT
+           ==================================================================== -->
+      <article class="app-card-section" id="section-2">
+        <div class="card-sec-head">
+          <div class="card-icon-badge">
+            <!-- Layers / Folder Icon -->
+            <svg viewBox="0 0 24 24"><path d="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27-7.38 5.74zM12 16l7.36-5.73L21 9.07l-9-7-9 7 1.63 1.27L12 16z"/></svg>
+          </div>
+          <div class="card-title-meta">
+            <span class="sec-num-pill">Section 2</span>
+            <h2 class="card-sec-title">Information We Collect</h2>
+          </div>
+        </div>
+
+        <p>
+          We adhere to strict data minimization principles. Ownly processes the following distinct categories of information based on your active usage:
+        </p>
+
+        <h3>A. Inventory and Household Belongings Data</h3>
+        <ul>
+          <li><strong>Item Details:</strong> Item name, brand, model, serial number, description, notes, condition rating (New, Good, Fair, Damaged), and operational status (Active, Sold, Donated, Disposed, Archived).</li>
+          <li><strong>Organization Context:</strong> Room assignments (Living Room, Kitchen, Bedroom, Office) and specific storage location container/bin labels.</li>
+          <li><strong>Financial Values:</strong> Purchase date, purchase price, and preferred currency (e.g., USD, EUR, GBP, INR, JPY, CAD, AUD).</li>
+          <li><strong>Warranty Tracking:</strong> Warranty provider name, support contact, duration in months, expiration date, and alert reminder preferences.</li>
+          <li><strong>Internal Identifiers:</strong> Randomly generated item UUIDs and QR pairing tokens.</li>
+        </ul>
+        <p>
+          <em>Storage Scope:</em> Stored locally in the application's on-device Room SQLite database. If cloud synchronization is optionally enabled with an authenticated Firebase user account, records are synchronized to Cloud Firestore under your private user path.
+        </p>
+
+        <h3>B. Photographs and Camera Images</h3>
+        <ul>
+          <li><strong>Item &amp; Receipt Photos:</strong> Selected by you using the privacy-safe Android Photo Picker. Images are decoded, EXIF rotation-corrected, scaled (max 1920&times;1080), and compressed to JPEG format on-device by <code>ImageCompressor.java</code>.</li>
+          <li><strong>Private Sandbox Storage:</strong> Compressed images and 300px thumbnails are saved strictly within Ownly's internal, private app storage directory (<code>context.getFilesDir()</code>).</li>
+          <li><strong>Cloud Storage Scope:</strong> In the current production release, <strong>inventory photographs remain exclusively on your device</strong>. They are not uploaded to remote cloud buckets (Firebase Storage is not active in the application code).</li>
+        </ul>
+
+        <h3>C. Purchase Receipts and Documents</h3>
+        <p>
+          Stored locally in internal application storage and included only when you explicitly generate an Insurance Inventory Schedule PDF or CSV report and share it through Android's native share sheet.
+        </p>
+
+        <h3>D. QR Code Scanning &amp; Processing</h3>
+        <ul>
+          <li><strong>Camera Scanner:</strong> Uses CameraX and ZXing on-device to decode QR barcodes in real time. Video frames are processed in volatile memory and discarded immediately; no camera feed or video is ever recorded or uploaded.</li>
+          <li><strong>Gallery Image Scanner:</strong> When selecting a QR image from your gallery, <code>QrImageDecoder.java</code> opens the content URI, downsamples the bitmap, runs multi-pass ZXing binarizers, and recycles memory. Decoded strings are never sent to external servers.</li>
+        </ul>
+
+        <h3>E. Technical, Diagnostic, and Ad-Serving Data</h3>
+        <p>
+          Collected automatically by integrated third-party SDKs:
+        </p>
+        <ul>
+          <li><strong>Device Attributes:</strong> Device model, manufacturer, OS version (API level), system language, and screen dimensions.</li>
+          <li><strong>Network Information:</strong> IP address (used by Google AdMob and Firebase to derive coarse geographic location and combat ad fraud).</li>
+          <li><strong>Advertising Identifiers:</strong> Google Advertising ID (GAID), subject to your Android privacy settings.</li>
+          <li><strong>Crash Logs:</strong> Firebase Crashlytics collects anonymous stack traces and device memory states during unexpected app crashes.</li>
+        </ul>
+      </article>
+
+      <!-- ====================================================================
+           SECTION 3: HOW WE USE INFORMATION
+           ==================================================================== -->
+      <article class="app-card-section" id="section-3">
+        <div class="card-sec-head">
+          <div class="card-icon-badge">
+            <!-- Gear / Settings Icon -->
+            <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+          </div>
+          <div class="card-title-meta">
+            <span class="sec-num-pill">Section 3</span>
+            <h2 class="card-sec-title">How We Use Information</h2>
+          </div>
+        </div>
+
+        <p>
+          We process information solely for legitimate operational and utility purposes:
+        </p>
+
+        <div class="app-card-grid">
+          <div class="app-subcard">
+            <h4>1. Inventory Management</h4>
+            <p>Indexing, categorizing, organizing, and calculating valuation totals for household belongings.</p>
+          </div>
+          <div class="app-subcard">
+            <h4>2. Warranty Notifications</h4>
+            <p>Scheduling exact on-device alarms to alert you before item warranties and return windows expire.</p>
+          </div>
+          <div class="app-subcard">
+            <h4>3. Insurance Schedule Export</h4>
+            <p>Generating itemized PDF schedules and CSV spreadsheets upon your direct command for insurance audits.</p>
+          </div>
+          <div class="app-subcard">
+            <h4>4. QR Code Navigation</h4>
+            <p>Generating printable QR codes and decoding scanned QR images to instantly locate items and bins.</p>
+          </div>
+          <div class="app-subcard">
+            <h4>5. In-App Monetization</h4>
+            <p>Displaying ads via Google AdMob to fund ongoing maintenance and ensure free application access.</p>
+          </div>
+          <div class="app-subcard">
+            <h4>6. Stability &amp; Diagnostics</h4>
+            <p>Detecting runtime exceptions and analyzing crash logs via Firebase Crashlytics on Android devices.</p>
+          </div>
+        </div>
+
+        <div class="app-callout app-callout-coral">
+          <!-- Warning SVG -->
+          <svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+          <div>
+            <strong>Strict Commitment Against Commercial Profiling:</strong><br>
+            Ownly does <strong>not</strong> sell your personal inventory records to data brokers, does <strong>not</strong> analyze item descriptions for commercial marketing, and does <strong>not</strong> inspect your device gallery beyond selected photos.
+          </div>
+        </div>
+      </article>
+
+      <!-- ====================================================================
+           SECTION 4: LOCAL STORAGE AND FIREBASE SYNCHRONIZATION
+           ==================================================================== -->
+      <article class="app-card-section" id="section-4">
+        <div class="card-sec-head">
+          <div class="card-icon-badge">
+            <!-- Database / Cloud Icon -->
+            <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+          </div>
+          <div class="card-title-meta">
+            <span class="sec-num-pill">Section 4</span>
+            <h2 class="card-sec-title">Local Storage &amp; Firebase Synchronization</h2>
+          </div>
+        </div>
+
+        <h3>A. Local On-Device Storage (Android Jetpack Room)</h3>
+        <p>
+          Ownly's primary operational database is built with <strong>Android Jetpack Room</strong>:
+        </p>
+        <ul>
+          <li><strong>Database Path:</strong> <code>/data/data/com.stoneforze.ownly/databases/ownly_database</code>.</li>
+          <li><strong>Files Path:</strong> Photographs, thumbnails, and generated PDF/CSV reports reside in <code>/data/data/com.stoneforze.ownly/files/</code>.</li>
+          <li><strong>Sandboxed Isolation:</strong> Under Android's Linux kernel sandbox, no third-party app installed on your device can access or read Ownly's database or private files.</li>
+          <li><strong>Complete Offline Operation:</strong> You can create, edit, browse, search, and export your entire inventory without an active internet connection.</li>
+        </ul>
+
+        <h3>B. Cloud Synchronization (Google Firebase)</h3>
+        <ul>
+          <li><strong>Gated Authentication:</strong> Synchronization occurs only if you explicitly sign in with a Firebase user account. When unauthenticated, sync is bypassed completely.</li>
+          <li><strong>Sync Architecture:</strong> When authenticated, structured text records are queued locally in a <code>sync_queue</code> table and synchronized with Google Cloud Firestore over TLS/HTTPS encrypted connections using Android WorkManager.</li>
+          <li><strong>Security Rules:</strong> Firestore security rules strictly isolate records under <code>users/{userId}</code>, preventing cross-user data leakage.</li>
+          <li><strong>Google Firebase Privacy:</strong> For infrastructure security details, see <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Firebase Privacy &amp; Security</a>.</li>
+        </ul>
+      </article>
+
+      <!-- ====================================================================
+           SECTION 5: ADVERTISING AND GOOGLE ADMOB
+           ==================================================================== -->
+      <article class="app-card-section" id="section-5">
+        <div class="card-sec-head">
+          <div class="card-icon-badge">
+            <!-- Megaphone / Ad Icon -->
+            <svg viewBox="0 0 24 24"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+          </div>
+          <div class="card-title-meta">
+            <span class="sec-num-pill">Section 5</span>
+            <h2 class="card-sec-title">Advertising &amp; Google AdMob</h2>
+          </div>
+        </div>
+
+        <p>
+          Ownly is distributed as a free mobile inventory tool supported by in-app advertising delivered through the <strong>Google Mobile Ads SDK (Google AdMob)</strong>.
+        </p>
+
+        <h3>A. Ad Formats Implemented in Ownly</h3>
+        <ul>
+          <li><strong>Banner Ads:</strong> Adaptive banners at the bottom of utility screens (Search, Rooms).</li>
+          <li><strong>Native Advanced Ads:</strong> In-feed sponsored cards styled with Quantum Palette tokens to blend naturally with item lists.</li>
+          <li><strong>Interstitial Ads:</strong> Full-screen transition ads presented only after completing significant actions (e.g., adding an item). Strictly capped at a maximum of 3 impressions per session with a 5-minute cooldown.</li>
+          <li><strong>Rewarded Ads:</strong> User-initiated video ads to unlock special entitlements (such as the 24-hour Enhanced Insurance Audit Schedule).</li>
+          <li><strong>App Open Ads:</strong> Displayed when reopening Ownly from the background, suppressed during splash screen, onboarding, and active QR camera scanning, with a 4-hour freshness cache rule.</li>
+        </ul>
+
+        <h3>B. Information Processed by Google AdMob</h3>
+        <p>
+          Google AdMob may process your Google Advertising ID (GAID), IP address (for coarse geographic targeting and fraud detection), app package identifier (<code>com.stoneforze.ownly</code>), and ad interaction telemetry.
+        </p>
+
+        <h3>C. User Consent and Privacy Controls (Google UMP)</h3>
+        <ul>
+          <li><strong>EEA and UK Compliance:</strong> Integrated with the <strong>Google User Messaging Platform (UMP) SDK</strong> to gather user consent in compliance with GDPR and IAB TCF v2.2 before requesting personalized ads.</li>
+          <li><strong>Manage Anytime:</strong> You can review or modify your ad consent choices at any time inside Ownly via <strong>Settings &gt; Ad Privacy &amp; Consent Choices</strong>.</li>
+          <li><strong>Device OS Controls:</strong> You can reset or delete your Advertising ID via Android Settings: <code>Settings &gt; Google &gt; Ads</code>.</li>
+        </ul>
+
+        <div class="app-callout app-callout-turbo">
+          <!-- Star SVG -->
+          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <div>
+            <strong>Zero Inventory Sharing with Advertisers:</strong><br>
+            Ownly does <strong>not</strong> share your item names, purchase amounts, serial numbers, photographs, or household locations with Google AdMob or any ad network.
+          </div>
+        </div>
+
+        <p>
+          Official references:
+          <br>&bull; <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Google Advertising Technologies &amp; Policies</a>
+          <br>&bull; <a href="https://developers.google.com/admob/android/privacy" target="_blank" rel="noopener noreferrer">Google AdMob Privacy Guidance</a>
+        </p>
+      </article>
+
+      <!-- ====================================================================
+           SECTION 6: THIRD-PARTY SERVICES
+           ==================================================================== -->
+      <article class="app-card-section" id="section-6">
+        <div class="card-sec-head">
+          <div class="card-icon-badge">
+            <!-- Grid / Plugins Icon -->
+            <svg viewBox="0 0 24 24"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/></svg>
+          </div>
+          <div class="card-title-meta">
+            <span class="sec-num-pill">Section 6</span>
+            <h2 class="card-sec-title">Third-Party Services</h2>
+          </div>
+        </div>
+
+        <p>
+          Ownly integrates the verified third-party SDKs listed below. No unverified analytics or behavioral tracking libraries are embedded:
+        </p>
+
+        <div class="app-table-wrapper">
+          <table class="app-table">
+            <thead>
+              <tr>
+                <th>Service</th>
+                <th>Provider</th>
+                <th>Purpose in Ownly</th>
+                <th>Data Processed</th>
+                <th>Documentation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Google AdMob</strong></td>
+                <td>Google LLC</td>
+                <td>Banner, native, interstitial, rewarded &amp; app open ads</td>
+                <td>Advertising ID, IP address, device specs</td>
+                <td><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Google Ads</a></td>
+              </tr>
+              <tr>
+                <td><strong>Google UMP</strong></td>
+                <td>Google LLC</td>
+                <td>Regulatory consent management (GDPR / UK GDPR)</td>
+                <td>User consent preferences, region status</td>
+                <td><a href="https://developers.google.com/admob/ump" target="_blank" rel="noopener noreferrer">UMP SDK</a></td>
+              </tr>
+              <tr>
+                <td><strong>Firebase Auth</strong></td>
+                <td>Google LLC</td>
+                <td>Optional user account sign-in for sync</td>
+                <td>User credentials, email, Firebase UID</td>
+                <td><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Firebase Auth</a></td>
+              </tr>
+              <tr>
+                <td><strong>Cloud Firestore</strong></td>
+                <td>Google LLC</td>
+                <td>Encrypted inventory backup when authenticated</td>
+                <td>User inventory text records, room data</td>
+                <td><a href="https://cloud.google.com/firestore/docs" target="_blank" rel="noopener noreferrer">Firestore Terms</a></td>
+              </tr>
+              <tr>
+                <td><strong>Crashlytics</strong></td>
+                <td>Google LLC</td>
+                <td>Real-time crash diagnosis and stability monitoring</td>
+                <td>Anonymous crash stack traces, OS build</td>
+                <td><a href="https://firebase.google.com/products/crashlytics" target="_blank" rel="noopener noreferrer">Crashlytics</a></td>
+              </tr>
+              <tr>
+                <td><strong>Firebase Analytics</strong></td>
+                <td>Google LLC</td>
+                <td>Feature engagement &amp; ad event metrics</td>
+                <td>App opens, navigation events, ad reward events</td>
+                <td><a href="https://support.google.com/firebase/answer/6318039" target="_blank" rel="noopener noreferrer">Analytics</a></td>
+              </tr>
+              <tr>
+                <td><strong>Play Services</strong></td>
+                <td>Google LLC</td>
+                <td>Android core runtime, security, and app updates</td>
+                <td>Standard Google Play device identifiers</td>
+                <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <!-- ====================================================================
+           SECTION 7: DATA SHARING AND DISCLOSURE
+           ==================================================================== -->
+      <article class="app-card-section" id="section-7">
+        <div class="card-sec-head">
+          <div class="card-icon-badge">
+            <!-- Share Icon -->
+            <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+          </div>
+          <div class="card-title-meta">
+            <span class="sec-num-pill">Section 7</span>
+            <h2 class="card-sec-title">Data Sharing &amp; Disclosure</h2>
+          </div>
+        </div>
+
+        <p>
+          We do not sell, rent, commercialize, or trade your personal inventory details, photographs, or financial records. Data sharing occurs exclusively under these specific circumstances:
+        </p>
+        <ul>
+          <li><strong>Cloud Infrastructure:</strong> When cloud sync is active, records are processed by Google Firebase servers pursuant to standard contractual clauses and cloud security certifications.</li>
+          <li><strong>Monetization Partners:</strong> Google AdMob receives anonymized technical device identifiers and ad telemetry strictly to display advertisements and prevent fraudulent traffic.</li>
+          <li><strong>User-Initiated Sharing:</strong> When you generate an Insurance Inventory PDF or CSV schedule, you explicitly choose the destination app (email, messaging, Drive) via Android's native share sheet.</li>
+          <li><strong>Legal Mandates:</strong> Where required by valid court order, warrant, subpoena, or applicable statutory law within a competent jurisdiction.</li>
+        </ul>
+      </article>
+
+      <!-- ====================================================================
+           SECTION 8: DATA RETENTION AND DELETION
+           ==================================================================== -->
+      <article class="app-card-section" id="section-8">
+        <div class="card-sec-head">
+          <div class="card-icon-badge">
+            <!-- Trash Icon -->
+            <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+          </div>
+          <div class="card-title-meta">
+            <span class="sec-num-pill">Section 8</span>
+            <h2 class="card-sec-title">Data Retention &amp; Deletion</h2>
+          </div>
+        </div>
+
+        <h3>A. Local Device Data Retention</h3>
+        <ul>
+          <li><strong>Continuous Persistence:</strong> All inventory records, rooms, warranties, photographs, and receipts remain on your device until you delete them within the app or clear application storage.</li>
+          <li><strong>Immediate Local Erase:</strong> Clear all local data at any time via <strong>Android Settings &gt; Apps &gt; Ownly &gt; Storage &amp; Cache &gt; Clear Storage</strong>.</li>
+          <li><strong>Uninstallation:</strong> Uninstalling Ownly from your device immediately deletes the local sandbox directory, including the Room SQLite database, photos, and receipts.</li>
+        </ul>
+
+        <h3>B. Cloud Data Retention &amp; Deletion Requests</h3>
+        <ul>
+          <li><strong>Independent Cloud Lifecycle:</strong> Uninstalling the app does <em>not</em> automatically delete data previously synchronized to Cloud Firestore.</li>
+          <li><strong>Submitting a Deletion Request:</strong> Send an email to our privacy desk at <a href="mailto:stoneforze.help@gmail.com" style="color:var(--turbo); font-weight:700;">stoneforze.help@gmail.com</a> with the subject line <code>OWNLY DATA DELETION REQUEST</code>. Please include your registered account email or your unique Firebase UID.</li>
+          <li><strong>Execution Timeline:</strong> Verified deletion requests are executed within <strong>30 calendar days</strong>, permanently removing all Firestore documents under your user account from active clusters.</li>
+        </ul>
+      </article>
+
+      <!-- ====================================================================
+           SECTION 9: DATA SECURITY
+           ==================================================================== -->
+      <article class="app-card-section" id="section-9">
+        <div class="card-sec-head">
+          <div class="card-icon-badge">
+            <!-- Shield Lock Icon -->
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+          </div>
+          <div class="card-title-meta">
+            <span class="sec-num-pill">Section 9</span>
+            <h2 class="card-sec-title">Data Security Measures</h2>
+          </div>
+        </div>
+
+        <p>
+          We implement industry-standard technical and organizational security controls:
+        </p>
+        <ul>
+          <li><strong>Android Application Sandboxing:</strong> Ownly operates in an isolated Linux sandbox. Local database files and images are readable only by Ownly's unique Linux UID.</li>
+          <li><strong>Encrypted Communications:</strong> All network exchanges with Google Firebase and Google AdMob use Transport Layer Security (TLS 1.2 / TLS 1.3 / HTTPS).</li>
+          <li><strong>Cloud Security Rules:</strong> Cloud Firestore declarative security rules enforce access tokens, restricting document read/write access solely to the authenticated owner.</li>
+          <li><strong>Secure File Sharing:</strong> Exported reports and receipts are shared exclusively through Android's secure <code>FileProvider</code> architecture (<code>com.stoneforze.ownly.fileprovider</code>) with short-lived, read-only URI grants.</li>
+        </ul>
+        <p style="font-size:0.88rem; color:var(--text-muted); margin-top:8px;">
+          <em>Security Note:</em> No transmission over the internet or mobile storage medium is 100% impenetrable against physical device compromise or advanced unauthorized intrusion.
+        </p>
+      </article>
+
+      <!-- ====================================================================
+           SECTION 10: CHILDREN'S PRIVACY
+           ==================================================================== -->
+      <article class="app-card-section" id="section-10">
+        <div class="card-sec-head">
+          <div class="card-icon-badge">
+            <!-- Child / User Icon -->
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          </div>
+          <div class="card-title-meta">
+            <span class="sec-num-pill">Section 10</span>
+            <h2 class="card-sec-title">Children's Privacy Protection</h2>
+          </div>
+        </div>
+
+        <p>
+          Ownly is a general household management application intended for adults and families. The application is <strong>not directed toward children under 13</strong> (or under 16 in the European Economic Area and UK).
+        </p>
+        <p>
+          In accordance with COPPA, Article 8 of the GDPR, and child protection provisions under India's DPDP Act 2023, we do not knowingly collect personal data from minors. If a parent or guardian becomes aware that a child has provided personal information or registered an account, contact us at <a href="mailto:stoneforze.help@gmail.com" style="color:var(--turbo); font-weight:700;">stoneforze.help@gmail.com</a> for immediate account purge.
+        </p>
+      </article>
+
+      <!-- ====================================================================
+           SECTION 11: INTERNATIONAL DATA TRANSFERS
+           ==================================================================== -->
+      <article class="app-card-section" id="section-11">
+        <div class="card-sec-head">
+          <div class="card-icon-badge">
+            <!-- Globe Icon -->
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          </div>
+          <div class="card-title-meta">
+            <span class="sec-num-pill">Section 11</span>
+            <h2 class="card-sec-title">International Data Transfers</h2>
+          </div>
+        </div>
+
+        <p>
+          Data synchronized with Google Firebase or processed by Google AdMob may be transferred to, stored, and processed in the United States and other global regions where Google operates multi-region data centers.
+        </p>
+        <p>
+          Where personal data originating in the European Economic Area, Switzerland, or the United Kingdom is transferred internationally, Google adheres to the <strong>EU-U.S. Data Privacy Framework (EU-U.S. DPF)</strong> and standard contractual clauses (SCCs) approved by the European Commission.
+        </p>
+      </article>
+
+      <!-- ====================================================================
+           SECTION 12: USER PRIVACY RIGHTS
+           ==================================================================== -->
+      <article class="app-card-section" id="section-12">
+        <div class="card-sec-head">
+          <div class="card-icon-badge">
+            <!-- Shield Check Icon -->
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+          </div>
+          <div class="card-title-meta">
+            <span class="sec-num-pill">Section 12</span>
+            <h2 class="card-sec-title">User Privacy Rights by Region</h2>
+          </div>
+        </div>
+
+        <p>
+          Depending on your geographical jurisdiction, you may exercise specific statutory privacy rights:
+        </p>
+
+        <h3>EEA &amp; United Kingdom (GDPR / UK GDPR)</h3>
+        <ul>
+          <li><strong>Right of Access &amp; Portability:</strong> Obtain confirmation of processing and export your inventory into structured CSV spreadsheets or PDF schedules.</li>
+          <li><strong>Right to Rectification:</strong> Edit and update inaccurate records directly in the app.</li>
+          <li><strong>Right to Erasure (&ldquo;Right to be Forgotten&rdquo;):</strong> Request full deletion of cloud data.</li>
+          <li><strong>Right to Withdraw Consent:</strong> Revoke advertising consent anytime via in-app Settings.</li>
+        </ul>
+
+        <h3>United States (CCPA / CPRA &amp; State Laws)</h3>
+        <ul>
+          <li><strong>Right to Know &amp; Delete:</strong> Inquire about collected categories and request deletion.</li>
+          <li><strong>Right to Opt-Out:</strong> Ownly does <strong>not sell</strong> personal information for monetary value.</li>
+          <li><strong>Non-Discrimination:</strong> Equal service quality when exercising statutory rights.</li>
+        </ul>
+
+        <h3>India (DPDP Act, 2023)</h3>
+        <ul>
+          <li><strong>Right to Access Summary:</strong> Inquire about personal data processed and activities undertaken.</li>
+          <li><strong>Right to Correction &amp; Erasure:</strong> Rectify misleading records or erase unnecessary data.</li>
+          <li><strong>Right of Grievance Redressal:</strong> Grievance redressal by Stoneforze's designated officer.</li>
+        </ul>
+
+        <p>
+          To exercise your rights, email: <a href="mailto:stoneforze.help@gmail.com" style="color:var(--turbo); font-weight:700;">stoneforze.help@gmail.com</a>. We respond within 30 days without charge.
+        </p>
+      </article>
+
+      <!-- ====================================================================
+           SECTION 13: OFFLINE FUNCTIONALITY
+           ==================================================================== -->
+      <article class="app-card-section" id="section-13">
+        <div class="card-sec-head">
+          <div class="card-icon-badge">
+            <!-- Offline / Airplane Icon -->
+            <svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+          </div>
+          <div class="card-title-meta">
+            <span class="sec-num-pill">Section 13</span>
+            <h2 class="card-sec-title">Offline Functionality</h2>
+          </div>
+        </div>
+
+        <p>
+          Ownly is built with an offline-first philosophy, prioritizing offline reliability and data isolation:
+        </p>
+
+        <div class="app-table-wrapper">
+          <table class="app-table">
+            <thead>
+              <tr>
+                <th>App Function</th>
+                <th>Offline Capability</th>
+                <th>Network Needed?</th>
+                <th>Data Storage Scope</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Add / Edit Items &amp; Rooms</strong></td>
+                <td><span class="status-badge badge-offline">Full Offline</span></td>
+                <td>No</td>
+                <td>Stored in local Room SQLite database</td>
+              </tr>
+              <tr>
+                <td><strong>Attach &amp; View Photographs</strong></td>
+                <td><span class="status-badge badge-offline">Full Offline</span></td>
+                <td>No</td>
+                <td>App-private sandbox directory (JPEG)</td>
+              </tr>
+              <tr>
+                <td><strong>QR Scanner (Camera &amp; Gallery)</strong></td>
+                <td><span class="status-badge badge-offline">Full Offline</span></td>
+                <td>No</td>
+                <td>Decoded in memory via CameraX / ZXing</td>
+              </tr>
+              <tr>
+                <td><strong>Generate PDF / CSV Reports</strong></td>
+                <td><span class="status-badge badge-offline">Full Offline</span></td>
+                <td>No</td>
+                <td>Rendered locally; shared via FileProvider</td>
+              </tr>
+              <tr>
+                <td><strong>Warranty Expiration Alarms</strong></td>
+                <td><span class="status-badge badge-offline">Full Offline</span></td>
+                <td>No</td>
+                <td>Scheduled locally via AlarmManager</td>
+              </tr>
+              <tr>
+                <td><strong>Cloud Firestore Backup</strong></td>
+                <td><span class="status-badge badge-cloud">Queued Offline</span></td>
+                <td>Yes (to sync)</td>
+                <td>Queued in SQLite; synced via WorkManager</td>
+              </tr>
+              <tr>
+                <td><strong>Google AdMob Ads</strong></td>
+                <td><span class="status-badge badge-none">Disabled Offline</span></td>
+                <td>Yes</td>
+                <td>No ad requests or impressions offline</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <!-- ====================================================================
+           SECTION 14: PERMISSIONS AND DEVICE ACCESS
+           ==================================================================== -->
+      <article class="app-card-section" id="section-14">
+        <div class="card-sec-head">
+          <div class="card-icon-badge">
+            <!-- Key / Permission Icon -->
+            <svg viewBox="0 0 24 24"><path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
+          </div>
+          <div class="card-title-meta">
+            <span class="sec-num-pill">Section 14</span>
+            <h2 class="card-sec-title">Permissions &amp; Device Access</h2>
+          </div>
+        </div>
+
+        <p>
+          Ownly requests only the minimal set of Android system permissions strictly necessary to fulfill advertised features:
+        </p>
+
+        <div class="app-table-wrapper">
+          <table class="app-table">
+            <thead>
+              <tr>
+                <th>Declared Android Permission</th>
+                <th>Type</th>
+                <th>Purpose in Ownly</th>
+                <th>User Revocation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>android.permission.CAMERA</code></td>
+                <td><span class="status-badge badge-runtime">Runtime</span></td>
+                <td>Used strictly during the QR Scanner activity to scan item barcodes and storage QR codes. Never records video.</td>
+                <td>Prompted on first scan; revocable via Android Settings.</td>
+              </tr>
+              <tr>
+                <td><code>android.permission.INTERNET</code></td>
+                <td>Normal</td>
+                <td>Enables Cloud Firestore synchronization, UMP consent retrieval, and Google AdMob ad loading.</td>
+                <td>Granted automatically by Android at installation.</td>
+              </tr>
+              <tr>
+                <td><code>android.permission.ACCESS_NETWORK_STATE</code></td>
+                <td>Normal</td>
+                <td>Checks whether Wi-Fi or cellular network exists before initiating cloud sync or ad preloads.</td>
+                <td>Granted automatically by Android at installation.</td>
+              </tr>
+              <tr>
+                <td><code>android.permission.POST_NOTIFICATIONS</code></td>
+                <td><span class="status-badge badge-runtime">Runtime</span></td>
+                <td>Delivers local scheduled alerts for upcoming warranty expirations on Android 13+ (API 33+).</td>
+                <td>Prompted at runtime; can be toggled in App Settings.</td>
+              </tr>
+              <tr>
+                <td><code>android.permission.SCHEDULE_EXACT_ALARM</code></td>
+                <td>Special</td>
+                <td>Triggers warranty expiration notifications at the exact scheduled calendar date and time.</td>
+                <td>Manageable under Special App Access settings.</td>
+              </tr>
+              <tr>
+                <td><code>android.permission.VIBRATE</code></td>
+                <td>Normal</td>
+                <td>Provides subtle haptic feedback on successful QR scan detection and critical warranty notifications.</td>
+                <td>Granted automatically; follows device vibration mode.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="app-callout app-callout-info">
+          <!-- Info SVG -->
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          <div>
+            <strong>Photo Gallery Privacy Assurance:</strong><br>
+            Ownly does <strong>not</strong> request broad filesystem permissions (such as legacy <code>READ_EXTERNAL_STORAGE</code> or <code>MANAGE_EXTERNAL_STORAGE</code>). We utilize Android's official system Photo Picker, ensuring Ownly receives access <em>only</em> to the specific image files you deliberately choose.
+          </div>
+        </div>
+      </article>
+
+      <!-- ====================================================================
+           SECTION 15: CHANGES TO THIS PRIVACY POLICY
+           ==================================================================== -->
+      <article class="app-card-section" id="section-15">
+        <div class="card-sec-head">
+          <div class="card-icon-badge">
+            <!-- Clock / History Icon -->
+            <svg viewBox="0 0 24 24"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>
+          </div>
+          <div class="card-title-meta">
+            <span class="sec-num-pill">Section 15</span>
+            <h2 class="card-sec-title">Changes to This Privacy Policy</h2>
+          </div>
+        </div>
+
+        <p>
+          We may update this policy periodically to reflect feature additions or legal requirements. When changes occur, the revision date is updated, and prominent notice will be provided via Google Play release notes.
+        </p>
+
+        <div class="app-table-wrapper">
+          <table class="app-table">
+            <thead>
+              <tr>
+                <th>Version</th>
+                <th>Effective Date</th>
+                <th>Summary of Revisions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>v2.1.0</strong></td>
+                <td>November 9, 2026</td>
+                <td>Updated package name everywhere to <code>com.stoneforze.ownly</code>; comprehensive disclosures for UMP consent flow, offline QR gallery scanning, and insurance schedule exports.</td>
+              </tr>
+              <tr>
+                <td><strong>v2.0.0</strong></td>
+                <td>March 15, 2026</td>
+                <td>Architecture overhaul to offline-first Room SQLite with optional Cloud Firestore sync.</td>
+              </tr>
+              <tr>
+                <td><strong>v1.0.0</strong></td>
+                <td>January 10, 2025</td>
+                <td>Initial release of Ownly – Personal Inventory Manager.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <!-- ====================================================================
+           SECTION 16: CONTACT INFORMATION
+           ==================================================================== -->
+      <article class="app-card-section" id="section-16">
+        <div class="card-sec-head">
+          <div class="card-icon-badge">
+            <!-- Mail / Contact Icon -->
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </div>
+          <div class="card-title-meta">
+            <span class="sec-num-pill">Section 16</span>
+            <h2 class="card-sec-title">Contact Stoneforze Privacy Desk</h2>
+          </div>
+        </div>
+
+        <p>
+          For questions, requests, or privacy compliance inquiries, contact Stoneforze's designated privacy officer:
+        </p>
+
+        <div class="app-card-grid">
+          <div class="app-subcard">
+            <h4>Application &amp; Operator</h4>
+            <p><strong>App Name:</strong> Ownly – Personal Inventory Manager</p>
+            <p><strong>Operator:</strong> Stoneforze</p>
+            <p><strong>Package ID:</strong> <code>com.stoneforze.ownly</code></p>
+          </div>
+          <div class="app-subcard">
+            <h4>Privacy Desk Email</h4>
+            <p><strong>Primary Contact:</strong></p>
+            <p><a href="mailto:stoneforze.help@gmail.com" style="font-weight:700; font-size:1.02rem; color:var(--turbo); text-decoration:underline;">stoneforze.help@gmail.com</a></p>
+            <p style="margin-top:6px; font-size:0.78rem; color:var(--text-muted);">Direct all data access, correction, and deletion requests to this address.</p>
+          </div>
+        </div>
+
+        <p style="margin-top: 18px; font-size:0.88rem; color:var(--text-muted);">
+          <em>Commitment:</em> We acknowledge privacy inquiries within 5 business days and provide substantive responses or execute statutory rights requests within 30 calendar days.
+        </p>
+      </article>
+
+    </main>
+
+    <!-- ========================================================================
+         APP FOOTER
+         ======================================================================== -->
+    <footer class="app-footer" role="contentinfo">
+      <div class="footer-logo-row">
+        <!-- Ownly Cube Mini Icon -->
+        <svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M14 17.5 L24 11.5 L34 17.5 L24 23.5 Z" fill="#F0E100"/>
+          <path d="M14 17.5 L24 23.5 L24 36.5 L14 30.5 Z" fill="#ECE5FF"/>
+          <path d="M34 17.5 L24 23.5 L24 36.5 L34 30.5 Z" fill="#FFFFFF"/>
+        </svg>
+        <span>Ownly – Personal Inventory Manager</span>
+      </div>
+      <div>&copy; 2026 Stoneforze. All rights reserved. &bull; Package: <code>com.stoneforze.ownly</code></div>
+      <div>Support &amp; Privacy Contact: <a href="mailto:stoneforze.help@gmail.com" style="color:var(--turbo); font-weight:700;">stoneforze.help@gmail.com</a></div>
+      <div>Designed with Ownly Quantum Palette 2025 &bull; Offline-First Architecture</div>
+    </footer>
+
+    <!-- ========================================================================
+         FROSTED GLASS BOTTOM NAVIGATION BAR (MATCHING OWNLY'S IN-APP NAV BAR)
+         ======================================================================== -->
+    <nav class="app-bottom-nav" aria-label="Bottom Quick Navigation">
+      <a href="#section-1" class="nav-tab-item active">
+        <!-- Home / Overview -->
+        <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        <span>Overview</span>
+      </a>
+      <a href="#section-2" class="nav-tab-item">
+        <!-- Collection -->
+        <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/></svg>
+        <span>Collect</span>
+      </a>
+      <a href="#section-4" class="nav-tab-item">
+        <!-- Storage -->
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 4.02 2 6.5s4.48 4.5 10 4.5 10-2.02 10-4.5S17.52 2 12 2zm0 6c-3.87 0-7-1.34-7-2.5S8.13 3 12 3s7 1.34 7 2.5S15.87 8 12 8zm8 3.5c0 1.16-3.13 2.5-8 2.5s-8-1.34-8-2.5V9.38C5.23 10.42 8.35 11 12 11s6.77-.58 8-1.62v2.12zm0 5c0 1.16-3.13 2.5-8 2.5s-8-1.34-8-2.5v-2.12c1.23 1.04 4.35 1.62 8 1.62s6.77-.58 8-1.62v2.12z"/></svg>
+        <span>Storage</span>
+      </a>
+      <a href="#section-12" class="nav-tab-item">
+        <!-- Rights -->
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+        <span>Rights</span>
+      </a>
+      <a href="#section-16" class="nav-tab-item">
+        <!-- Contact -->
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <span>Contact</span>
+      </a>
+    </nav>
+
+    <!-- Floating Scroll-To-Top FAB -->
+    <a href="#" class="fab-scroll-top" title="Scroll to top" aria-label="Scroll to top">
+      <!-- Arrow Up -->
+      <svg viewBox="0 0 24 24"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>
+    </a>
+
+  </div>
+
+  <!-- ========================================================================
+       ACCESSIBLE PROGRESSIVE ENHANCEMENT JAVASCRIPT
+       ======================================================================== -->
+  <script>
+    (function() {
+      // 1. Theme Switcher (Dark Mode <-> Light Mode matching Ownly's theme preferences)
+      var rootHtml = document.documentElement;
+      var themeToggleBtn = document.getElementById('theme-toggle-button');
+      var themeIcon = document.getElementById('theme-icon');
+
+      // Check saved preference or system preference
+      var savedTheme = localStorage.getItem('ownly_theme');
+      if (savedTheme === 'light' || savedTheme === 'dark') {
+        rootHtml.setAttribute('data-theme', savedTheme);
+      } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        rootHtml.setAttribute('data-theme', 'light');
+      }
+
+      function updateThemeIcon() {
+        var current = rootHtml.getAttribute('data-theme');
+        if (themeIcon) {
+          themeIcon.innerHTML = current === 'light' ? '&#9728;' : '&#9790;';
+        }
+      }
+      updateThemeIcon();
+
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', function() {
+          var current = rootHtml.getAttribute('data-theme');
+          var nextTheme = current === 'light' ? 'dark' : 'light';
+          rootHtml.setAttribute('data-theme', nextTheme);
+          localStorage.setItem('ownly_theme', nextTheme);
+          updateThemeIcon();
+        });
+      }
+
+      // 2. Active Tab & Chip Highlight on Scroll
+      var sections = document.querySelectorAll('.app-card-section');
+      var filterChips = document.querySelectorAll('.chip-scroll-container a');
+      var navTabs = document.querySelectorAll('.app-bottom-nav a');
+
+      if ('IntersectionObserver' in window && sections.length > 0) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              var id = entry.target.getAttribute('id');
+              
+              // Highlight corresponding chips
+              filterChips.forEach(function(chip) {
+                if (chip.getAttribute('href') === '#' + id) {
+                  chip.classList.add('active');
+                } else {
+                  chip.classList.remove('active');
+                }
+              });
+
+              // Highlight corresponding bottom nav tabs
+              navTabs.forEach(function(tab) {
+                if (tab.getAttribute('href') === '#' + id) {
+                  tab.classList.add('active');
+                } else {
+                  tab.classList.remove('active');
+                }
+              });
+            }
+          });
+        }, {
+          rootMargin: '-120px 0px -50% 0px',
+          threshold: 0.1
+        });
+
+        sections.forEach(function(sec) {
+          observer.observe(sec);
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
+
