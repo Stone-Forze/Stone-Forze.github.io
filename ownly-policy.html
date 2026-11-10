@@ -14,9 +14,11 @@
   
   <!-- Open Graph / Social Sharing -->
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://stone-forze.github.io/ownly-policy">
   <meta property="og:title" content="Ownly Privacy Policy – Personal Inventory Manager">
   <meta property="og:description" content="Official Privacy Policy for Ownly – Personal Inventory Manager (com.stoneforze.ownly) operated by Stoneforze.">
   <meta property="og:site_name" content="Ownly">
+  <link rel="canonical" href="https://stone-forze.github.io/ownly-policy">
   
   <!-- Favicon SVG -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><rect width='48' height='48' rx='12' fill='%23834DFB'/><path d='M14 16 L24 10 L34 16 L24 22 Z' fill='%23F0E100'/><path d='M14 16 L24 22 L24 36 L14 30 Z' fill='%23ECE5FF'/><path d='M34 16 L24 22 L24 36 L34 30 Z' fill='%23FFFFFF'/></svg>">
@@ -101,9 +103,15 @@
       font-size: 16px;
       scroll-behavior: smooth;
       scroll-padding-top: 130px;
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
     }
 
     body {
+      width: 100%;
+      max-width: 100vw;
+      overflow-x: hidden;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       background-color: var(--bg-canvas);
       color: var(--text-primary);
@@ -112,6 +120,8 @@
       -moz-osx-font-smoothing: grayscale;
       transition: background-color 0.25s ease, color 0.25s ease;
       padding-bottom: 100px;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
 
     a {
@@ -133,9 +143,12 @@
        APP SHELL CONTAINER & STATUS BAR
        ========================================================================== */
     .app-viewport {
+      width: 100%;
       max-width: 960px;
       margin: 0 auto;
       min-height: 100vh;
+      min-width: 0;
+      overflow-x: hidden;
       display: flex;
       flex-direction: column;
       position: relative;
@@ -296,13 +309,17 @@
        APP CATEGORY / FILTER CHIP CAROUSEL (JUST LIKE DASHBOARD/ITEMS)
        ========================================================================== */
     .chip-scroll-container {
+      width: 100%;
+      max-width: 100%;
       padding: 16px 20px 8px;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
       -ms-overflow-style: none;
       display: flex;
       gap: 10px;
       user-select: none;
+      box-sizing: border-box;
     }
 
     .chip-scroll-container::-webkit-scrollbar {
@@ -354,6 +371,10 @@
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 14px;
       padding: 12px 20px 20px;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      min-width: 0;
     }
 
     .metric-widget {
@@ -407,6 +428,10 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
     }
 
     .app-card-section {
@@ -417,6 +442,11 @@
       box-shadow: var(--shadow-card);
       scroll-margin-top: 130px;
       transition: border-color 0.2s ease, transform 0.2s ease;
+      min-width: 0;
+      max-width: 100%;
+      box-sizing: border-box;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
 
     .app-card-section:hover {
@@ -599,15 +629,19 @@
        ========================================================================== */
     .app-table-wrapper {
       width: 100%;
+      max-width: 100%;
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       margin: 18px 0;
       border: 1px solid var(--border-card);
       border-radius: 16px;
       background: var(--bg-card-subtle);
+      box-sizing: border-box;
     }
 
     table.app-table {
       width: 100%;
+      min-width: 500px;
       border-collapse: collapse;
       font-size: 0.86rem;
       text-align: left;
@@ -817,28 +851,232 @@
       font-size: 1.15rem;
     }
 
-    /* Responsive */
-    @media (max-width: 600px) {
-      .app-header {
-        padding: 14px 16px 16px;
-        border-bottom-left-radius: 18px;
-        border-bottom-right-radius: 18px;
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS (TABLET & MOBILE)
+       ========================================================================== */
+    @media (max-width: 768px) {
+      .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 10px 16px 16px;
+      }
+      .policy-sections-wrapper {
+        padding: 0 16px 20px;
+        gap: 16px;
       }
       .app-card-section {
-        padding: 22px 18px;
-        border-radius: 20px;
+        padding: 24px 20px;
       }
-      .card-sec-title {
-        font-size: 1.18rem;
+    }
+
+    @media (max-width: 600px) {
+      html, body {
+        overflow-x: hidden !important;
       }
-      .app-bottom-nav {
-        width: calc(100% - 20px);
-        bottom: 10px;
-        padding: 4px 6px;
+
+      /* Hide fake status bar on real mobile devices */
+      .status-bar-sim {
+        display: none !important;
       }
-      .nav-tab-item {
-        padding: 4px 8px;
+
+      .app-viewport {
+        width: 100% !important;
+        max-width: 100vw !important;
+        min-width: 0 !important;
+      }
+
+      .app-header {
+        padding: 14px 14px 16px;
+        border-radius: 0 0 20px 20px;
+        position: sticky;
+        top: 0;
+      }
+
+      .app-header-inner {
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: space-between;
+      }
+
+      .app-brand-area {
+        gap: 10px;
+        flex: 1;
+        min-width: 180px;
+      }
+
+      .app-logo-badge {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+      }
+
+      .app-logo-badge svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .app-brand-title {
+        font-size: 1.25rem;
+      }
+
+      .app-brand-sub {
+        font-size: 0.72rem;
+      }
+
+      .app-header-controls {
+        gap: 8px;
+      }
+
+      .pkg-chip {
         font-size: 0.68rem;
+        padding: 4px 10px;
+      }
+
+      .theme-toggle-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 0.95rem;
+      }
+
+      .app-header-subbanner {
+        margin-top: 10px;
+        padding-top: 10px;
+        font-size: 0.75rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+
+      .chip-scroll-container {
+        padding: 10px 12px 6px;
+        gap: 8px;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .filter-chip {
+        padding: 6px 12px;
+        font-size: 0.76rem;
+      }
+
+      .metrics-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 8px 12px 14px;
+      }
+
+      .metric-widget {
+        padding: 14px 16px;
+        border-radius: 16px;
+      }
+
+      .metric-widget-val {
+        font-size: 1.2rem;
+      }
+
+      .policy-sections-wrapper {
+        padding: 0 10px 20px;
+        gap: 14px;
+      }
+
+      .app-card-section {
+        padding: 18px 16px;
+        border-radius: 18px;
+        scroll-margin-top: 110px;
+      }
+
+      .card-sec-head {
+        gap: 12px;
+        margin-bottom: 14px;
+        padding-bottom: 12px;
+      }
+
+      .card-icon-badge {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+      }
+
+      .card-icon-badge svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .card-sec-title {
+        font-size: 1.15rem;
+      }
+
+      .app-card-section h3 {
+        font-size: 1rem;
+        margin: 18px 0 8px;
+      }
+
+      .app-card-section p,
+      .app-card-section li {
+        font-size: 0.88rem;
+        line-height: 1.58;
+      }
+
+      .app-callout {
+        padding: 12px 14px;
+        border-radius: 14px;
+        font-size: 0.84rem;
+        gap: 10px;
+      }
+
+      .app-table-wrapper {
+        margin: 12px 0;
+        border-radius: 14px;
+      }
+
+      table.app-table {
+        min-width: 440px;
+        font-size: 0.78rem;
+      }
+
+      table.app-table th, table.app-table td {
+        padding: 9px 12px;
+      }
+
+      .app-card-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .app-subcard {
+        padding: 12px 14px;
+        border-radius: 14px;
+      }
+
+      .app-footer {
+        margin: 8px 10px 30px;
+        padding: 20px 16px;
+        border-radius: 18px;
+        font-size: 0.8rem;
+      }
+
+      .app-bottom-nav {
+        width: calc(100% - 16px);
+        bottom: 8px;
+        padding: 4px 6px;
+        max-width: 460px;
+      }
+
+      .nav-tab-item {
+        padding: 4px 6px;
+        font-size: 0.62rem;
+        gap: 2px;
+      }
+
+      .nav-tab-item svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .fab-scroll-top {
+        bottom: 64px;
+        right: 14px;
+        width: 40px;
+        height: 40px;
       }
     }
   </style>
@@ -954,6 +1192,11 @@
          ======================================================================== -->
     <section class="metrics-grid" aria-label="Key Privacy Metrics">
       <div class="metric-widget">
+        <div class="metric-widget-label">Account Requirement</div>
+        <div class="metric-widget-val">No Signup</div>
+        <div class="metric-widget-note">100% free usage with zero account creation</div>
+      </div>
+      <div class="metric-widget">
         <div class="metric-widget-label">Application Scope</div>
         <div class="metric-widget-val">Offline-First</div>
         <div class="metric-widget-note">Room SQLite in private device sandbox</div>
@@ -1010,8 +1253,8 @@
           <!-- Info SVG -->
           <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
           <div>
-            <strong>Core Architecture: Offline-First Utility</strong><br>
-            Ownly operates on an <em>offline-first foundation</em>. By default, your inventory records, valuation amounts, serial numbers, condition notes, and receipts reside exclusively on your physical Android device. We do not sell or commercialize your household inventory data.
+            <strong>Core Architecture: Offline-First &amp; Zero Account Required</strong><br>
+            Ownly operates on a pure <em>offline-first foundation</em>. You do <strong>not need to create an account, register, or sign in</strong> to use the application. Your inventory records, valuation amounts, serial numbers, condition notes, photos, and receipts reside exclusively on your physical Android device. We do not sell or commercialize your household inventory data.
           </div>
         </div>
 
@@ -1036,7 +1279,7 @@
         </div>
 
         <p>
-          We adhere to strict data minimization principles. Ownly processes the following distinct categories of information based on your active usage:
+          We adhere to strict data minimization principles. <strong>Ownly does not require user account registration</strong>. You can catalog your household belongings freely without providing an email address, name, or password. Ownly processes the following distinct categories of information based on your active usage:
         </p>
 
         <h3>A. Inventory and Household Belongings Data</h3>
@@ -1721,6 +1964,7 @@
             <p><strong>App Name:</strong> Ownly – Personal Inventory Manager</p>
             <p><strong>Operator:</strong> Stoneforze</p>
             <p><strong>Package ID:</strong> <code>com.stoneforze.ownly</code></p>
+            <p><strong>Online Policy:</strong> <a href="https://stone-forze.github.io/ownly-policy" style="color:var(--turbo); text-decoration:underline;">stone-forze.github.io/ownly-policy</a></p>
           </div>
           <div class="app-subcard">
             <h4>Privacy Desk Email</h4>
